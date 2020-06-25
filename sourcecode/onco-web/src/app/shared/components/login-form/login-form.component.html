@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <nav class="navbar fixed-top navbar-expand-md nav-bg">
+    <a class="navbar-brand" href="#">RUN-ONCO</a>
+        <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/view-tutorial']">View Tutorial</a>
+            </li>
+            <!-- <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/download']">Download</a>
+            </li> -->
+        </ul>
+        <form [formGroup]="loginForm" class="form-inline">
+            <div class="form-group mx-sm-3 mb-2" formControlValidator [control]="loginForm?.controls['username']" [submitted]="submitted">
+                <label for="txtUsername" class="sr-only">Username</label>
+                <input type="text" class="form-control" id="txtUsername" formControlName="username" placeholder="Username">
+            </div>
+            <div class="form-group mx-sm-3 mb-2" formControlValidator [control]="loginForm?.controls['password']" [submitted]="submitted">
+                <label for="txtPassword" class="sr-only">Password</label>
+                <input type="password" class="form-control" id="txtPassword" formControlName="password" placeholder="Password">
+            </div>
+            <button type="button" class="btn btn-primary mb-2" (click)="onLoggedin()">Login</button>
+        </form>
+    </nav>
+</div>

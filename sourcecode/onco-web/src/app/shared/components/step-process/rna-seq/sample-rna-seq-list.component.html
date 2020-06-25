@@ -1,0 +1,51 @@
+<div class="pull-right margin-bottom-5">
+    <button class="btn btn-sm blue btn-small" type="button" (click)="addItem()">
+        <i class="fa fa-plus"></i> Add
+    </button>
+</div>
+<div class="table-scrollable">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sample source</th>
+                <th>Pathology No.</th>
+                <th>File</th>
+                <th>Status</th>
+                <th>View</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [hidden]="sampleRnaSeqList?.length > 0">
+                <td class="text-center" colspan="6">
+                    {{ 'msg.noRecordFound' | translate }}
+                </td>
+            </tr>
+            <tr [hidden]="sampleRnaSeqList?.length == 0" *ngFor="let sampleRnaSeq of sampleRnaSeqList; let i = index; trackBy: trackByFn;">
+                <td class="text-center" style="width: 25%">
+                    {{ sampleRnaSeq?.biospecimen?.ref + ' : ' + sampleRnaSeq?.biospecimen?.sampleType?.name }}
+                </td>
+                <td class="text-center" style="width: 15%">
+                    <a href="javascript:;" [hidden]="!sampleRnaSeq?.biospecimen?.pathological" (click)="viewPatho(sampleRnaSeq?.biospecimen?.pathological)">{{ sampleRnaSeq?.biospecimen?.pathological?.pathologyNo }}</a>
+                </td>
+                <td style="width: 25%">
+                    <a href="javascript:;" (click)="onDownload(sampleRnaSeq?.attachment)">{{ sampleRnaSeq?.attachment?.fileName }}</a>
+                </td>
+                <td class="text-center" style="width: 15%">
+                    {{ sampleRnaSeq?.status }}
+                </td>
+                <td class="text-center" style="width: 80px">
+                    <a href="javascript:;" class="btn btn-outline btn-sm"  (click)="viewItem(sampleRnaSeq)"
+                        [ngClass]="{ 'dark' : sampleRnaSeq.status === constants.STATUS_ACTIVE, 'default' : sampleRnaSeq.status !== constants.STATUS_ACTIVE }">
+                        <i class="fa fa-wpforms"></i>
+                    </a>
+                </td>
+                <td class="text-center" style="width: 80px">
+                    <a href="javascript:;" class="btn btn-outline red btn-sm" (click)="deleteItem(sampleRnaSeq)">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,42 @@
+<h2 class="page-title">{{ 'lbl.patientInfo' | translate }}</h2>
+<hr class="side">
+
+<form class="form-horizontal" [formGroup]="searchForm">
+    <div class="form-group row" formControlValidator [control]="searchForm?.controls['id']" [submitted]="submitted">
+        <label class="col-md-3 col-form-label font-bold">HN <small>(select value from autocomplete)</small></label>
+        <div class="col-md-3">
+            <input
+                formControlName="hn"
+                [typeaheadAsync]="true"
+                [typeahead]="dataSource"
+                (typeaheadLoading)="changeTypeaheadLoading($event)"
+                (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                (typeaheadNoResults)="typeaheadNoResults($event)"
+                [typeaheadOptionsLimit]="15"
+                [typeaheadScrollable]="true"
+                [typeaheadOptionsInScrollableView]="5"
+                typeaheadOptionField="hn"
+                placeholder="e.g. HN620001"
+                [typeaheadMinLength]="0"
+                typeaheadWaitMs="600"
+                class="form-control"
+                (change)="onTextChanged()">
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="col-md-2">
+            <!-- <button class="btn btn-sm blue" style="margin-top: 3px;" type="button"
+                (click)="onAdd()" [disabled]="noResult || !searchForm?.valid">
+                <i class="fa fa-plus"></i> Add
+            </button> -->
+            <button class="btn btn-sm blue" style="margin-top: 3px;" type="button" (click)="onAdd()">
+                <i class="fa fa-plus"></i> Add
+            </button>
+        </div>
+     </div>
+</form>
+
+<div class="footer-actions">
+    <div class="form-actions pull-left margin-top-10 margin-bottom-10">
+        <a href="javascript:;" (click)="goToPage()">&lt;&lt; Back</a>
+    </div>
+</div>

@@ -1,0 +1,173 @@
+version: "2.1"
+
+services:
+  db:
+    user: $UID
+    restart: always
+    build: ./onco-db
+    image: onco-db
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssw0rd
+      MYSQL_USER: ONCO
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: ONCODB
+    volumes:
+      - mysql_volume:/var/lib/mysql
+    expose:
+      - "3306"
+    ports:
+      - "6004:3306"
+    networks:
+      - network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  mongodb:
+    user: $UID
+    restart: always
+    build: ./onco-mongo
+    image: onco-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: P@ssw0rd
+      MONGODB_USER: ONCO
+      MONGODB_PASS: password
+      MONGODB_DATABASE: ONCDB02D
+    volumes:
+      - mongo_volume:/data/db/mongo
+    expose:
+      - "27017"
+    ports:
+      - "6006:27017"
+    networks:
+      - network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet 1
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+  anlys_api:
+    user: $UID
+    restart: always
+    build: ./data-anlys-api
+    image: data-anlys-api
+    expose:
+      - "5000"
+    ports:
+      - "6001:5000"
+    networks:
+      - network
+
+  backend:
+    user: $UID
+    restart: always
+    build: ./onco-api
+    image: onco-api
+    volumes:
+      - data_volume:/opt/jboss/wildfly/standalone/app/data
+      - log_volume:/opt/jboss/wildfly/standalone/app/logs
+    expose:
+      - "8080"
+    ports:
+      - "6000:8080"
+    networks:
+      - network
+    depends_on:
+      db:
+        condition: service_healthy
+    links:
+      - db:onco-db
+    healthcheck:
+      test:
+        ["CMD", "curl", "-f", "http://localhost:8080/onco-api/getAppVersion"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  batch:
+    user: $UID
+    restart: always
+    build: ./batch
+    image: onco-api-batch
+    volumes:
+      - data_volume:/opt/jboss/wildfly/standalone/app/data
+      - log_volume:/opt/jboss/wildfly/standalone/app/logs
+    expose:
+      - "8080"
+    ports:
+      - "6003:8080"
+    networks:
+      - network
+    depends_on:
+      db:
+        condition: service_healthy
+    links:
+      - db:onco-db
+
+  web:
+    restart: always
+    build: ./onco-web
+    image: onco-web
+    expose:
+      - "80"
+    ports:
+      - "6002:80"
+    networks:
+      - network
+    depends_on:
+      backend:
+        condition: service_healthy
+    links:
+      - backend:onco-api
+      - anlys_api:data-anlys-api
+
+  msisensor_api:
+    user: $UID
+    # restart: always
+    build: ./msisensor-api
+    image: msisensor-api
+    tty: true
+    volumes:
+      - data_volume:/data
+      - log_volume:/logs
+    expose:
+      - "5000"
+    ports:
+      - "6005:5000"
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  mysql_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "${PWD}/shared/db/mysql-data"
+  mongo_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "${PWD}/shared/db/mongo-data"
+  data_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "${PWD}/shared/data"
+  log_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "${PWD}/shared/logs"

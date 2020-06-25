@@ -1,0 +1,303 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>run.onco.api</groupId>
+		<artifactId>onco-api</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>run.onco.api.rest</groupId>
+	<artifactId>onco-api-rest</artifactId>
+	<name>onco-api-rest</name>
+	<description>ONCO API : Rest API Module</description>
+
+	<properties>
+		<!-- Generic properties -->
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<resource.directory>src/main/resources</resource.directory>
+		<!-- <buildNumber>0</buildNumber> -->
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+
+		<hibernate.version>5.2.10.Final</hibernate.version>
+		<slfj.version>1.7.5</slfj.version>
+		<springframework.version>4.3.8.RELEASE</springframework.version>
+		<jackson.library>2.8.8</jackson.library>
+		<aspectj.version>1.8.6</aspectj.version>
+		<jjwt.version>0.9.0</jjwt.version>
+		<swagger.version>2.9.2</swagger.version>
+		<onco-api-common.version>0.0.1-SNAPSHOT</onco-api-common.version>
+		<!-- <onco-api-persist.version>0.0.1-SNAPSHOT</onco-api-persist.version> -->
+		<onco-api-business.version>0.0.1-SNAPSHOT</onco-api-business.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>run.onco.api.common</groupId>
+			<artifactId>onco-api-common</artifactId>
+			<version>${onco-api-common.version}</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>run.onco.api.persist</groupId>
+			<artifactId>onco-api-persist</artifactId>
+			<version>${onco-api-persist.version}</version>
+		</dependency> -->
+		<dependency>
+			<groupId>run.onco.api.business</groupId>
+			<artifactId>onco-api-business</artifactId>
+			<version>${onco-api-business.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.library}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt-spring31</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-context</artifactId> 
+			<version>${springframework.version}</version> </dependency> -->
+
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-ehcache</artifactId>
+		</dependency>
+
+		<!-- spring AOP and AspectJ -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slfj.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slfj.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<version>${slfj.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.0.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+			<scope>compile</scope>
+			<!-- <exclusions>
+				<exclusion>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
+				</exclusion>
+			</exclusions> -->
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter</artifactId> 
+			</dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.tomcat.embed</groupId>
+					<artifactId>tomcat-embed-websocket</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		 <!-- Spring Security -->
+      <!--   <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency> -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>${jjwt.version}</version>
+		</dependency>
+	</dependencies>
+
+	<packaging>war</packaging>
+	<build>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<profiles>
+						<profile>dev</profile>
+					</profiles>
+				</configuration>
+			</plugin>
+		</plugins>
+		<finalName>onco-api</finalName>
+
+		<!-- RESOURCE -->
+		<resources>
+			<resource>
+				<directory>${resource.directory}</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<activatedProperties>dev</activatedProperties>
+				<datasource.type>DIRECT</datasource.type>
+				<datasource.driver>com.mysql.jdbc.Driver</datasource.driver>
+				<datasource.url>jdbc:mysql://localhost:6004/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false</datasource.url>
+				<datasource.username>ONCO</datasource.username>
+				<!-- <datasource.password>password</datasource.password> -->
+				<datasource.password>+UJiVUL29Y3xjsLVnrVw7G6V7KW1Mw/t</datasource.password>
+				<log.level>DEBUG</log.level>
+				<log.file.path>/Users/neda/Personal/Work/Logs/ONCO</log.file.path>
+				<data.file.path>/Users/neda/Personal/Work/Data</data.file.path>
+				<sourcecode.file.path>/Users/neda/Personal/Work/Data</sourcecode.file.path>
+				<clustergrammer.endpoint.url>http://localhost:5000/clustergrammer</clustergrammer.endpoint.url>
+				<stringdb.endpoint.url>http://localhost:5000/get-interactions</stringdb.endpoint.url>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<activatedProperties>prod</activatedProperties>
+				<datasource.type>DIRECT</datasource.type>
+				<datasource.driver>com.mysql.jdbc.Driver</datasource.driver>
+				<datasource.url>jdbc:mysql://onco-db:3306/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false</datasource.url>
+				<datasource.username>ONCO</datasource.username>
+				<!-- <datasource.password>password</datasource.password> -->
+				<datasource.password>+UJiVUL29Y3xjsLVnrVw7G6V7KW1Mw/t</datasource.password>
+				<log.level>DEBUG</log.level>
+				<log.file.path>/opt/jboss/wildfly/standalone/app/logs</log.file.path>
+				<data.file.path>/opt/jboss/wildfly/standalone/app/data/run-onco/uploads</data.file.path>
+				<sourcecode.file.path>/opt/jboss/wildfly/standalone/app/data/downloads</sourcecode.file.path>
+				<clustergrammer.endpoint.url>http://data-anlys-api:5000/clustergrammer</clustergrammer.endpoint.url>
+				<stringdb.endpoint.url>http://data-anlys-api:5000/get-interactions</stringdb.endpoint.url>
+			</properties>
+		</profile>
+	</profiles>
+</project>

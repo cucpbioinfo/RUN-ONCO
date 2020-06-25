@@ -1,0 +1,27 @@
+<form id="variantForm" *ngIf="sampleVcfList && sampleVcfList?.length > 0" [formGroup]="variantForm">
+    <div class="row">
+        <div class="form-group col-md-4" formControlValidator [control]="variantForm?.controls.sampleVcfIds" [submitted]="submitted">
+            <label class="font-bold">VCF</label>
+            <div class="no-padding">
+                <select *ngIf="isMultiSelect" id="ddlSampleVcf" class="selectpicker" formControlName="sampleVcfIds" multiple data-live-search="true" title="-- Select --">
+                    <option [ngValue]="sample.id" *ngFor="let sample of sampleVcfList; trackBy: trackByFn;">
+                        {{ getSampleName(sample) }}
+                    </option>
+                </select>
+                <select *ngIf="!isMultiSelect" id="ddlSampleVcf" class="selectpicker" formControlName="sampleVcfIds" title="-- Select --">
+                    <option [ngValue]="sample.id" *ngFor="let sample of sampleVcfList; trackBy: trackByFn;">
+                        {{ getSampleName(sample) }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <div class="no-padding" style="padding-top: 26px">
+                <button class="btn btn-sm blue btn-medium" type="button" (click)="update()">
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

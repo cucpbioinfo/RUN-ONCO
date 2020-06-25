@@ -1,0 +1,57 @@
+<app-breadcrumb [items]="breadcrumbs"></app-breadcrumb>
+
+<h2 class="page-title">View ICD-O</h2>
+<hr class="side">
+
+<div class="form-horizontal">
+    <div class="row">
+        <div class="form-group col-md-4 no-padding">
+            <label class="col-md-4 control-label font-bold">Version :</label>
+            <label class="col-md-8 control-label">
+                {{ dataVersion?.version }}
+            </label>
+        </div>
+        <div class="form-group col-md-4 no-padding">
+            <label class="col-md-4 control-label font-bold">Data Date :</label>
+            <label class="col-md-8 control-label">
+                {{ dataVersion?.dataDate | dateFormat:['DD MMM YYYY'] }}
+            </label>
+        </div>
+        <div class="form-group col-md-4 no-padding">
+            <label class="col-md-5 control-label font-bold">Mark as Default :</label>
+            <label class="col-md-7 control-label">
+                {{ dataVersion?.isDefault === constants.YES ? 'Yes' : 'No' }}
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="pull-right margin-top-10 margin-bottom-5">
+    <button class="btn btn-sm blue btn-small" type="button">
+        <i class="fa fa-plus"></i> Add
+    </button>
+</div> -->
+<div class="clearfix"></div>
+
+<div class="margin-top-5">
+    <data-table id="icd-grid" headerTitle="" [header]="false" [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)"
+        [indexColumn]="false" [substituteRows]="false" [limit]="15">
+        <data-table-column [property]="'code'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Code
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap">{{ item.code }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'name'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Name
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap">{{ item.name }}</span>
+            </ng-template>
+        </data-table-column>
+
+    </data-table>
+</div>

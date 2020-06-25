@@ -1,0 +1,42 @@
+<h2 class="page-title margin-top-10">{{ 'lbl.diagnosis' | translate }}</h2>
+<hr class="side">
+<div class="clearfix"></div>
+<div class="pull-right margin-bottom-5">
+    <button class="btn btn-sm blue btn-small" type="button" (click)="addItem()">
+        <i class="fa fa-plus"></i> Add
+    </button>
+</div>
+<div class="clearfix"></div>
+<div class="table-scrollable">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Diagnosis Date</th>
+                <th>Primary Diagnosis <small>(ICD-10)</small></th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [hidden]="!isDiagnosisEmpty">
+                <td class="text-center" colspan="4">
+                    {{ 'msg.noRecordFound' | translate }}
+                </td>
+            </tr>
+            <tr [hidden]="isDiagnosisEmpty" *ngFor="let diagnosis of diagnosisList; let i = index; trackBy: trackByFn;">
+                <td class="text-center" style="width: 30%">{{ diagnosis.diagnosisDate | dateFormat:['DD MMM YYYY'] }}</td>
+                <td>{{ diagnosis.primaryDiagnosis?.code + ' : ' + diagnosis.primaryDiagnosis?.name }}</td>
+                <td class="text-center" style="width: 80px">
+                    <a href="javascript:;" class="btn btn-outline dark btn-sm" (click)="editItem(i, diagnosis)">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </td>
+                <td class="text-center" style="width: 80px">
+                    <a href="javascript:;" class="btn btn-outline red btn-sm" (click)="deleteItem(i)">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,79 @@
+<app-breadcrumb [items]="breadcrumbs"></app-breadcrumb>
+
+<h2 class="page-title">{{ 'lbl.patientInfo' | translate }}</h2>
+<hr class="side">
+<form [formGroup]="patientForm" class="form-horizontal">
+    <input type="hidden" formControlName="id" />
+    <div class="row">
+        <div class="form-group col-md-3" formControlValidator [control]="patientForm?.controls['hn']" [submitted]="submitted">
+            <label class="font-bold">HN</label>
+            <input type="text" class="form-control" formControlName="hn" (blur)="checkDuplicateHn()" />
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-3" formControlValidator [control]="patientForm?.controls['genderCode']" [submitted]="submitted">
+            <label class="font-bold">Gender</label>
+            <select class="form-control" formControlName="genderCode">
+                <option value="">-- Select --</option>
+                <option [ngValue]="gender.code" *ngFor="let gender of ddl?.genderList; trackBy: trackByFn;">
+                    {{ gender.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-3" formControlValidator [control]="patientForm?.controls['birthDate']" [submitted]="submitted">
+            <label class="font-bold">Date of birth</label>
+            <div class="input-group datepicker-input">
+                <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="birthDate"
+                    #dpYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }"
+                    (change)="isDateInvalid('birthDate')" [minDate]="minDate" [maxDate]="maxDate" (bsValueChange)="bsValueChange('birthDate', $event)">
+                <span class="input-group-addon">
+                    <button class=" btn default calendar" type="button" (click)="dpYMD.toggle()" [attr.aria-expanded]="dpYMD.isOpen">
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </span>
+            </div>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-3" formControlValidator [control]="patientForm?.controls['raceCode']" [submitted]="submitted">
+            <label class="font-bold">Race</label>
+            <select class="form-control" formControlName="raceCode">
+                <option value="">-- Select --</option>
+                <option [ngValue]="race.code" *ngFor="let race of ddl?.raceList; trackBy: trackByFn;">
+                    {{ race.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-3" formControlValidator [control]="patientForm?.controls['weight']" [submitted]="submitted">
+            <label class="font-bold">Weight (kg)</label>
+            <input type="text" class="form-control text-right" formControlName="weight" currencyFormatter />
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-3" formControlValidator [control]="patientForm?.controls['height']" [submitted]="submitted">
+            <label class="font-bold">Height (m)</label>
+            <input type="text" class="form-control text-right" formControlName="height" currencyFormatter />
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+</form>
+
+<br>
+<app-step-wizard [data]="tab.data" [step]="tab.step" [styleClass]="tab.styleClass" (selectChanged)="goToNextTab($event)"></app-step-wizard>
+
+<div *ngIf="tab.step === 1" class="margin-top-20">
+    <app-survival-followup-list></app-survival-followup-list>
+</div>
+<div *ngIf="tab.step === 2 && isShowTab" class="margin-top-20">
+    <app-variant-call-list></app-variant-call-list>
+</div>
+<div *ngIf="tab.step === 3 && isShowTab" class="margin-top-20">
+    <app-sample-rna-seq-list></app-sample-rna-seq-list>
+</div>
+<div class="footer-actions">
+    <div class="form-actions pull-right margin-top-10 margin-bottom-10">
+        <button type="button" class="btn default btn-medium" (click)="onCancel()"> Cancel </button>
+        <button type="button" class="btn green btn-medium margin-left-5" (click)="onSave()"> Save </button>
+    </div>
+</div>

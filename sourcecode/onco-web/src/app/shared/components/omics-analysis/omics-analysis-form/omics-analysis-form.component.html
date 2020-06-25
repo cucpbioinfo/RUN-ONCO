@@ -1,0 +1,34 @@
+<h2 class="page-title margin-top-20">{{ 'lbl.biospecimen' | translate }}</h2>
+<hr class="side">
+
+<form [formGroup]="analysisForm" class="form-horizontal">
+    <div class="row">
+        <div class="form-group col-md-3" formControlValidator [control]="analysisForm?.controls.seqType" [submitted]="submitted">
+            <label class="font-bold">Sequence type</label>
+            <select class="selectpicker" formControlName="seqType" title="-- Select --">
+                <!-- <option value="">-- Select --</option> -->
+                <option [ngValue]="seqType.code" *ngFor="let seqType of ddl?.seqTypeList; trackBy: trackByFn;">
+                    {{ seqType.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-5" formControlValidator [control]="analysisForm?.controls.sampleSource" [submitted]="submitted">
+            <label class="font-bold">Sample source</label>
+            <div class="no-padding">
+                <select id="ddlSampleSource" class="selectpicker" formControlName="sampleSource"
+                    multiple data-live-search="true" title="-- Select --">
+                    <option [ngValue]="sampleSource.code" *ngFor="let sampleSource of ddl?.sampleSourceList; trackBy: trackByFn;">
+                        {{ sampleSource.name }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="form-group col-md-1 no-padding padding-top-25">
+            <a href="javascript:;" class="btn green btn-sm btn-search" (click)="search()">
+                <i class="fa fa-search"></i>
+            </a>
+        </div>
+    </div>
+</form>

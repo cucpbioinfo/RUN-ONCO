@@ -1,0 +1,5 @@
+<ul *ngIf="isShow" class="nav nav-pills margin-top-20 {{ styleClass }}">
+    <li *ngFor="let item of data; trackBy: trackByFn;" [ngClass]="{'active' : step === item.value }">
+        <a href="javascript:;" (click)="onTabChanged(item)">{{ item.name | translate }}</a>
+    </li>
+</ul>

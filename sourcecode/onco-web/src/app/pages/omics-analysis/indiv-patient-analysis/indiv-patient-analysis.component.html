@@ -1,0 +1,50 @@
+<app-breadcrumb [items]="breadcrumbs"></app-breadcrumb>
+
+<h2 class="page-title">Omics Data Analysis</h2>
+<hr class="side">
+
+<form [formGroup]="analysisForm" class="form-horizontal">
+    <div class="row">
+        <div class="form-group col-md-3" formControlValidator [control]="analysisForm?.controls['component']" [submitted]="submitted">
+            <label class="font-bold">Analysis</label>
+            <select class="selectpicker" title="-- Select --" formControlName="component" (change)="onSelectedChanged()">
+                <!-- <option value="">-- Select --</option> -->
+                <option [ngValue]="component.componentName" *ngFor="let component of componentList; trackBy: trackByFn;">
+                    {{ component.analysisName }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div *ngIf="selectedComponent?.dataTypeAnalysis === 'VCF'" class="form-group col-md-5"
+            formControlValidator [control]="analysisForm?.controls['patientId']" [submitted]="submitted">
+            <label class="font-bold">HN <small>(select value from autocomplete)</small></label>
+            <div class="no-padding">
+                <input
+                    formControlName="hn"
+                    [typeaheadAsync]="true"
+                    [typeahead]="dataSource"
+                    (typeaheadLoading)="changeTypeaheadLoading($event)"
+                    (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                    (typeaheadNoResults)="typeaheadNoResults($event)"
+                    [typeaheadOptionsLimit]="15"
+                    [typeaheadScrollable]="true"
+                    [typeaheadOptionsInScrollableView]="5"
+                    typeaheadOptionField="hn"
+                    placeholder="e.g. HN620001"
+                    [typeaheadMinLength]="0"
+                    typeaheadWaitMs="600"
+                    class="form-control"
+                    (change)="onTextChanged()">
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- <ng-container *ngIf="selectedComponent && (patient || selectedComponent?.dataTypeAnalysis !== 'VCF')"> -->
+<ng-container *ngIf="isAvailable">
+    <app-dynamic-content *ngIf="selectedComponent.componentName"
+        [componentName]="selectedComponent.componentName"
+        [params]="patient">
+    </app-dynamic-content>
+</ng-container>

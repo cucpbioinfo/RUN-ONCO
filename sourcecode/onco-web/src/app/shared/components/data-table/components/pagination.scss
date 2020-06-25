@@ -1,0 +1,72 @@
+    /deep/ .pagination-box {
+        position: relative;
+        margin-top: -10px;
+    }
+    /deep/ .pagination-range {
+        margin-top: 7px;
+        margin-left: 3px;
+        display: inline-block;
+    }
+    /deep/ .pagination-controllers {
+        float: right;
+    }
+    /deep/ .pagination-controllers input {
+        min-width: 60px;
+        /*padding: 1px 0px 0px 5px;*/
+        text-align: right;
+    }
+
+    /deep/ .pagination-limit {
+        margin-right: 25px;
+        display: inline-table;
+        // width: 110px;
+
+        .input-group-addon {
+            padding-top: 8px;
+            padding-right: 5px;
+        }
+
+        .form-control {
+            height: 32px!important;
+            padding: 0!important;
+            width: 100px!important;
+        }
+    }
+    /deep/ .pagination-pages {
+        display: inline-block;
+    }
+    /deep/ .pagination-page {
+        display: inline-table;
+
+        .input-group-addon {
+            padding-top: 8px;
+            padding-left: 5px;
+        }
+
+        .form-control {
+            height: 32px!important;
+            padding: 0!important;
+            text-align: right!important;
+            width: 100px;
+        }
+    }
+    /deep/ .pagination-box button {
+        outline: none !important;
+    }
+    /deep/ .pagination-prevpage,
+    /deep/ .pagination-nextpage,
+    /deep/ .pagination-firstpage,
+    /deep/ .pagination-lastpage {
+        // vertical-align: top;
+        vertical-align: initial;
+        font-size: 20px;
+        padding: 0 10px 0 0;
+    }
+
+    /deep/ .pagination-nextpage {
+        padding-left: 10px;
+    }
+    /deep/ .pagination-reload {
+        color: gray;
+        font-size: 12px;
+    }

@@ -1,0 +1,60 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Known oncogenic</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="row">
+        <div class="form-group col-md-6 no-padding">
+            <label class="col-md-4 control-label font-bold m-title">{{ featureType }} :</label>
+            <label class="col-md-8 control-label">
+                {{ feature }}
+            </label>
+        </div>
+    </div>
+    <div class="table-scrollable">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Gene</th>
+                    <th>Alteration</th>
+                    <th>Cancer Type</th>
+                    <th>Drugs</th>
+                    <th>Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr [hidden]="geneList?.length > 0">
+                    <td class="text-center" colspan="4">
+                        {{ 'msg.noRecordFound' | translate }}
+                    </td>
+                </tr>
+                <ng-container *ngFor="let gene of geneList; trackBy: trackByFn;">
+                    <tr *ngFor="let annovar of dictAnnovar[gene]; let i = index; trackBy: trackByFn;">
+                        <td class="text-center" [ngClass]="{ 'align-middle': dictAnnovar[gene]?.length > 1 }" style="width: 10%;" [hidden]="i > 0" [attr.rowspan]="dictAnnovar[gene]?.length">
+                            <a href="javascript:;" (click)="onNavigate(constants.URL.ONCOKB_BASED_URL, gene)">{{ gene }}</a>
+                        </td>
+                        <td style="width: 20%;">{{ annovar.alteration }}</td>
+                        <td style="width: 30%;">{{ annovar.cancerType }}</td>
+                        <td class="text-wrap" style="width: 25%;">
+                            <ng-container *ngFor="let drug of annovar.drugInArr; let j = index; trackBy: trackByFn;">
+                                <a href="javascript:;"(click)="onNavigate(constants.URL.DRUG_BASED_URL, drug, true)">{{ drug }}</a>
+                                <span *ngIf="j < annovar.drugInArr?.length - 1">, </span>
+                            </ng-container>
+                        </td>
+                        <td class="text-center" style="width: 5%;">
+                            <a href="javascript:;" [class]="getOncoKbLevelStyleClass(annovar.level)"
+                                [title]="getOncoKbLevelInfo(annovar.level)" data-toggle="tooltip"
+                                data-placement="bottom" data-type="info">
+                            </a>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default btn-medium" (click)="bsModalRef.hide()" translate="close"></button>
+</div>

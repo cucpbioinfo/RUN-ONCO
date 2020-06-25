@@ -1,0 +1,53 @@
+<form [formGroup]="followUpForm">
+    <div class="row">
+        <div class="form-group col-md-3" formControlValidator [control]="followUpForm?.controls.vitalStatusCode" [submitted]="submitted">
+            <label>Vital Status</label>
+            <select class="form-control" formControlName="vitalStatusCode" (change)="onSelectedChanged()">
+                <option value="">-- Select --</option>
+                <option [ngValue]="status.code" *ngFor="let status of ddl?.vitalStatusList; trackBy: trackByFn;">
+                    {{ status.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-3" formControlValidator [control]="followUpForm?.controls.lastFollowUpDate" [submitted]="submitted">
+            <label>Date of Last Followup</label>
+            <div class="input-group datepicker-input">
+                <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="lastFollowUpDate"
+                    #dpFollowUp="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }">
+                <span class="input-group-addon">
+                    <button class=" btn default calendar" type="button" (click)="dpFollowUp.toggle()" [attr.aria-expanded]="dpFollowUp.isOpen">
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </span>
+            </div>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div [hidden]="!isDeathDateShow" class="form-group col-md-3" formControlValidator [control]="followUpForm?.controls.deathDate" [submitted]="submitted">
+            <label>Date of Death</label>
+            <div class="input-group datepicker-input">
+                <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="deathDate"
+                    #dpDeath="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }">
+                <span class="input-group-addon">
+                    <button class=" btn default calendar" type="button" (click)="dpDeath.toggle()" [attr.aria-expanded]="dpDeath.isOpen">
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </span>
+            </div>
+            <span class="help-block with-errors"></span>
+         </div>
+         <div class="form-group col-md-3" formControlValidator [control]="followUpForm?.controls.recordDate" [submitted]="submitted">
+            <label>Date of Record</label>
+            <div class="input-group datepicker-input">
+                <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="recordDate"
+                    #dpRecord="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }">
+                <span class="input-group-addon">
+                    <button class=" btn default calendar" type="button" (click)="dpRecord.toggle()" [attr.aria-expanded]="dpRecord.isOpen">
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </span>
+            </div>
+            <span class="help-block with-errors"></span>
+        </div>
+     </div>
+</form>

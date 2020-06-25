@@ -1,0 +1,137 @@
+<h2 class="page-title">1) Manage variant call</h2>
+
+<div class="row margin-top-10">
+    <div class="col-md-8 text-center">
+        <div class="figure" (click)="viewImage('How to import variant call file', 'run-onco-omics-data-management-01')">
+            <img [attr.src]="getThumbnail('run-onco-omics-data-management-01')" class="img-fluid" />
+            <div class="caption">Click to enlarge image</div>
+        </div>
+        <strong>Figure 1</strong>
+    </div>
+    <div class="col-md-4">
+        <blockquote>
+            <span>
+                <strong>Figure 1</strong>:&nbsp;&nbsp;Screenshots&nbsp;&nbsp;demonstrating&nbsp;&nbsp;how&nbsp;&nbsp;to import variant calling files into&nbsp;&nbsp;RUN-ONCO.
+                &nbsp;&nbsp;(A)&nbsp;&nbsp;import a variant call file by clicking the "+ Add" button,
+                and (B) the uploaded -omics data is automatically updated.
+            </span>
+        </blockquote>
+    </div>
+</div>
+<div class="row margin-top-10">
+    <div class="col-md-8 text-center">
+        <div class="figure" (click)="viewImage('The results of variant calling files', 'run-onco-omics-data-management-02')">
+            <img [attr.src]="getThumbnail('run-onco-omics-data-management-02')" class="img-fluid" />
+            <div class="caption">Click to enlarge image</div>
+        </div>
+        <strong>Figure 2</strong>
+    </div>
+    <div class="col-md-4">
+        <blockquote>
+            <span>
+                <strong>Figure 2</strong>: Screenshot demonstrating results of variant calling files imports into RUN-ONCO.
+            </span>
+        </blockquote>
+    </div>
+</div>
+
+<h2 class="page-title margin-top-10">2) Variant call analysis</h2>
+<div class="row">
+    <div class="col-md-8 text-center">
+        <div class="figure" (click)="viewImage('The mutation VCF comparison between two biospecimens', 'run-onco-omics-data-management-03')">
+            <img [attr.src]="getThumbnail('run-onco-omics-data-management-03')" class="img-fluid" />
+            <div class="caption">Click to enlarge image</div>
+        </div>
+        <strong>Figure 3</strong>
+    </div>
+    <div class="col-md-4">
+        <blockquote>
+            <span>
+                <strong>Figure 3</strong>: Screenshots demonstrating comparison of variants called between two biospecimens.
+                &nbsp;&nbsp;(A)&nbsp;&nbsp;choose the analysis (e.g., Variant Comparison) from the drop-down list and enter HN&nbsp;&nbsp;&nbsp;(e.g.,&nbsp;&nbsp;&nbsp;&nbsp;HN620001)&nbsp;&nbsp;&nbsp;to&nbsp;&nbsp;&nbsp;search&nbsp;&nbsp;&nbsp;for
+                &nbsp;&nbsp;available&nbsp;&nbsp;patient’s biospecimens,&nbsp;&nbsp;(B) complete the biospecimen information by choosing sequence type&nbsp;&nbsp;(e.g.,&nbsp;&nbsp;WES)&nbsp;&nbsp;and sample source that allows multiple selections
+                (e.g., "0001 (Tissue), 0002 (Blood)"), (C)&nbsp;&nbsp;select VCFs from the drop-down list (e.g., "CA_05.vep.vcf, CA_07.vep.vcf")&nbsp;&nbsp;and&nbsp;&nbsp;click&nbsp;&nbsp;"Update"&nbsp;&nbsp;the&nbsp;&nbsp;variant&nbsp;&nbsp;comparison data is automatically updated,
+                and&nbsp;&nbsp;(D)&nbsp;&nbsp;click the OncoKB logo to&nbsp;&nbsp;explore the details of&nbsp;&nbsp;MTOR gene's&nbsp;&nbsp;alterations and related drugs.
+            </span>
+        </blockquote>
+    </div>
+</div>
+
+<h2 class="page-title margin-top-10">3) Manage RNA-Seq</h2>
+<div class="row">
+    <div class="col-md-8 text-center">
+        <div class="figure" (click)="viewImage('How to import RNA-Seq (EXP) file', 'run-onco-omics-data-management-04')">
+            <img [attr.src]="getThumbnail('run-onco-omics-data-management-04')" class="img-fluid" />
+            <div class="caption">Click to enlarge image</div>
+        </div>
+        <strong>Figure 4</strong>
+    </div>
+    <div class="col-md-4">
+        <blockquote>
+            <span>
+                <strong>Figure 4</strong>:&nbsp;&nbsp;Screenshots&nbsp;&nbsp;demonstrating&nbsp;&nbsp;how to import RNA-Seq&nbsp;&nbsp;files&nbsp;&nbsp;into&nbsp;&nbsp;RUN-ONCO.
+                &nbsp;&nbsp;(A)&nbsp;&nbsp;import&nbsp;&nbsp;a&nbsp;&nbsp;RNA-Seq (EXP) file by clicking the&nbsp;&nbsp;“+ Add”&nbsp;&nbsp;button,
+                and&nbsp;&nbsp;(B)&nbsp;&nbsp;the uploaded -omics data is automatically updated.
+            </span>
+        </blockquote>
+    </div>
+</div>
+<div class="row margin-top-10">
+    <div class="col-md-8 text-center">
+        <div class="figure" (click)="viewImage('The results of RNA-Seq files', 'run-onco-omics-data-management-05')">
+            <img [attr.src]="getThumbnail('run-onco-omics-data-management-05')" class="img-fluid" />
+            <div class="caption">Click to enlarge image</div>
+        </div>
+        <strong>Figure 5</strong>
+    </div>
+    <div class="col-md-4">
+        <blockquote>
+            <span>
+                <strong>Figure 5</strong>: Screenshot demonstrating results of EXP files imports into RUN-ONCO.
+            </span>
+        </blockquote>
+    </div>
+</div>
+
+<h2 class="page-title margin-top-10">4) Integrative analysis of gene expression profiles</h2>
+<div class="row">
+    <div class="col-md-8 text-center">
+        <div class="figure" (click)="viewImage('The clustergrammer for grouping gene expression', 'run-onco-omics-data-management-06')">
+            <img [attr.src]="getThumbnail('run-onco-omics-data-management-06')" class="img-fluid" />
+            <div class="caption">Click to enlarge image</div>
+        </div>
+        <strong>Figure 6</strong>
+    </div>
+    <div class="col-md-4">
+        <blockquote>
+            <span>
+                <strong>Figure 6</strong>: Screenshot demonstrating gene clusters, visualized by&nbsp;&nbsp;clustergrammer.js,&nbsp;&nbsp;the&nbsp;&nbsp;two&nbsp;&nbsp;samples&nbsp;&nbsp;according&nbsp;&nbsp;to&nbsp;&nbsp;their expression level.
+                (A) choose the analysis (e.g., Clustogrammer) from&nbsp;&nbsp;the&nbsp;&nbsp;drop-down list and enter HN&nbsp;&nbsp;(e.g.,&nbsp;&nbsp;HN620001)&nbsp;&nbsp;to search for available patient's biospecimens,
+                (B) complete the biospecimen&nbsp;&nbsp;information&nbsp;&nbsp;by&nbsp;&nbsp;choosing&nbsp;&nbsp;sequence&nbsp;&nbsp;type (e.g., WES)&nbsp;&nbsp;and sample source that allows multiple selections (e.g., "0001 (Tissue), 0002 (Blood)"),
+                select EXP files from the drop-down list (e.g., "RUN-CA05.exp, RUN-CA07.exp"), then choose cancer&nbsp;&nbsp;gene&nbsp;&nbsp;group,
+                &nbsp;&nbsp;(C)&nbsp;&nbsp;click&nbsp;&nbsp;on&nbsp;&nbsp;"Settings"&nbsp;&nbsp;link&nbsp;&nbsp;to change cluster&nbsp;&nbsp;configuration&nbsp;&nbsp;(e.g.,&nbsp;&nbsp;K value=2,&nbsp;&nbsp;Algorithm="K-means clustering"),
+                and (D) click “Update” button to clustering RNA-Seq&nbsp;&nbsp;&nbsp;expression&nbsp;&nbsp;&nbsp;matrices&nbsp;&nbsp;&nbsp;and&nbsp;&nbsp;&nbsp;visualize&nbsp;&nbsp;the&nbsp;&nbsp;results&nbsp;&nbsp;using Clustergrammer.
+            </span>
+        </blockquote>
+    </div>
+</div>
+<div class="row margin-top-10">
+    <div class="col-md-8 text-center">
+        <div class="figure" (click)="viewImage('The Cytoscape for gene interaction in the ​protein-protein
+        interaction​ network', 'run-onco-omics-data-management-07')">
+            <img [attr.src]="getThumbnail('run-onco-omics-data-management-07')" class="img-fluid" />
+            <div class="caption">Click to enlarge image</div>
+        </div>
+        <strong>Figure 7</strong>
+    </div>
+    <div class="col-md-4">
+        <blockquote>
+            <span>
+                <strong>Figure 7</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Screenshot&nbsp;&nbsp;&nbsp;&nbsp;demonstrating&nbsp;&nbsp;&nbsp;&nbsp;protein-protein interactions, visualized by Cytoscape.js, focusing on a set of highly expressed genes from gene expression clustering.
+                (A) choose&nbsp;&nbsp;data&nbsp;&nbsp;source&nbsp;&nbsp;of&nbsp;&nbsp;STRING&nbsp;&nbsp;database&nbsp;&nbsp;that&nbsp;&nbsp;allows&nbsp;&nbsp;for multiple selections (e.g., Combine, Experimental),
+                (B) select genes&nbsp;&nbsp;of&nbsp;&nbsp;interest,&nbsp;&nbsp;then click on&nbsp;&nbsp;"Update" button,
+                &nbsp;&nbsp;and (C) visualize&nbsp;&nbsp;and analyze interaction networks using Cytoscape.
+            </span>
+        </blockquote>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Dynamic Content</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="dynContentForm" class="form-horizontal">
+        <input type="hidden" formControlName="id" />
+        <div class="row">
+            <div class="form-group col-md-6" formControlValidator [control]="dynContentForm?.controls['analysisName']" [submitted]="submitted">
+                <label class="font-bold">Analysis Name</label>
+                <input type="text" class="form-control" formControlName="analysisName" />
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-6" formControlValidator [control]="dynContentForm?.controls['componentName']" [submitted]="submitted">
+                <label class="font-bold">Component Name</label>
+                <input type="text" class="form-control" formControlName="componentName" (blur)="checkDupeComponentName()" />
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6" formControlValidator [control]="dynContentForm?.controls['moduleName']" [submitted]="submitted">
+                <label class="font-bold">Module Name</label>
+                <input type="text" class="form-control" formControlName="moduleName" />
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-6" formControlValidator [control]="dynContentForm?.controls['inputField']" [submitted]="submitted">
+                <label class="font-bold">Input Field</label>
+                <input type="text" class="form-control" formControlName="inputField" />
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="font-bold">Module Path</label>
+                <input type="text" class="form-control" formControlName="modulePath" />
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6" formControlValidator [control]="dynContentForm?.controls['status']" [submitted]="submitted">
+                <label class="font-bold">Status</label>
+                <select class="form-control" formControlName="status">
+                    <option value="">-- Select --</option>
+                    <option [ngValue]="status" *ngFor="let status of ddl?.statusList; trackBy: trackByFn;">
+                        {{ status }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default btn-medium" (click)="bsModalRef.hide()" translate="cancel"></button>
+    <button type="button" class="btn green btn-medium" (click)="onSave()" translate="save"></button>
+</div>

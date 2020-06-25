@@ -1,0 +1,22 @@
+<h2 class="page-title margin-top-20">Variant Comparison</h2>
+<hr class="side">
+<div class="margin-top-20 table_wrapper">
+    <data-table id="variant-grid" headerTitle="" [header]="false" [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)"
+        [indexColumn]="false" [substituteRows]="false" [selectColumn]="false" [multiSelect]="false" [limit]="15">
+        <ng-container *ngFor="let col of columns; let i = index; trackBy: trackByFn;">
+            <data-table-column [property]="columns[i]?.sortBy" [sortable]="true" [resizable]="true" [width]="columns[i]?.width">
+                <ng-template #dataTableHeader>
+                    {{ columns[i]?.colName }}
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <span *ngIf="i === 0" class="icon-oncokb text-center" (click)="showModalDialog(item)"></span>
+                    <span [ngClass]="columns[i]?.styleClass" *ngIf="i > 0 && i < startCol">{{ item[i] }}</span>
+                    <span [ngClass]="columns[i]?.styleClass" *ngIf="i >= startCol && item[i]">
+                        <i class="fa fa-check color-blue"></i>
+                    </span>
+                </ng-template>
+            </data-table-column>
+        </ng-container>
+    </data-table>
+</div>
+<br /><br />

@@ -1,0 +1,55 @@
+<div class="pull-right margin-bottom-5">
+    <button class="btn btn-sm blue btn-small" type="button" (click)="addItem()">
+        <i class="fa fa-plus"></i> Add
+    </button>
+</div>
+<div class="table-scrollable">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sequence type</th>
+                <th>Sample source</th>
+                <th>Pathology No.</th>
+                <th>File</th>
+                <th>Status</th>
+                <th>View</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [hidden]="sampleVcfList?.length > 0">
+                <td class="text-center" colspan="7">
+                    {{ 'msg.noRecordFound' | translate }}
+                </td>
+            </tr>
+            <tr [hidden]="sampleVcfList?.length == 0" *ngFor="let sampleVcf of sampleVcfList; let i = index; trackBy: trackByFn;">
+                <td class="text-center" style="width: 10%">
+                    {{ sampleVcf?.sequenceType?.name }}
+                </td>
+                <td class="text-center" style="width: 25%">
+                    {{ sampleVcf?.biospecimen?.ref + ' : ' + sampleVcf?.biospecimen?.sampleType?.name }}
+                </td>
+                <td class="text-center" style="width: 15%">
+                    <a href="javascript:;" [hidden]="!sampleVcf?.biospecimen?.pathological" (click)="viewPatho(sampleVcf?.biospecimen?.pathological)">{{ sampleVcf?.biospecimen?.pathological?.pathologyNo }}</a>
+                </td>
+                <td style="width: 25%">
+                    <a href="javascript:;" (click)="onDownload(sampleVcf?.attachment)">{{ sampleVcf?.attachment?.fileName }}</a>
+                </td>
+                <td class="text-center" style="width: 15%">
+                    {{ sampleVcf?.status }}
+                </td>
+                <td class="text-center" style="width: 80px">
+                    <a href="javascript:;" class="btn btn-outline btn-sm"  (click)="viewItem(sampleVcf)"
+                        [ngClass]="{ 'dark' : sampleVcf.status === constants.STATUS_ACTIVE, 'default' : sampleVcf.status !== constants.STATUS_ACTIVE }">
+                        <i class="fa fa-wpforms"></i>
+                    </a>
+                </td>
+                <td class="text-center" style="width: 80px">
+                    <a href="javascript:;" class="btn btn-outline red btn-sm" (click)="deleteItem(sampleVcf)">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

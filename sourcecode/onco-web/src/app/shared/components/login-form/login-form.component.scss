@@ -1,0 +1,28 @@
+@import "../../../theme/variables.scss";
+
+/deep/ app-login-form {
+    .form-inline .form-group {
+        margin: 0 !important;
+        padding-right: 5px !important;
+    }
+    .btn {
+        font-size: inherit !important;
+    }
+    .mb-2 {
+        margin-bottom: 0 !important;
+    }
+    .form-control {
+        height: inherit !important;
+    }
+    .nav-bg {
+        background-color: $topnav-background-color !important;
+    }
+    .navbar-brand {
+        color: #fff !important;
+        font-family: "GothamBold", Helvetica, Arial, sans-serif !important;
+    }
+    .nav-link {
+        color: #fff !important;
+        font-family: "GothamBold", Helvetica, Arial, sans-serif !important;
+    }
+}

@@ -1,0 +1,88 @@
+<h2 class="page-title">{{ 'lbl.biospecimen' | translate }}</h2>
+<hr class="side">
+<div class="form-horizontal">
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Biospecimen ID :</label>
+            <label class="col-md-6 control-label">
+                {{ biospecimen?.ref }}
+            </label>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Sample Type :</label>
+            <label class="col-md-6 control-label">
+                {{ biospecimen?.sampleType?.name }}
+            </label>
+        </div>
+        <div *ngIf="isShowBloodType" class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Blood Type :</label>
+            <label class="col-md-6 control-label">
+                {{ biospecimen?.bloodType?.name }}
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <ng-container *ngIf="isShowTissueType">
+            <div class="form-group col-md-4">
+                <label class="col-md-6 control-label font-bold">Tissue Type :</label>
+                <label class="col-md-6 control-label">
+                    {{ biospecimen?.tissueType?.name }}
+                </label>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="col-md-6 control-label font-bold">Pathology Number :</label>
+                <label class="col-md-6 control-label">
+                    <a href="javascript:;" (click)="viewPatho(biospecimen?.pathological)">{{ biospecimen?.pathological?.pathologyNo }}</a>
+                </label>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isShowCellType" >
+            <div class="form-group col-md-4">
+                <label class="col-md-6 control-label font-bold">Cell Type :</label>
+                <label class="col-md-6 control-label">
+                    {{ biospecimen?.cellType?.name }}
+                </label>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="col-md-6 control-label font-bold">Cell line Type :</label>
+                <label class="col-md-6 control-label">
+                    {{ biospecimen?.cellLineType?.name }}
+                </label>
+            </div>
+        </ng-container>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Freezing Method :</label>
+            <label class="col-md-6 control-label">
+                {{ biospecimen?.freezeMethod?.name }}
+            </label>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Date of Freezing :</label>
+            <label class="col-md-6 control-label">
+                {{ biospecimen?.freezeDate | dateFormat:['DD MMM YYYY'] }}
+            </label>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Preservation Method :</label>
+            <label class="col-md-6 control-label">
+                {{ biospecimen?.preserveMethod?.name }}
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Initial Weight (mg) :</label>
+            <label class="col-md-6 control-label">
+                {{ biospecimen?.initialWeight }}
+            </label>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Date of Sample :<br><span class="sub-text">Collection</span></label>
+            <label class="col-md-6 control-label">
+                {{ biospecimen?.collectSampleDate | dateFormat:['DD MMM YYYY'] }}<br>&nbsp;
+            </label>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Pathological</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label class="col-md-6 control-label font-bold">
+                Pathology No. : <br>&nbsp;
+            </label>
+            <label class="col-md-6 control-label">
+                {{ patho?.pathologyNo }}<br>&nbsp;
+            </label>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="col-md-6 control-label font-bold">
+                Date of tissue : <br><span class="sub-text">pathological report</span>
+            </label>
+            <label class="col-md-6 control-label">
+                {{ patho?.tissueReportDate }}<br>&nbsp;
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label class="col-md-6 control-label font-bold">
+                Site of Resection :
+            </label>
+            <label class="col-md-6 control-label">
+                {{ patho?.resectionBiopsySite }}
+            </label>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="col-md-6 control-label font-bold">
+                Procedure : <br><span class="sub-text">(tissue assessment)</span>
+            </label>
+            <label class="col-md-6 control-label">
+                {{ patho?.tissueProcedure?.name }}<br>&nbsp;
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label class="col-md-6 control-label font-bold">
+                Type of tissue :
+            </label>
+            <label class="col-md-6 control-label">
+                {{ patho?.tissueType?.name }}
+            </label>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="col-md-6 control-label font-bold">
+                Histologic grade :
+            </label>
+            <label class="col-md-6 control-label">
+                {{ patho?.histologicGrade?.name }}
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label class="col-md-6 control-label font-bold">
+                Morphology <small>(ICD-O)</small> :
+            </label>
+            <label class="col-md-6 control-label">
+                {{ patho?.morphology?.code + ':' + patho?.morphology?.name }}
+            </label>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default btn-medium" (click)="bsModalRef.hide()" translate="close"></button>
+</div>

@@ -1,0 +1,15 @@
+/deep/ app-variant-call-list {
+    .table td {
+        vertical-align: middle !important;
+    }
+    .table th {
+        vertical-align: top !important;
+    }
+}
+
+/deep/ app-view-variant-annotation {
+    .icon-oncokb {
+        cursor: pointer!important;
+        cursor: hand!important;
+    }
+}

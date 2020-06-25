@@ -1,0 +1,84 @@
+<app-breadcrumb [items]="breadcrumbs"></app-breadcrumb>
+
+<h2 class="page-title">Clinical data</h2>
+<hr class="side">
+
+<form [formGroup]="searchForm" class="form-horizontal margin-top-20">
+     <div class="card card-search">
+        <h5 class="card-header">
+            <a href="javascript:;" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseEvent">Search</a>
+        </h5>
+        <div class="card-body"
+            id="collapseEvent"
+            [collapse]="isCollapsed"
+            (collapses)="collapses()"
+            (expands)="expands()"
+            (collapsed)="collapsed()"
+            (expanded)="expanded()">
+            <div class="form-group row">
+                <label class="col-md-1 col-form-label">HN</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" formControlName="hn" />
+                </div>
+            </div>
+            <div class="form-actions text-center margin-top-5 margin-bottom-10">
+                <button type="button" class="btn default btn-medium" (click)="onClear()"> Clear </button>
+                <button type="button" class="btn green btn-medium margin-left-5" (click)="onSearch()"> Search </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="pull-right margin-top-10 margin-bottom-5">
+    <button class="btn btn-sm blue btn-small" type="button" (click)="addNew()">
+        <i class="fa fa-plus"></i> Add
+    </button>
+</div>
+<div class="clearfix"></div>
+
+<div class="margin-top-5">
+    <data-table id="clinical-data-grid" headerTitle="" [header]="false" [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)"
+        [indexColumn]="false" [substituteRows]="false" [limit]="15">
+        <data-table-column [property]="'ref'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Ref No.
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap">{{ item.ref }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'hn'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                HN
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap">{{ item.patient?.hn }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [width]="80">
+            <ng-template #dataTableHeader>
+                Edit
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <div class="text-center">
+                    <a href="javascript:;" class="btn btn-outline dark btn-sm" (click)="editItem(item)">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </div>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [width]="80">
+            <ng-template #dataTableHeader>
+                Delete
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <div class="text-center">
+                    <a href="javascript:;" class="btn btn-outline red btn-sm" (click)="deleteItem(item)">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </div>
+            </ng-template>
+        </data-table-column>
+    </data-table>
+</div>
+<br><br>

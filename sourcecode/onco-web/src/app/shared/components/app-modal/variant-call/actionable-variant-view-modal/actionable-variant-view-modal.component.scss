@@ -1,0 +1,13 @@
+@import "../../../../../theme/oncokb.scss";
+
+/deep/ app-actionable-variant-view-modal {
+    .m-title:first-letter {
+        text-transform: uppercase;
+    }
+    .align-middle {
+        vertical-align: middle !important;
+    }
+    .modal-body {
+        min-height: 400px!important;
+    }
+}

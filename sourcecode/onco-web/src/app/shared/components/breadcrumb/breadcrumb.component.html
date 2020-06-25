@@ -1,0 +1,7 @@
+<nav *ngIf="items && items.length > 0" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" [ngClass]="{'active' : item.active }" *ngFor="let item of items; trackBy: trackByFn;">
+            <a href="javascript:;" (click)="onNavigate(item)">{{ item.name }}</a>
+        </li>
+    </ol>
+</nav>

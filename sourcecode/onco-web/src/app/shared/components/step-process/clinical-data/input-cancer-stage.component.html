@@ -1,0 +1,209 @@
+<form [formGroup]="cancerStageForm">
+    <input type="hidden" formControlName="id" />
+    <div class="row">
+        <div class="form-group col-md-4" formControlValidator [control]="cancerStageForm?.controls.ajcc" [submitted]="submitted">
+            <label class="font-bold">AJCC</label>
+            <select class="form-control" formControlName="ajcc">
+                <option value="">-- Select --</option>
+                <option [ngValue]="ajcc.code" *ngFor="let ajcc of ddl?.ajccList; trackBy: trackByFn;">
+                    {{ ajcc.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4" formControlValidator [control]="cancerStageForm?.controls.stageType" [submitted]="submitted">
+            <label class="font-bold">Type of stage</label><br>
+            <select class="form-control" formControlName="stageType" (change)="onSelectedChanged()">
+                <option value="">-- Select --</option>
+                <option [ngValue]="stageType.code" *ngFor="let stageType of ddl?.stageTypeList; trackBy: trackByFn;">
+                    {{ stageType.name }}
+                </option>
+            </select>
+        </div>
+        <span class="help-block with-errors"></span>
+    </div>
+    <div class="row" [hidden]="!isCTStageShow">
+        <div class="form-group col-md-2" formControlValidator [control]="cancerStageForm?.controls.cTStage" [submitted]="submitted">
+            <label class="font-bold">cT stage<br><small>(only neoadjuvant setting)</small></label>
+            <select class="form-control" formControlName="cTStage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="cTStage.code" *ngFor="let cTStage of ddl?.cTStageList; trackBy: trackByFn;">
+                    {{ cTStage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label class="font-bold">cT substage</label><br><small>&nbsp;</small>
+            <select class="form-control" formControlName="cTSubstage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="substage.code" *ngFor="let substage of ddl?.substageList; trackBy: trackByFn;">
+                    {{ substage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-2" formControlValidator [control]="cancerStageForm?.controls.cNStage" [submitted]="submitted">
+            <label class="font-bold">cN stage<br><small>(only neoadjuvant setting)</small></label>
+            <select class="form-control" formControlName="cNStage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="cNStage.code" *ngFor="let cNStage of ddl?.cNStageList; trackBy: trackByFn;">
+                    {{ cNStage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label class="font-bold">cN substage</label><br><small>&nbsp;</small>
+            <select class="form-control" formControlName="cNSubstage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="substage.code" *ngFor="let substage of ddl?.substageList; trackBy: trackByFn;">
+                    {{ substage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+    <div class="row" [hidden]="!isPTStageShow">
+        <div class="form-group col-md-2" formControlValidator [control]="cancerStageForm?.controls.pTStage" [submitted]="submitted">
+            <label class="font-bold">pT stage</label><br><small>&nbsp;</small>
+            <select class="form-control" formControlName="pTStage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="pTStage.code" *ngFor="let pTStage of ddl?.pTStageList; trackBy: trackByFn;">
+                    {{ pTStage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label class="font-bold">pT substage</label><br><small>&nbsp;</small>
+            <select class="form-control" formControlName="pTSubstage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="substage.code" *ngFor="let substage of ddl?.substageList; trackBy: trackByFn;">
+                    {{ substage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-2" formControlValidator [control]="cancerStageForm?.controls.pNStage" [submitted]="submitted">
+            <label class="font-bold">pN stage</label><br><small>&nbsp;</small>
+            <select class="form-control" formControlName="pNStage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="pNStage.code" *ngFor="let pNStage of ddl?.pNStageList; trackBy: trackByFn;">
+                    {{ pNStage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label class="font-bold">pN substage</label><br><small>&nbsp;</small>
+            <select class="form-control" formControlName="pNSubstage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="substage.code" *ngFor="let substage of ddl?.substageList; trackBy: trackByFn;">
+                    {{ substage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+    <div class="row" [hidden]="!isYpStageShow">
+        <div class="form-group col-md-2" formControlValidator [control]="cancerStageForm?.controls.ypTStage" [submitted]="submitted">
+            <label class="font-bold">ypT stage</label><br><small>&nbsp;</small>
+            <select class="form-control" formControlName="ypTStage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="ypTStage.code" *ngFor="let ypTStage of ddl?.ypTStageList; trackBy: trackByFn;">
+                    {{ ypTStage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label class="font-bold">ypT substage</label><br><small>&nbsp;</small>
+            <select class="form-control" formControlName="ypTSubstage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="substage.code" *ngFor="let substage of ddl?.substageList; trackBy: trackByFn;">
+                    {{ substage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-2" formControlValidator [control]="cancerStageForm?.controls.ypNStage" [submitted]="submitted">
+            <label class="font-bold">ypN stage</label><br><small>&nbsp;</small>
+            <select class="form-control" formControlName="ypNStage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="ypNStage.code" *ngFor="let ypNStage of ddl?.ypNStageList; trackBy: trackByFn;">
+                    {{ ypNStage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label class="font-bold">ypN substage</label><br><small>&nbsp;</small>
+            <select class="form-control" formControlName="ypNSubstage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="substage.code" *ngFor="let substage of ddl?.substageList; trackBy: trackByFn;">
+                    {{ substage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-2" formControlValidator [control]="cancerStageForm?.controls.mStage" [submitted]="submitted">
+            <label class="font-bold">M stage</label>
+            <select class="form-control" formControlName="mStage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="mStage.code" *ngFor="let mStage of ddl?.mStageList; trackBy: trackByFn;">
+                    {{ mStage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label class="font-bold">M substage</label>
+            <select class="form-control" formControlName="mSubstage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="substage.code" *ngFor="let substage of ddl?.substageList; trackBy: trackByFn;">
+                    {{ substage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4" formControlValidator [control]="cancerStageForm?.controls.clinicalStage" [submitted]="submitted">
+            <label class="font-bold">Clinical stage<br><small>(only neoadjuvant setting)</small></label>
+            <select class="form-control" formControlName="clinicalStage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="clinicalStage.code" *ngFor="let clinicalStage of ddl?.clinicalStageList; trackBy: trackByFn;">
+                    {{ clinicalStage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4" formControlValidator [control]="cancerStageForm?.controls.pathoStage" [submitted]="submitted">
+            <label class="font-bold">Pathological stage</label>
+            <select class="form-control" formControlName="pathoStage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="pathoStage.code" *ngFor="let pathoStage of ddl?.pathoStageList; trackBy: trackByFn;">
+                    {{ pathoStage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-bold">Pathological substage</label>
+            <select class="form-control" formControlName="pathoSubstage">
+                <option value="">-- Select --</option>
+                <option [ngValue]="substage.code" *ngFor="let substage of ddl?.substageList; trackBy: trackByFn;">
+                    {{ substage.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+</form>

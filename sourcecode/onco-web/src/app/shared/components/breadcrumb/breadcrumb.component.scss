@@ -1,0 +1,16 @@
+/deep/ app-breadcrumb {
+    .breadcrumb {
+        background: transparent!important;
+        padding: 0!important;
+        margin-bottom: 25px!important;
+
+        .breadcrumb-item.active a {
+            color: #333!important;
+        }
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        content: "\003e";
+        color: #808B96;
+    }
+}

@@ -1,0 +1,108 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Pathological</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form  [formGroup]="pathoForm" class="form-horizontal">
+        <input type="hidden" formControlName="id" />
+        <input type="hidden" formControlName="status" />
+
+        <div class="row">
+            <div class="form-group col-md-4" formControlValidator [control]="pathoForm?.controls['pathoNo']" [submitted]="submitted">
+                <label class="font-bold">Pathology Number<br>&nbsp;</label>
+                <input id="txtPathoNo" type="text" class="form-control" formControlName="pathoNo"
+                    placeholder="e.g. 62-0001" (blur)="checkDuplicatePathoNo()" />
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-4" formControlValidator [control]="pathoForm?.controls['tissueReportDate']" [submitted]="submitted">
+                <label class="font-bold">Date of tissue pathological<br>report</label>
+                <div class="input-group datepicker-input">
+                    <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="tissueReportDate"
+                        #dpRpt="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }"
+                        (change)="isDateInvalid('tissueReportDate')" [minDate]="minDate" (bsValueChange)="bsValueChange('tissueReportDate', $event)">
+                    <span class="input-group-addon">
+                        <button class=" btn default calendar" type="button" (click)="dpRpt.toggle()" [attr.aria-expanded]="dpRpt.isOpen">
+                            <span class="fa fa-calendar"></span>
+                        </button>
+                    </span>
+                </div>
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-4" formControlValidator [control]="pathoForm?.controls['resectionBiopsySite']" [submitted]="submitted">
+                <label class="font-bold">Site of Resection or Biopsy<br>&nbsp;</label>
+                <input type="text" class="form-control" formControlName="resectionBiopsySite" />
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4" formControlValidator [control]="pathoForm?.controls['tissueProcedureCode']" [submitted]="submitted">
+                <label class="font-bold">Procedure (tissue assessment)</label>
+                <select class="form-control" formControlName="tissueProcedureCode">
+                    <option value="">-- Select --</option>
+                    <option [ngValue]="procedure.code" *ngFor="let procedure of ddl?.tissueProcedureList; trackBy: trackByFn;">
+                        {{ procedure.name }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-4" formControlValidator [control]="pathoForm?.controls['tissueTypeCode']" [submitted]="submitted">
+                <label class="font-bold">Type of tissue</label>
+                <select class="form-control" formControlName="tissueTypeCode">
+                    <option value="">-- Select --</option>
+                    <option [ngValue]="type.code" *ngFor="let type of ddl?.tissueTypeList; trackBy: trackByFn;">
+                        {{ type.name }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-4" formControlValidator [control]="pathoForm?.controls['histologicGradeCode']" [submitted]="submitted">
+                <label class="font-bold">Histologic grade</label>
+                <select class="form-control" formControlName="histologicGradeCode">
+                    <option value="">-- Select --</option>
+                    <option [ngValue]="grade.code" *ngFor="let grade of ddl?.histologicGradeList; trackBy: trackByFn;">
+                        {{ grade.name }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12" formControlValidator [control]="pathoForm?.controls['morphologyCode']" [submitted]="submitted">
+                <label class="font-bold">Morphology <small>(ICD-O)</small></label>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="Code" formControlName="morphologyCode" readonly>
+                        <span class="help-block with-errors"></span>
+                    </div>
+                    <div class="col-md-8">
+                        <input
+                            formControlName="morphologyDesc"
+                            [typeaheadAsync]="true"
+                            [typeahead]="dataSource"
+                            (typeaheadLoading)="changeTypeaheadLoading($event)"
+                            (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                            (typeaheadNoResults)="typeaheadNoResults($event)"
+                            [typeaheadOptionsLimit]="15"
+                            [typeaheadScrollable]="true"
+                            [typeaheadOptionsInScrollableView]="5"
+                            typeaheadBindTo="code"
+                            typeaheadOptionField="name"
+                            placeholder="Description"
+                            [typeaheadMinLength]="0"
+                            typeaheadWaitMs="600"
+                            class="form-control"
+                            (change)="onTextChanged()">
+                        <!-- <div *ngIf="typeaheadLoading">Loading...</div> -->
+                        <span class="help-block with-errors"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default btn-medium" (click)="bsModalRef.hide()" translate="cancel"></button>
+    <button type="button" class="btn green btn-medium" (click)="onSave()" translate="save"></button>
+</div>

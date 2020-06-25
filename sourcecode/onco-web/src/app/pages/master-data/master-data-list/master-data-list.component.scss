@@ -1,0 +1,27 @@
+/deep/ app-master-data-list {
+    .category li a.item-link {
+        // padding: 3px 10px;
+        display: inline-block;
+        width: calc(100% - 60px);
+        // color: black;
+    }
+    .category a:hover, .category a:focus, a:active {
+        text-decoration: none;
+    }
+    .category li {
+        list-style: none;
+        line-height: 3;
+        border-radius: 0 0 3px 3px;
+        padding-left: 10px;
+        font-family: "GothamBold", Helvetica, Arial, sans-serif !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+    }
+    .category li:nth-child(2n+1) {
+        background-color: #f5f5f5;
+    }
+    .category ul {
+        padding: 0;
+        margin: 0;
+    }
+}

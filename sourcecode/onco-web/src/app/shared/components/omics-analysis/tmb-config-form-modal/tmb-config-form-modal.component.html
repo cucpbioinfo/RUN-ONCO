@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">TMB Configuration</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form  [formGroup]="tmbForm" class="form-horizontal">
+        <div class="row">
+            <div class="form-group col-md-6" formControlValidator [control]="tmbForm?.controls['exomeSize']" [submitted]="submitted">
+                <label>Exome size</label>
+                <input type="text" class="form-control text-right" formControlName="exomeSize" numberFormatter>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default btn-medium" (click)="bsModalRef.hide()" translate="cancel"></button>
+    <button type="button" class="btn green btn-medium" (click)="onSave()" translate="save"></button>
+</div>

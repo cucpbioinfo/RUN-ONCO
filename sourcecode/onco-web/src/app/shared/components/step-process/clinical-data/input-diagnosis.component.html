@@ -1,0 +1,72 @@
+<h2 class="page-title">{{ 'lbl.diagnosis' | translate }}</h2>
+<hr class="side">
+<form [formGroup]="diagnosisForm" class="form-horizontal">
+    <input type="hidden" fromControlName="status" />
+    <div class="form-group row" formControlValidator [control]="diagnosisForm?.controls.diagnosisDate" [submitted]="submitted">
+        <label class="col-md-2 col-form-label font-bold">Diagnosis Date</label>
+        <div class="col-md-3">
+            <div class="input-group datepicker-input">
+                <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="diagnosisDate"
+                    #dpYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }"
+                    (bsValueChange)="bsValueChange('diagnosisDate', $event)">
+                <span class="input-group-addon">
+                    <button class=" btn default calendar" type="button" (click)="dpYMD.toggle()" [attr.aria-expanded]="dpYMD.isOpen">
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </span>
+            </div>
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+    <div class="form-group row" formControlValidator [control]="diagnosisForm?.controls['primaryDiagnosisCode']" [submitted]="submitted">
+        <label class="col-md-2 col-form-label font-bold">Primary Diagnosis <small>(ICD-10)</small></label>
+        <div class="form-row col-md-9">
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Code" formControlName="primaryDiagnosisCode" readonly>
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="col-md-8">
+                <input
+                    formControlName="primaryDiagnosisDesc"
+                    [typeaheadAsync]="true"
+                    [typeahead]="dataSource"
+                    (typeaheadLoading)="changeTypeaheadLoading($event)"
+                    (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                    (typeaheadNoResults)="typeaheadNoResults($event)"
+                    [typeaheadOptionsLimit]="15"
+                    [typeaheadScrollable]="true"
+                    [typeaheadOptionsInScrollableView]="5"
+                    typeaheadBindTo="code"
+                    typeaheadOptionField="name"
+                    placeholder="Description"
+                    [typeaheadMinLength]="0"
+                    typeaheadWaitMs="600"
+                    class="form-control"
+                    (change)="onTextChanged()">
+                <!-- <div *ngIf="typeaheadLoading">Loading...</div> -->
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+    </div>
+</form>
+
+<br>
+<app-step-wizard [data]="tab.data" [step]="tab.step" [styleClass]="tab.styleClass" (selectChanged)="goToNextTab($event)"></app-step-wizard>
+
+    <div *ngIf="tab.step === 1" class="margin-top-20">
+        <app-patho-list></app-patho-list>
+    </div>
+    <div *ngIf="tab.step === 2" class="margin-top-20">
+        <app-input-cancer-stage></app-input-cancer-stage>
+    </div>
+    <div *ngIf="tab.step === 3" class="margin-top-20">
+        <app-clinical-course-list></app-clinical-course-list>
+    </div>
+
+<div class="footer-actions">
+    <div class="form-actions pull-right margin-top-10 margin-bottom-10">
+        <button type="button" class="btn default btn-medium" (click)="onCancel()"> Cancel </button>
+        <button type="button" class="btn green btn-large margin-left-5" (click)="onSaveAndNext()" [hidden]="tab.step === 3"> Save & Next </button>
+        <button type="button" class="btn green btn-medium margin-left-5" (click)="onSave()"> Save </button>
+    </div>
+</div>

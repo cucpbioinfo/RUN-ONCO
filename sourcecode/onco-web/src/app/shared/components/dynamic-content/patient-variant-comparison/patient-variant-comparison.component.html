@@ -1,0 +1,38 @@
+<ng-container *ngIf="patient">
+    <app-omics-analysis-form
+        [patient]="patient"
+        (searchChange)="search($event)">
+    </app-omics-analysis-form>
+
+    <ng-container *ngIf="criteria">
+        <app-step-wizard
+            [data]="tab.data"
+            [step]="tab.step"
+            [styleClass]="tab.styleClass">
+        </app-step-wizard>
+
+        <div class="margin-top-30">
+            <app-variant-analysis-form
+                [isMultiSelect]="true"
+                [criteria]="criteria"
+                (updatedChange)="updateVariantParams($event)">
+            </app-variant-analysis-form>
+
+            <!-- <pre>
+                {{ inputField[component.input] | json }}
+            </pre> -->
+
+            <div *ngIf="variantParams?.sampleVcfIds?.length > 0" class="margin-top-20">
+                <!-- <app-dynamic-content *ngIf="'VariantComparisonComponent'"
+                    [componentName]="'VariantComparisonComponent'"
+                    [params]="variantParams">
+                </app-dynamic-content> -->
+                <app-variant-comparison [params]="variantParams"></app-variant-comparison>
+            </div>
+            <div *ngIf="initialize && (!sampleVcfList || sampleVcfList?.length === 0)" class="margin-top-20 text-center">
+                {{ 'msg.dataNotAvailable' | translate }}
+            </div>
+        </div>
+
+    </ng-container>
+</ng-container>

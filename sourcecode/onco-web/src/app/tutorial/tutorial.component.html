@@ -1,0 +1,22 @@
+<app-login-form></app-login-form>
+<div class="container-fluid info-container">
+    <h2 class="page-title">Tutorial</h2>
+    <hr class="side">
+
+    <app-step-wizard [data]="tab.data" [step]="tab.step" [styleClass]="tab.styleClass" (selectChanged)="goToNextTab($event)"></app-step-wizard>
+
+    <div *ngIf="tab.step === 1" class="margin-top-20">
+        <app-view-patient-management></app-view-patient-management>
+    </div>
+    <div *ngIf="tab.step === 2" class="margin-top-20">
+        <app-view-clinical-data-management></app-view-clinical-data-management>
+    </div>
+    <div *ngIf="tab.step === 3" class="margin-top-20">
+        <app-view-biospecimen-management></app-view-biospecimen-management>
+    </div>
+    <div *ngIf="tab.step === 4" class="margin-top-20">
+        <app-view-omics-data-management></app-view-omics-data-management>
+    </div>
+
+    <app-footer></app-footer>
+</div>

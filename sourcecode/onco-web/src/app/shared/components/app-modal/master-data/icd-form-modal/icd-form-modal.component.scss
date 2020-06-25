@@ -1,0 +1,11 @@
+/deep/ app-icd-form-modal {
+    .m-title:first-letter {
+        text-transform: uppercase;
+    }
+    .align-middle {
+        vertical-align: middle !important;
+    }
+    .modal-body {
+        min-height: 200px!important;
+    }
+}

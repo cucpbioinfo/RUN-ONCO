@@ -1,0 +1,114 @@
+<!-- <div class="container-fluid login-bg">
+    <nav class="navbar fixed-top navbar-expand-md nav-bg">
+        <a class="navbar-brand" href="#">RUN-ONCO</a>
+        <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/view-tutorial']">View Tutorial</a>
+            </li>
+        </ul>
+        <form [formGroup]="loginForm" class="form-inline">
+            <div class="form-group mx-sm-3 mb-2" formControlValidator [control]="loginForm?.controls['username']" [submitted]="submitted">
+                <label for="txtUsername" class="sr-only">Username</label>
+                <input type="text" class="form-control" id="txtUsername" formControlName="username" placeholder="Username">
+            </div>
+            <div class="form-group mx-sm-3 mb-2" formControlValidator [control]="loginForm?.controls['password']" [submitted]="submitted">
+                <label for="txtPassword" class="sr-only">Password</label>
+                <input type="password" class="form-control" id="txtPassword" formControlName="password" placeholder="Password">
+            </div>
+            <button type="button" class="btn btn-primary mb-2" (click)="onLoggedin()">Login</button>
+        </form>
+    </nav>
+</div> -->
+<app-login-form></app-login-form>
+<div class="login-bg"></div>
+<div class="info-container">
+    <h6 class="text-center">- Feature -</h6>
+    <h3 class="text-center">Our Software Platform</h3>
+    <blockquote>
+        RUN-ONCO is a software platform for cancer precision medicine with integrated clinical records,
+        biospecimens, and -omics data. The platform has been designed to be highly&nbsp;&nbsp;extensible&nbsp;&nbsp;plugins&nbsp;&nbsp;for
+        &nbsp;&nbsp;both&nbsp;&nbsp;visualizations&nbsp;&nbsp;and&nbsp;&nbsp;analysis&nbsp;&nbsp;methods&nbsp;&nbsp;to help developers easily integrate a variety of
+        third-party plugins. RUN-ONCO mainly focuses on supporting cancer center in hospitals and
+        laboratories that allows users to customize and build their own system.
+    </blockquote>
+    <div class="row text-center margin-top-50">
+        <div class="col-md-4">
+            <label class="title">Clinical Data Management</label>
+            <div class="figure" (click)="viewImage('Clinical Data Management', featureImages['CLINICAL_DATA'])">
+                <img [attr.src]="getThumbnail(featureImages['CLINICAL_DATA'])" class="thumbnail" />
+                <div class="caption">Click to enlarge image</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="title">Biospecimen Management</label>
+            <div class="figure" (click)="viewImage('Biospecimen Management', featureImages['BIOSPECIMEN'])">
+                <img [attr.src]="getThumbnail(featureImages['BIOSPECIMEN'])" class="thumbnail" />
+                <div class="caption">Click to enlarge image</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="title">-Omics Data Management</label>
+            <div class="figure" (click)="viewImage('-Omics Data Management', featureImages['OMICS_MANAGEMENT'])">
+                <img [attr.src]="getThumbnail(featureImages['OMICS_MANAGEMENT'])" class="thumbnail" />
+                <div class="caption">Click to enlarge image</div>
+            </div>
+        </div>
+    </div>
+    <hr class="side" />
+    <div class="row text-center">
+        <div class="col-md-4">
+            <label class="title">-Omics Data Analysis</label>
+            <div class="figure" (click)="viewImage('-Omics Data Analysis', featureImages['CLUSTERGRAMMER'])">
+                <img [attr.src]="getThumbnail(featureImages['CLUSTERGRAMMER'])" class="thumbnail" />
+                <div class="caption">Click to enlarge image</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="title">Connecting to OncoKB</label>
+            <div class="figure" (click)="viewImage('Connecting to OncoKB', featureImages['CONNECT_TO_ONCOKB'])">
+                <img [attr.src]="getThumbnail(featureImages['CONNECT_TO_ONCOKB'])" class="thumbnail" />
+                <div class="caption">Click to enlarge image</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="title">Highly extensible plugins solution</label>
+            <div class="figure" (click)="viewImage('Highly extensible plugins solution', featureImages['CYTOSCAPE'])">
+                <img [attr.src]="getThumbnail(featureImages['CYTOSCAPE'])" class="thumbnail" />
+                <div class="caption">Click to enlarge image</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <app-footer></app-footer>
+    <!-- <div class="footer">
+        <div class="footer-container">
+            <div class="row">
+                <div class="col-md-4 footer-title">INFO</div>
+                <div class="col-md-4 footer-title">DEV</div>
+                <div class="col-md-4 footer-title">CONTACT</div>
+            </div>
+            <div class="row margin-top-10">
+                <div class="col-md-4 footer-detail">
+                    <a href="#">View Tutorial</a>
+                </div>
+                <div class="col-md-4 footer-detail">
+                    <a href="https://gitlab.com/peyrone/run-onco.git">GitLab</a>
+                </div>
+                <div class="col-md-4 footer-detail">
+                    <a href="mailto:peyrone.n@gmail.com">peyrone.n@gmail.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="pull-right build-version">
+            v{{ buildVersion }}
+        </div>
+    </div> -->
+</div>
+
+
+
+
+
+

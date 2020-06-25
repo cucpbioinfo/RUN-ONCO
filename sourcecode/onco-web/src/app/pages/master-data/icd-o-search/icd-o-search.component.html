@@ -1,0 +1,123 @@
+<app-breadcrumb [items]="breadcrumbs"></app-breadcrumb>
+
+<h2 class="page-title">ICD-O Search</h2>
+<hr class="side">
+
+<form [formGroup]="searchForm" class="form-horizontal margin-top-20">
+    <div class="card card-search">
+       <h5 class="card-header">
+           <a href="javascript:;" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseEvent">Search</a>
+       </h5>
+       <div class="card-body"
+           id="collapseEvent"
+           [collapse]="isCollapsed"
+           (collapses)="collapses()"
+           (expands)="expands()"
+           (collapsed)="collapsed()"
+           (expanded)="expanded()">
+           <div class="form-group row">
+               <label class="col-md-2 col-form-label">Data Version</label>
+               <div class="col-md-3">
+                    <input type="text" class="form-control" formControlName="dataVersion" />
+                    <span class="help-block with-errors"></span>
+               </div>
+           </div>
+           <div class="form-actions text-center margin-top-5 margin-bottom-10">
+               <button type="button" class="btn default btn-medium" (click)="onClear()"> Clear </button>
+               <button type="button" class="btn green btn-medium margin-left-5" (click)="onSearch()"> Search </button>
+           </div>
+       </div>
+   </div>
+</form>
+
+<div class="pull-right margin-top-10 margin-bottom-5">
+    <button class="btn btn-sm default btn-medium" type="button" (click)="onDownload()">
+        <i class="fa fa-download"></i> Template
+    </button>&nbsp;
+    <button class="btn btn-sm blue btn-medium" type="button" (click)="import()">
+        <i class="fa fa-upload"></i> Import
+    </button>
+</div>
+<div class="clearfix"></div>
+
+<div class="margin-top-5">
+    <data-table id="icd-grid" headerTitle="" [header]="false" [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)"
+        [indexColumn]="false" [substituteRows]="false" [limit]="15">
+        <data-table-column [property]="'version'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Version
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap">{{ item.version }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'dataDate'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Data Date
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-center">{{ item.dataDate | dateFormat:['DD MMM YYYY'] }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'markAsDefault'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Mark as Default
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-center">{{ item.isDefault === constants.YES ? 'Yes' : 'No' }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'updateUser'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Update User
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-center">{{ item.updateUser }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'updateDate'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Update Date
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-center">{{ item.updateDate | dateFormat:['DD MMM YYYY'] }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [width]="80">
+            <ng-template #dataTableHeader>
+                Edit
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <div class="text-center">
+                    <a href="javascript:;" class="btn btn-outline dark btn-sm" (click)="editItem(item)">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </div>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [width]="80">
+            <ng-template #dataTableHeader>
+                View
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <div class="text-center">
+                    <a href="javascript:;" class="btn btn-outline dark btn-sm" (click)="viewItem(item)">
+                        <i class="fa fa-wpforms"></i>
+                    </a>
+                </div>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [width]="80">
+            <ng-template #dataTableHeader>
+                Delete
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <div class="text-center">
+                    <a href="javascript:;" class="btn btn-outline red btn-sm" (click)="deleteItem(item)">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </div>
+            </ng-template>
+        </data-table-column>
+    </data-table>
+</div>

@@ -1,0 +1,46 @@
+<app-breadcrumb [items]="breadcrumbs"></app-breadcrumb>
+
+<app-view-patient-info [data]="patient"></app-view-patient-info>
+
+<app-omics-analysis-form
+    [patient]="patient"
+    (searchChange)="search($event)">
+</app-omics-analysis-form>
+
+<ng-container *ngIf="criteria">
+    <app-step-wizard
+        [data]="tab.data"
+        [step]="tab.step"
+        [styleClass]="tab.styleClass"
+        (selectChanged)="goToNextTab($event)">
+    </app-step-wizard>
+
+    <div class="margin-top-30" [hidden]="tab.step !== 1">
+        <app-variant-analysis-form
+            [criteria]="criteria"
+            (updatedChange)="updateVariantParams($event)">
+        </app-variant-analysis-form>
+        <div *ngIf="variantParams?.sampleVcfIds?.length > 0" class="margin-top-20">
+            <app-variant-comparison [params]="variantParams"></app-variant-comparison>
+        </div>
+        <div *ngIf="initialize && (!sampleVcfList || sampleVcfList?.length === 0)" class="margin-top-20 text-center">
+            {{ 'msg.dataNotAvailable' | translate }}
+        </div>
+    </div>
+    <div  class="margin-top-20" [hidden]="tab.step !== 2">
+        <app-rna-seq-analysis-form
+            [criteria]="criteria"
+            (updatedChange)="updateRnaSeqParams($event)">
+        </app-rna-seq-analysis-form>
+
+        <div *ngIf="clustergrammer" class="margin-top-30">
+            <app-clustergrammer [params]="clustergrammer"></app-clustergrammer>
+        </div>
+        <div *ngIf="genes" class="margin-top-30">
+            <app-cytoscape [params]="genes"></app-cytoscape>
+        </div>
+        <div *ngIf="ideogram" class="margin-top-30">
+            <app-ideogram [params]="ideogram"></app-ideogram>
+        </div>
+    </div>
+</ng-container>

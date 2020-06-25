@@ -1,0 +1,80 @@
+<h2 class="page-title margin-top-20">RNA-seq</h2>
+<hr class="side">
+<div class="margin-top-20">
+    <data-table id="rna-seq-grid" headerTitle="" [header]="false" [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)"
+        [indexColumn]="false" [substituteRows]="false" [selectColumn]="false" [multiSelect]="false" [limit]="15">
+        <data-table-column [property]="'geneId'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Gene ID
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap text-center">{{ item.geneId }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'geneName'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Gene Name
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap text-center">{{ item.geneName }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'ref'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Reference
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap text-center">{{ item.ref }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'strand'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Strand
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap text-center">{{ item.strand }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'start'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Start
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap text-right">{{ item.start }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'end'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                End
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap text-right">{{ item.end }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'coverage'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                Coverage
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap text-right">{{ item.coverage }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'fpkm'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                FPKM
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap text-right">{{ item.fpkm }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'tpm'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                TPM
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap text-right">{{ item.tpm }}</span>
+            </ng-template>
+        </data-table-column>
+    </data-table>
+    <br>
+</div>

@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Cluster Configuration</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form  [formGroup]="clusterForm" class="form-horizontal">
+        <div class="row">
+            <div class="form-group col-md-6" formControlValidator [control]="clusterForm?.controls['nCluster']" [submitted]="submitted">
+                <label>K value</label>
+                <input type="text" class="form-control text-right" formControlName="nCluster" numberFormatter>
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-6" formControlValidator [control]="clusterForm?.controls['clusterAlgo']" [submitted]="submitted">
+                <label>Algorithm</label>
+                <select class="form-control" formControlName="clusterAlgo">
+                    <option value="">-- Select --</option>
+                    <option [ngValue]="algo.code" *ngFor="let algo of ddl?.clusterAlgorithms; trackBy: trackByFn;">
+                        {{ algo.name }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default btn-medium" (click)="bsModalRef.hide()" translate="cancel"></button>
+    <button type="button" class="btn green btn-medium" (click)="onSave()" translate="save"></button>
+</div>

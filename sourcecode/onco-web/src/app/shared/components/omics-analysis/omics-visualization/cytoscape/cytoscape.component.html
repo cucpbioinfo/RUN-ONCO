@@ -1,0 +1,105 @@
+<div class="clearfix"></div>
+<h2 class="page-title">Cytoscape</h2>
+<hr class="side">
+
+<form [formGroup]="cytoscapeForm">
+    <!-- <div class="row">
+        <div class="form-group col-md-12">
+            <label class="font-bold label-title">Data source</label>
+            <div class="col-md-4 no-padding">
+                <select class="selectpicker" formControlName="type" multiple data-live-search="true">
+                    <option [ngValue]="type.value" *ngFor="let type of ddl?.types; trackBy: trackByFn;">
+                        {{ type.label }}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label class="font-bold">Data source</label>
+            <div class="no-padding">
+                <select class="selectpicker" formControlName="type" multiple data-live-search="true">
+                    <option [ngValue]="type.value" *ngFor="let type of ddl?.types; trackBy: trackByFn;">
+                        {{ type.label }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <div class="no-padding" style="padding-top: 26px">
+                <button class="btn btn-sm blue btn-medium" type="button" (click)="update()">
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+    <i class="text-sm">{{ selectedDS }}</i>
+    <div class="margin-top-20">
+        <ng-container *ngFor="let ds of colors; trackBy: trackByFn;">
+            <div class="box-cy" [ngClass]="'color-' + ds.color"></div>
+            <div class="lbl-cy">{{ ds.name }}</div>
+        </ng-container>
+        <div class="clearfix"></div>
+    </div>
+
+    <!-- data-table -->
+    <label class="font-bold label-title margin-top-20">{{ 'lbl.genes' | translate }}</label>
+    <div class="tbl-cy">
+        <data-table id="cytoscape-data-grid" headerTitle="" [header]="false" [items]="items" [itemCount]="itemCount"
+            (reload)="reloadItems($event)" [indexColumn]="false" [substituteRows]="false" [limit]="10"
+            [multiSelect]="false" [selectColumn]="false">
+            <data-table-column [width]="80">
+                <ng-template #dataTableHeader>
+                    <input type="checkbox" id="checkAll" (click)="checkAll_OnCheckedChange($event)" />
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <div class="text-center">
+                        <input type="checkbox" class="chk" (click)="onCheckedChange($event, item)" [checked]="isChecked(item)" />
+                    </div>
+                </ng-template>
+            </data-table-column>
+            <data-table-column [property]="'id'" [sortable]="true" [resizable]="true" [width]="300">
+                <ng-template #dataTableHeader>
+                    Gene ID
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <span class="text-nowrap">{{ item.id }}</span>
+                </ng-template>
+            </data-table-column>
+            <data-table-column [property]="'name'" [sortable]="true" [resizable]="true" [width]="300">
+                <ng-template #dataTableHeader>
+                    Gene Name
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <span class="text-nowrap">{{ item.name }}</span>
+                </ng-template>
+            </data-table-column>
+            <data-table-column [property]="'ref'" [sortable]="true" [resizable]="true" [width]="300">
+                <ng-template #dataTableHeader>
+                    Reference
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <span class="text-nowrap text-center">{{ item.ref }}</span>
+                </ng-template>
+            </data-table-column>
+            <data-table-column [property]="'group'" [sortable]="true" [resizable]="true" [width]="300">
+                <ng-template #dataTableHeader>
+                    Group
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <span class="text-nowrap text-center">{{ item.group }}</span>
+                </ng-template>
+            </data-table-column>
+        </data-table>
+    </div>
+    <div id="cy" class="hidden"></div>
+    <!-- <div class="clearfix"></div>
+    <div class="pull-right margin-top-20">
+        <button class="btn btn-sm blue btn-medium" type="button" (click)="update()">
+            Update
+        </button>
+    </div> -->
+    <div class="clearfix"></div>
+</form>

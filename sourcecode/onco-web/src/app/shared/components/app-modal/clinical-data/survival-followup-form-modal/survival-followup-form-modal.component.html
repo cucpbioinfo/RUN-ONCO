@@ -1,0 +1,74 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{ 'lbl.survivalFollowup' | translate }}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="followupForm">
+        <input type="hidden" formControlName="id" />
+        <input type="hidden" formControlName="status" />
+        <div class="row">
+            <div class="form-group" [ngClass]="cssCol" formControlValidator
+                [control]="followupForm?.controls.vitalStatusCode" [submitted]="submitted">
+                <label class="font-bold">Vital Status</label>
+                <select class="form-control" formControlName="vitalStatusCode" (change)="onSelectedChanged()">
+                    <option value="">-- Select --</option>
+                    <option [ngValue]="status.code" *ngFor="let status of ddl?.vitalStatusList; trackBy: trackByFn;">
+                        {{ status.name }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group" [ngClass]="cssCol"  formControlValidator
+                [control]="followupForm?.controls.lastFollowupDate" [submitted]="submitted">
+                <label class="font-bold">Date of Last Followup</label>
+                <div class="input-group datepicker-input">
+                    <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="lastFollowupDate"
+                        #dpFollowUp="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }"
+                        (change)="isDateInvalid('lastFollowupDate')" [minDate]="minDate" (bsValueChange)="bsValueChange('lastFollowupDate', $event)">
+                    <span class="input-group-addon">
+                        <button class=" btn default calendar" type="button" (click)="dpFollowUp.toggle()" [attr.aria-expanded]="dpFollowUp.isOpen">
+                            <span class="fa fa-calendar"></span>
+                        </button>
+                    </span>
+                </div>
+                <span class="help-block with-errors"></span>
+            </div>
+            <div [hidden]="!isDeathDateShow" class="form-group" [ngClass]="cssCol"
+                formControlValidator [control]="followupForm?.controls.deathDate" [submitted]="submitted">
+                <label class="font-bold">Date of Death</label>
+                <div class="input-group datepicker-input">
+                    <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="deathDate"
+                        #dpDeath="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }"
+                        (change)="isDateInvalid('deathDate')" [minDate]="minDate" (bsValueChange)="bsValueChange('deathDate', $event)">
+                    <span class="input-group-addon">
+                        <button class=" btn default calendar" type="button" (click)="dpDeath.toggle()" [attr.aria-expanded]="dpDeath.isOpen">
+                            <span class="fa fa-calendar"></span>
+                        </button>
+                    </span>
+                </div>
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group" [ngClass]="cssCol" formControlValidator
+                [control]="followupForm?.controls.recordDate" [submitted]="submitted">
+                <label class="font-bold">Date of Record</label>
+                <div class="input-group datepicker-input">
+                    <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="recordDate"
+                        #dpRecord="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }"
+                        (change)="isDateInvalid('recordDate')" [minDate]="minDate" (bsValueChange)="bsValueChange('recordDate', $event)">
+                    <span class="input-group-addon">
+                        <button class=" btn default calendar" type="button" (click)="dpRecord.toggle()" [attr.aria-expanded]="dpRecord.isOpen">
+                            <span class="fa fa-calendar"></span>
+                        </button>
+                    </span>
+                </div>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default btn-medium" (click)="bsModalRef.hide()" translate="cancel"></button>
+    <button type="button" class="btn green btn-medium" (click)="onSave()" translate="save"></button>
+</div>

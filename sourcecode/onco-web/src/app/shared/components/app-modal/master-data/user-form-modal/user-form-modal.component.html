@@ -1,0 +1,70 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">User</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="userForm" class="form-horizontal">
+        <input type="hidden" formControlName="id" />
+        <div class="row">
+            <div class="form-group col-md-6" formControlValidator [control]="userForm?.controls['firstName']" [submitted]="submitted">
+                <label class="font-bold">First name</label>
+                <input type="text" class="form-control" formControlName="firstName" />
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-6" formControlValidator [control]="userForm?.controls['lastName']" [submitted]="submitted">
+                <label class="font-bold">Last name</label>
+                <input type="text" class="form-control" formControlName="lastName" />
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6" formControlValidator [control]="userForm?.controls['username']" [submitted]="submitted">
+                <label class="font-bold">Username</label>
+                <input type="text" class="form-control" formControlName="username" (blur)="checkDupeUsername()" />
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-6" formControlValidator [control]="userForm?.controls['status']" [submitted]="submitted">
+                <label class="font-bold">Status</label>
+                <select class="form-control" formControlName="status">
+                    <option value="">-- Select --</option>
+                    <option [ngValue]="status" *ngFor="let status of ddl?.statusList; trackBy: trackByFn;">
+                        {{ status }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6" formControlValidator [control]="userForm?.controls['password']" [submitted]="submitted">
+                <label class="font-bold">Password</label>
+                <input type="password" class="form-control" formControlName="password" (change)="onPasswordChanged()" />
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-6" formControlValidator [control]="userForm?.controls['confirmPassword']" [submitted]="submitted">
+                <label class="font-bold">Confirm Password</label>
+                <input type="password" class="form-control" formControlName="confirmPassword" (change)="onPasswordChanged()" />
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="font-bold">Roles</label>
+                <div class="clearfix"></div>
+                <div class="checkbox" formArrayName="roles" *ngFor="let role of roles; let i = index" style="float: left; width: 30%; padding-top: 5px;">
+                    <label>
+                        <input type="checkbox" [formControlName]="i">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        {{ role.name }}
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default btn-medium" (click)="bsModalRef.hide()" translate="cancel"></button>
+    <button type="button" class="btn green btn-medium" (click)="onSave()" translate="save"></button>
+</div>

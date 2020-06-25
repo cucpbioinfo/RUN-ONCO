@@ -1,0 +1,56 @@
+<ng-container *ngIf="patient">
+    <app-omics-analysis-form
+        [patient]="patient"
+        (searchChange)="search($event)">
+    </app-omics-analysis-form>
+
+    <ng-container *ngIf="criteria">
+        <app-step-wizard
+            [data]="tab.data"
+            [step]="tab.step"
+            [styleClass]="tab.styleClass">
+        </app-step-wizard>
+
+        <div class="margin-top-30">
+            <app-variant-analysis-form
+                [isMultiSelect]="false"
+                [criteria]="criteria"
+                (updatedChange)="updateVariantParams($event)">
+            </app-variant-analysis-form>
+            <a href="javascript:;" (click)="editConfig()"><i class="fa fa-cogs" aria-hidden="true"></i> Settings</a>&nbsp;&nbsp;<i class="text-sm" [hidden]="!tmbConfig">({{ 'lbl.exomeSize' | translate }}={{ tmbConfig.exomeSize }})</i>
+            <ng-container *ngIf="tmbScoreResults">
+                &nbsp;&nbsp;<a href="javascript:;" (click)="downloadCsv()"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                <table class="table table-bordered margin-top-10">
+                    <tbody>
+                        <tr *ngFor="let tmbScore of tmbScoreResults; trackBy: trackByFn;">
+                            <td>{{ tmbScore.typeDesc }}</td>
+                            <td class="text-right">
+                                {{ tmbScore.numOfVariant | formatCurrency:true:0 }}
+                            </td>
+                            <td class="text-right">
+                                {{ tmbScore.rateOfVariant | formatCurrency }}
+                            </td>
+                            <td class="text-center" style="width: 50px">
+                                <div [hidden]="tmbScore.level === null" class="circle" [ngClass]="tmbScore.level"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="margin-top-10 margin-bottom-10 color-grey">
+                    <p>{{ 'msg.tmbLevel.title' | translate }}</p>
+                    <div class="circle low pull-left"></div>
+                    <div class="pull-left padding-left-10 padding-bottom-10">{{ 'msg.tmbLevel.low' | translate }}</div>
+                    <div class="clearfix"></div>
+                    <div class="circle intermediate pull-left"></div>
+                    <div class="pull-left padding-left-10 padding-bottom-10">{{ 'msg.tmbLevel.intermediate' | translate }}</div>
+                    <div class="clearfix"></div>
+                    <div class="circle high pull-left"></div>
+                    <div class="pull-left padding-left-10 padding-bottom-10">{{ 'msg.tmbLevel.high' | translate }}</div>
+                    <div class="clearfix"></div>
+                </div>
+            </ng-container>
+        </div>
+
+    </ng-container>
+</ng-container>

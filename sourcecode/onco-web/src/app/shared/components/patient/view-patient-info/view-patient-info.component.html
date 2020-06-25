@@ -1,0 +1,44 @@
+<h2 class="page-title">{{ 'lbl.patientInfo' | translate }}</h2>
+<hr class="side">
+<div class="form-horizontal">
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">ID :</label>
+            <label class="col-md-6 control-label">
+                {{ patient?.hn }}
+            </label>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Gender :</label>
+            <label class="col-md-6 control-label">
+                {{ patient?.gender?.name }}
+            </label>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Date of Birth :</label>
+            <label class="col-md-6 control-label">
+                {{ patient?.birthDate | dateFormat:['DD MMM YYYY'] }}
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Weight (kg) :</label>
+            <label class="col-md-6 control-label">
+                {{ patient?.weight }}
+            </label>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Height (m) :</label>
+            <label class="col-md-6 control-label">
+                {{ patient?.height }}
+            </label>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="col-md-6 control-label font-bold">Race :</label>
+            <label class="col-md-6 control-label">
+                {{ patient?.race?.name }}
+            </label>
+        </div>
+    </div>
+</div>

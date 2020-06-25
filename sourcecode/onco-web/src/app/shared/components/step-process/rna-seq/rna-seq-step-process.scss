@@ -1,0 +1,23 @@
+/deep/ app-rna-seq-form-modal {
+    .custom-file-label {
+        margin-top: 21px!important;
+    }
+    .m-title:first-letter {
+        text-transform: uppercase;
+    }
+    .align-middle {
+        vertical-align: middle !important;
+    }
+    .modal-body {
+        min-height: 200px!important;
+    }
+}
+
+/deep/ app-sample-rna-seq-list {
+    .table td {
+        vertical-align: middle !important;
+    }
+    .table th {
+        vertical-align: top !important;
+    }
+}

@@ -1,0 +1,172 @@
+<app-breadcrumb [items]="breadcrumbs"></app-breadcrumb>
+
+<ng-container *ngIf="isHidden">
+    <app-patient-add [page]="pageComponent" (selectChanged)="onHnChanged($event)"></app-patient-add>
+</ng-container>
+
+<ng-container *ngIf="!isHidden">
+<app-view-patient-info [data]="patient"></app-view-patient-info>
+
+<h2 class="page-title margin-top-20">Biospecimen</h2>
+<hr class="side">
+
+<form [formGroup]="specimenForm" class="margin-top-20">
+    <input type="hidden" formControlName="id" />
+    <input type="hidden" formControlName="patientId" />
+    <input type="hidden" formControlName="status" />
+    <div class="row">
+        <div class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.ref" [submitted]="submitted">
+            <label class="font-bold">Biospecimen ID</label>
+            <input type="text" class="form-control" formControlName="ref" (blur)="checkDuplicateRefNo()" />
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.sampleTypeCode" [submitted]="submitted">
+            <label class="font-bold">Sample Type</label>
+            <select class="form-control" formControlName="sampleTypeCode" (change)="onSelectedChanged($event)">
+                <option value="">-- Select --</option>
+                <option [ngValue]="sampleType.code" *ngFor="let sampleType of ddl?.sampleTypeList; trackBy: trackByFn;">
+                    {{ sampleType.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div *ngIf="isShowBloodType" class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.bloodTypeCode" [submitted]="submitted">
+            <label class="font-bold">Blood Type</label>
+            <select class="form-control" formControlName="bloodTypeCode">
+                <option value="">-- Select --</option>
+                <option [ngValue]="bloodType.code" *ngFor="let bloodType of ddl?.bloodTypeList; trackBy: trackByFn;">
+                    {{ bloodType.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <ng-container *ngIf="isShowTissueType">
+            <div class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.tissueTypeCode" [submitted]="submitted">
+                <label class="font-bold">Tissue Type</label>
+                <select class="form-control" formControlName="tissueTypeCode">
+                    <option value="">-- Select --</option>
+                    <option [ngValue]="tissueType.code" *ngFor="let tissueType of ddl?.tissueTypeList; trackBy: trackByFn;">
+                        {{ tissueType.name }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+
+            <div class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.pathoId" [submitted]="submitted">
+                <label class="font-bold">Pathology No <small>(select value from autocomplete)</small></label>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="hidden" formControlName="pathoId" />
+                        <input id="txtPathoNo"
+                            formControlName="pathoNo"
+                            [typeaheadAsync]="true"
+                            [typeahead]="dataSource"
+                            (typeaheadLoading)="changeTypeaheadLoading($event)"
+                            (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                            (typeaheadNoResults)="typeaheadNoResults($event)"
+                            [typeaheadOptionsLimit]="15"
+                            [typeaheadScrollable]="true"
+                            [typeaheadOptionsInScrollableView]="5"
+                            typeaheadBindTo="id"
+                            typeaheadOptionField="pathologyNo"
+                            [typeaheadMinLength]="0"
+                            typeaheadWaitMs="600"
+                            placeholder="e.g. 62-0001"
+                            class="form-control"
+                            (change)="onTextChanged()">
+                        <!-- <div *ngIf="typeaheadLoading">Loading...</div> -->
+                    </div>
+                </div>
+                <span class="help-block with-errors"></span>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isShowCellType" >
+            <div class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.cellTypeCode" [submitted]="submitted">
+                <label class="font-bold">Cell Type</label>
+                <select class="form-control" formControlName="cellTypeCode">
+                    <option value="">-- Select --</option>
+                    <option [ngValue]="cellType.code" *ngFor="let cellType of ddl?.cellTypeList; trackBy: trackByFn;">
+                        {{ cellType.name }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.cellLineTypeCode" [submitted]="submitted">
+                <label class="font-bold">Cell line Type</label>
+                <select class="form-control" formControlName="cellLineTypeCode">
+                    <option value="">-- Select --</option>
+                    <option [ngValue]="cellLineType.code" *ngFor="let cellLineType of ddl?.cellLineTypeList; trackBy: trackByFn;">
+                        {{ cellLineType.name }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+        </ng-container>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.freezeMethodCode" [submitted]="submitted">
+            <label class="font-bold">Freezing Method</label>
+            <select class="form-control" formControlName="freezeMethodCode">
+                <option value="">-- Select --</option>
+                <option [ngValue]="freezeMethod.code" *ngFor="let freezeMethod of ddl?.freezeMethodList; trackBy: trackByFn;">
+                    {{ freezeMethod.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.preserveMethodCode" [submitted]="submitted">
+            <label class="font-bold">Preservation Method</label>
+            <select class="form-control" formControlName="preserveMethodCode">
+                <option value="">-- Select --</option>
+                <option [ngValue]="preserveMethod.code" *ngFor="let preserveMethod of ddl?.preserveMethodList; trackBy: trackByFn;">
+                    {{ preserveMethod.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.initialWeight" [submitted]="submitted">
+            <label class="font-bold">Initial Weight (mg)</label>
+            <input type="text" class="form-control text-right" formControlName="initialWeight" currencyFormatter />
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.collectSampleDate" [submitted]="submitted">
+            <label class="font-bold">Date of Sample Collection</label>
+            <div class="input-group datepicker-input">
+                <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="collectSampleDate"
+                    #dpSample="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }"
+                    (change)="isDateInvalid('collectSampleDate')" [minDate]="minDate" (bsValueChange)="bsValueChange('collectSampleDate', $event)">
+                <span class="input-group-addon">
+                    <button class=" btn default calendar" type="button" (click)="dpSample.toggle()" [attr.aria-expanded]="dpSample.isOpen">
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </span>
+            </div>
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-3" formControlValidator [control]="specimenForm?.controls.freezeDate" [submitted]="submitted">
+            <label class="font-bold">Date of Freezing</label>
+            <div class="input-group datepicker-input">
+                <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="freezeDate"
+                    #dpFreeze="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }"
+                    (change)="isDateInvalid('freezeDate')" [minDate]="minDate" (bsValueChange)="bsValueChange('freezeDate', $event)">
+                <span class="input-group-addon">
+                    <button class=" btn default calendar" type="button" (click)="dpFreeze.toggle()" [attr.aria-expanded]="dpFreeze.isOpen">
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                </span>
+            </div>
+            <span class="help-block with-errors"></span>
+        </div>
+    </div>
+</form>
+
+<div class="footer-actions">
+    <div class="form-actions pull-right margin-top-10 margin-bottom-10">
+        <button type="button" class="btn default btn-medium" (click)="onCancel()"> Cancel </button>
+        <button type="button" class="btn green btn-medium margin-left-5" (click)="onSave()"> Save </button>
+    </div>
+</div>
+</ng-container>

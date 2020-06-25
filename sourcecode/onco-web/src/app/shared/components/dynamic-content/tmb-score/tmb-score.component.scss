@@ -1,0 +1,20 @@
+/deep/ app-tmb-score {
+    .circle {
+        width: 20px;
+        height: 20px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+        background: #eee;
+        margin: 0 auto;
+    }
+    .circle.high {
+        background: red!important;
+    }
+    .circle.intermediate {
+        background: #FBAE1D!important;
+    }
+    .circle.low {
+        background: #F8EC61!important;
+    }
+}

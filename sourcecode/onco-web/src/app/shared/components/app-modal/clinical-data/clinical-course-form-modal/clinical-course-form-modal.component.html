@@ -1,0 +1,57 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Clinical Course</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="clinicalCourseForm">
+        <input type="hidden" formControlName="id" />
+        <input type="hidden" formControlName="status" />
+
+        <div class="row">
+            <div class="form-group" [ngClass]="cssCol" formControlValidator [control]="clinicalCourseForm?.controls.recurrenceStatusCode" [submitted]="submitted">
+                <label class="font-bold">Recurrence Status</label>
+                <select class="form-control" formControlName="recurrenceStatusCode" (change)="onSelectedChanged()">
+                    <option value="">-- Select --</option>
+                    <option [ngValue]="status.code" *ngFor="let status of ddl?.recurrenceStatusList; trackBy: trackByFn;">
+                        {{ status.name }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+            <div [hidden]="!isRecurDateShow" class="form-group" [ngClass]="cssCol" formControlValidator [control]="clinicalCourseForm?.controls.recurrenceDate" [submitted]="submitted">
+                <label class="font-bold">Date of Recurrence</label>
+                <div class="input-group datepicker-input">
+                    <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="recurrenceDate"
+                        #dpRucur="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }"
+                        (change)="isDateInvalid('recurrenceDate')" [minDate]="minDate" (bsValueChange)="bsValueChange('recurrenceDate', $event)">
+                    <span class="input-group-addon">
+                        <button class=" btn default calendar" type="button" (click)="dpRucur.toggle()" [attr.aria-expanded]="dpRucur.isOpen">
+                            <span class="fa fa-calendar"></span>
+                        </button>
+                    </span>
+                </div>
+                <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group" [ngClass]="cssCol" formControlValidator [control]="clinicalCourseForm?.controls.recordDate" [submitted]="submitted">
+                <label class="font-bold">Date of Record</label>
+                <div class="input-group datepicker-input">
+                    <input class="form-control" placeholder="{{ constants.DATE_FORMAT_DEFAULT }}" formControlName="recordDate"
+                        #dpRec="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-dark-blue' }"
+                        (change)="isDateInvalid('recordDate')" [minDate]="minDate" (bsValueChange)="bsValueChange('recordDate', $event)">
+                    <span class="input-group-addon">
+                        <button class=" btn default calendar" type="button" (click)="dpRec.toggle()" [attr.aria-expanded]="dpRec.isOpen">
+                            <span class="fa fa-calendar"></span>
+                        </button>
+                    </span>
+                </div>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default btn-medium" (click)="bsModalRef.hide()" translate="cancel"></button>
+    <button type="button" class="btn green btn-medium" (click)="onSave()" translate="save"></button>
+</div>

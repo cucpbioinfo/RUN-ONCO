@@ -1,0 +1,66 @@
+@import "../theme/variables.scss";
+
+/deep/ app-login {
+    .login-bg {
+        background: url($base-url+"/assets/images/run-onco-banner.png")
+            white top center no-repeat;
+        height: 480px !important;
+       background-size: cover;
+    }
+    h3 {
+        font-size: 25px !important;
+        margin: 0;
+        padding-top: 20px;
+        font-weight: 700;
+    }
+    h6 {
+        font-size: 18px !important;
+        margin: 0 !important;
+    }
+    blockquote {
+        font-size: 15px;
+        margin-top: 20px;
+        background: #f0f8ff;
+        border-left: 10px solid #1c8adb;
+        margin: 1.5em 20px;
+        padding: 0.5em 15px;
+        line-height: 35px;
+        display: block;
+        quotes: "\201C""\201D""\2018""\2019";
+    }
+    blockquote:before {
+        color: #1c8adb;
+        content: open-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+    }
+    blockquote:after {
+        color: #1c8adb;
+        content: close-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+    }
+    blockquote p {
+        display: inline;
+    }
+    .title {
+        font-weight: 700 !important;
+        font-size: 16px !important;
+        display: block !important;
+    }
+    .thumbnail {
+        width: auto;
+        height: 160px;
+    }
+    .info-container {
+        top: 500px;
+        position: absolute;
+    }
+    hr.side {
+        width: 98% !important;
+    }
+}

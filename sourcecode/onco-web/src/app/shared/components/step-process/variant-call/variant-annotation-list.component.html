@@ -1,0 +1,86 @@
+<h2 class="page-title">Variant Annotations</h2>
+<hr class="side">
+
+<div class="margin-top-20">
+    <data-table id="variant-grid" headerTitle="" [header]="false" [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)"
+        [indexColumn]="false" [substituteRows]="false" [selectColumn]="false" [multiSelect]="false" [limit]="15">
+        <data-table-column [property]="'oncoKbAnnotated'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader>
+                OncoKB
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <!-- <a href="javascript:;" *ngIf="item.oncoKbAnnotated !== constants.YES" (click)="showModalDialog(item)">Yes</a> -->
+                <span *ngIf="item.oncoKbAnnotated === constants.YES" class="icon-oncokb text-center" (click)="showModalDialog(item)"></span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'variant'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader>
+                Variant
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-nowrap">{{ item.variant }}</span>
+            </ng-template>
+        </data-table-column>
+        <!-- <data-table-column [property]="'chromDisplay'" [header]="'Chrom'" [sortable]="true" [resizable]="true">
+        </data-table-column>
+        <data-table-column [property]="'position'" [header]="'Position'" [sortable]="true" [resizable]="true">
+        </data-table-column>
+        <data-table-column [property]="'refAllele'" [header]="'Ref. allele'" [sortable]="true" [resizable]="true">
+        </data-table-column>
+        <data-table-column [property]="'altAllele'" [header]="'Alt. allele'" [sortable]="true" [resizable]="true">
+        </data-table-column> -->
+        <data-table-column [property]="'chromDisplay'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader>
+                Chrom
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-center">{{ item.chromDisplay }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'position'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader>
+                Position
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span>{{ item.position }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'refAllele'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader>
+                Ref. allele
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-center">{{ item.refAllele }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'altAllele'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader>
+                Alt. allele
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-center">{{ item.altAllele }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'consequence'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader>
+                Annotation
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="break-out">{{ item.consequence }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'feature'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableHeader>
+                Transcript
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span class="text-center">
+                    <a href="javascript:;" (click)="onNavigate(constants.URL.TRANSCRIPT_BASED_URL, item.feature)">
+                        {{ item.feature }}
+                    </a>
+                </span>
+            </ng-template>
+        </data-table-column>
+    </data-table>
+    <br>
+</div>

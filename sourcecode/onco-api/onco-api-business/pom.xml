@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>run.onco.api</groupId>
+		<artifactId>onco-api</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>run.onco.api.business</groupId>
+	<artifactId>onco-api-business</artifactId>
+	<name>onco-api-business</name>
+	<description>ONCO API : Business Module</description>
+
+	<properties>
+		<!-- Generic properties -->
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<onco-api-common.version>0.0.1-SNAPSHOT</onco-api-common.version>
+		<onco-api-service.version>0.0.1-SNAPSHOT</onco-api-service.version>
+		<oncokb-client.version>1.0.0</oncokb-client.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>run.onco.api.common</groupId>
+			<artifactId>onco-api-common</artifactId>
+			<version>${onco-api-common.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>run.onco.api.service</groupId>
+			<artifactId>onco-api-service</artifactId>
+			<version>${onco-api-service.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>run.onco.connector.oncokb</groupId>
+			<artifactId>oncokb-client</artifactId>
+			<version>${oncokb-client.version}</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+	</dependencies>
+
+	<packaging>jar</packaging>
+	<!-- Package as an executable jar -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>true</skipTests>
+					<excludes>
+						<exclude>%regex[test.*]</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<!-- plugin for build jar -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<appendAssemblyId>false</appendAssemblyId>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<finalName>onco-api-business</finalName>
+	</build>
+</project>

@@ -1,0 +1,18 @@
+<ng-container *ngIf="isHidden">
+    <app-patient-add [page]="pageComponent" (selectChanged)="onHnChanged($event)"></app-patient-add>
+</ng-container>
+
+<ng-container *ngIf="!isHidden">
+    <app-view-patient-info [data]="patient"></app-view-patient-info>
+
+    <div class="margin-top-20">
+        <app-diagnosis-list></app-diagnosis-list>
+    </div>
+
+    <div class="footer-actions">
+        <div class="form-actions pull-right margin-top-10 margin-bottom-10">
+            <button type="button" class="btn default btn-medium" (click)="onCancel()"> Cancel </button>
+            <button type="button" class="btn green btn-medium margin-left-5" (click)="onSave()"> Save </button>
+        </div>
+    </div>
+</ng-container>

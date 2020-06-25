@@ -1,0 +1,27 @@
+@import '../../../../theme/variables.scss';
+
+/deep/ app-header {
+    .nav-bg {
+        background-color: $topnav-background-color!important;
+        // background-color: white;
+        // border-bottom: 2px solid $pink;
+    }
+    .navbar-brand {
+        color: #FFF!important;
+        font-family: "GothamBold", Helvetica, Arial, sans-serif !important;
+    }
+    .nav-link {
+        color: #FFF!important;
+        font-family: "GothamBold", Helvetica, Arial, sans-serif !important;
+    }
+    .input-search {
+        border: 1px solid $pink!important;
+    }
+    .dropdown-item {
+        padding: .8rem 1.5rem;
+    }
+    .dropdown-toggle {
+        cursor: pointer!important;
+        cursor: hand!important;
+    }
+}

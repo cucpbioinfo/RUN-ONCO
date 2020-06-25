@@ -1,0 +1,33 @@
+<form *ngIf="ddl.sampleRnaSeqList && ddl.sampleRnaSeqList?.length > 0" [formGroup]="rnaSeqForm">
+    <div class="row">
+        <div class="form-group col-md-4" formControlValidator [control]="rnaSeqForm?.controls.sampleRnaSeqIds" [submitted]="submitted">
+            <label class="font-bold">RNA-Seq</label>
+            <div class="no-padding">
+                <select id="ddlSampleRnaSeq" class="selectpicker" formControlName="sampleRnaSeqIds" multiple data-live-search="true" title="-- Select --">
+                    <option [ngValue]="sample.id" *ngFor="let sample of ddl.sampleRnaSeqList; trackBy: trackByFn;">
+                        {{ sample?.attachment?.fileName }}
+                    </option>
+                </select>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="form-group col-md-3" formControlValidator [control]="rnaSeqForm?.controls.cancerGeneGrpId" [submitted]="submitted">
+            <label class="font-bold">Cancer Gene Group</label>
+            <select class="selectpicker" formControlName="cancerGeneGrpId" title="-- Select --">
+                <!-- <option value="">-- Select --</option> -->
+                <option [ngValue]="grp.id" *ngFor="let grp of ddl?.cancerGeneGroups; trackBy: trackByFn;">
+                    {{ grp.name }}
+                </option>
+            </select>
+            <span class="help-block with-errors"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <div class="no-padding" style="padding-top: 26px">
+                <button class="btn btn-sm blue btn-medium" type="button" (click)="update()">
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+    <a href="javascript:;" (click)="editConfig()"><i class="fa fa-cogs" aria-hidden="true"></i> Settings</a>&nbsp;&nbsp;<i class="text-sm" [hidden]="!clusterConfig">(k={{ clusterConfig.nCluster }} using {{ clusterConfig.clusterAlgo?.name }})</i>
+</form>

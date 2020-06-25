@@ -1,0 +1,34 @@
+<!-- <ng-container *ngIf="patient"> -->
+    <!-- <app-omics-analysis-form
+        [patient]="patient"
+        (searchChange)="search($event)">
+    </app-omics-analysis-form> -->
+
+    <!-- <ng-container *ngIf="criteria"> -->
+        <app-step-wizard
+            [data]="tab.data"
+            [step]="tab.step"
+            [styleClass]="tab.styleClass">
+        </app-step-wizard>
+
+        <div class="margin-top-30">
+            <app-rna-seq-analysis-form
+                [criteria]="criteria"
+                (updatedChange)="updateRnaSeqParams($event)">
+            </app-rna-seq-analysis-form>
+
+            <div *ngIf="clustergrammer" class="margin-top-30">
+                <app-clustergrammer [params]="clustergrammer"></app-clustergrammer>
+            </div>
+            <div *ngIf="genes" class="margin-top-30">
+                <app-cytoscape [params]="genes"></app-cytoscape>
+            </div>
+            <div *ngIf="ideogram" class="margin-top-30">
+                <app-ideogram [params]="ideogram"></app-ideogram>
+            </div>
+
+            <br /><br />
+        </div>
+
+    <!-- </ng-container> -->
+<!-- </ng-container> -->
