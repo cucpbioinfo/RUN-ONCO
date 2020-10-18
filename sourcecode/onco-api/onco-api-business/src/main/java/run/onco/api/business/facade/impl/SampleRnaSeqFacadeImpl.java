@@ -84,12 +84,12 @@ public class SampleRnaSeqFacadeImpl implements SampleRnaSeqFacade {
 
 			TbTSampleRnaSeq sampleRnaSeq = new TbTSampleRnaSeq();
 			
-			TbMUser user = null;
-			if (input.getUserId() != null) {
-				user = userService.getActiveUserById(input.getUserId());
+			TbMUser requestedUser = null;
+			if (input.getRequestedUserId() != null) {
+				requestedUser = userService.getActiveUserById(input.getRequestedUserId());
 				
-				if (user == null) {
-					throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "User does not exist.");
+				if (requestedUser == null) {
+					throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "Requested user does not exist.");
 				}
 			}
 				
@@ -100,7 +100,7 @@ public class SampleRnaSeqFacadeImpl implements SampleRnaSeqFacade {
 					throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "SampleRnaSeq does not exist.");
 				}
 				
-				sampleRnaSeq.setCreateUser(user);
+				sampleRnaSeq.setCreateUser(requestedUser);
 				sampleRnaSeq.setCreateDate(DateUtil.getCurrentDate());
 			}
 			
@@ -161,7 +161,7 @@ public class SampleRnaSeqFacadeImpl implements SampleRnaSeqFacade {
 					attachment.setFilePath(relativePath);
 					attachment.setUuid(AppUtil.unique());
 					attachment.setCreateDate(DateUtil.getCurrentDate());
-					attachment.setCreateUser(user);
+					attachment.setCreateUser(requestedUser);
 				}
 					
 				sampleRnaSeq.setAttachment(attachment);

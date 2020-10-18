@@ -16,6 +16,7 @@ public enum MessageCode {
 	ERROR_INVALID_LOGIN("ONC-ERR007", "Invalid login."),
 	ERROR_LIMIT_EXCEEDED("ONC-ERR009", "Failed limit exceeded."),
 	ERROR_TOKEN_UUID_EXPIRED("ONC-ERR010", "Failed tokenUuid expired."),
+	ERROR_DELETE_RECORD("ONC-ERR011", "Unable to delete the record which is referenced to another tables."),
 	ERROR_SERVICE_FAIL_WS("ONC-UNK999","Call to external webservice fails."),
 	ERROR_SERVICE_UNAVAIL("ONC-ERR999", "Service Unavailable."),
 	ERROR_EXECUTE_R_FAIL("ONC-ERR011", "Rscript execution error."),

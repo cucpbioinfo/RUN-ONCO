@@ -36,7 +36,6 @@ public interface AppConstants {
 	public static final String DATA_TYPE_PATIENT = "2";
 	
 	public static final String MOBILE_NO_PATTERN = "\\d{10}";
-	// public static final String EMAIL_PATTERN = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
 	public static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	public static final String DELIVERY_CHANNEL_PATTERN = "^([1-2]|1)$";
 	public static final String REF_NO_PATTERN = "^ONC[0-9]{18}$";
@@ -92,7 +91,6 @@ public interface AppConstants {
 	public static final String ACT_CODE_GEN_VIS_R_WATERFALL = "ACT_GEN_VIS_R_WATERFALL";
 	public static final String ACT_CODE_GET_SEQ_TYPE_LIST = "getSeqTypeList";
 	public static final String ACT_CODE_GET_SAMPLE_SOURCE_LIST = "getSampleSourceList";
-//	public static final String ACT_CODE_GET_VARIANT_CALL_LIST = "getVariantCallList";
 	public static final String ACT_CODE_GET_SAMPLE_VCF_LIST_BY_PATIENT = "getSampleVcfListByPatient";
 	public static final String ACT_CODE_DELETE_VARIANT_CALL = "deleteVariantCall";
 	public static final String ACT_CODE_GET_VARIANT_CALL = "getVariantCall";
@@ -138,6 +136,12 @@ public interface AppConstants {
 	public static final String ACT_CODE_SAVE_DYNAMIC_CONTENT = "saveDynamicContent";
 	public static final String ACT_CODE_GET_VARIANT_CALLS_BY_SAMPLE_ID = "getVariantCallsBySampleId";
 	public static final String ACT_CODE_ADD_NEW_ENTRY = "addNewEntry";
+	public static final String ACT_CODE_SEARCH_USER = "searchUser";
+	public static final String ACT_CODE_DELETE_USER = "deleteUser";
+	public static final String ACT_CODE_GET_ACTIVE_ROLES = "getActiveRoles";
+	public static final String ACT_CODE_FIND_DUPLICATE_USERNAME = "findDuplicateUsername";
+	public static final String ACT_CODE_SAVE_USER = "saveUser";
+	public static final String ACT_CODE_DELETE_DYNAMIC_CONTENT = "deleteDynamicContent";
 	
 	// Maxlength
 	public static final int MAXLEN_BIO_REF = 20;

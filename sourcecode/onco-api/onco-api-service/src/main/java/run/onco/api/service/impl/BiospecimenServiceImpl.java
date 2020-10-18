@@ -53,7 +53,7 @@ public class BiospecimenServiceImpl implements BiospecimenService {
 			return biospecimenList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Search Biospecimen--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Search Biospecimen--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -68,7 +68,7 @@ public class BiospecimenServiceImpl implements BiospecimenService {
 			return count;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get Biospecimen PaginatedCount--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Biospecimen PaginatedCount--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -83,7 +83,7 @@ public class BiospecimenServiceImpl implements BiospecimenService {
 			return biospecimen;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get Biospecimen by ID--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -99,7 +99,7 @@ public class BiospecimenServiceImpl implements BiospecimenService {
 			logger.info("O:--SUCCESS--:--Delete Biospecimen--");
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Delete Biospecimen--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Delete Biospecimen--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -118,7 +118,7 @@ public class BiospecimenServiceImpl implements BiospecimenService {
 			
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Save Biospecimen--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save Biospecimen--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -133,7 +133,7 @@ public class BiospecimenServiceImpl implements BiospecimenService {
 			return isDuplicate;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Find Duplicate --:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Find Duplicate --:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

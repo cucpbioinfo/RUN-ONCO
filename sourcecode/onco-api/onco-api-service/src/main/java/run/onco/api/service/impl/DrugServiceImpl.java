@@ -37,7 +37,7 @@ public class DrugServiceImpl implements DrugService {
 			return annotatedVariantList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get AnnotatedVariantList by GeneName--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get AnnotatedVariantList by GeneName--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

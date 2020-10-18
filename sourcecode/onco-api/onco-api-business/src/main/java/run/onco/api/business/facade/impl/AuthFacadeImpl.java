@@ -99,7 +99,7 @@ public class AuthFacadeImpl implements AuthFacade {
 				String accessToken = jwtUtil.createJWT(user.getId().toString(), user.getUsername());
 				
 				UserDto output = new UserDto();
-				output.setUserId(user.getId());
+				output.setId(user.getId());
 				output.setFirstName(user.getFirstName());
 				output.setLastName(user.getLastName());
 				output.setAccessToken(accessToken);

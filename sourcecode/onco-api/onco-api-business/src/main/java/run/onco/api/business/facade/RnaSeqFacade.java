@@ -16,17 +16,10 @@ import run.onco.api.business.message.pagination.DataTableResults;
  */
 public interface RnaSeqFacade {
 
-//	public void uploadSamplRnaSeq(SampleRnaSeqDto input);
-	
 	public void deleteRnaSeq(SampleRnaSeqDto input);
-	
-//	public List<SampleRnaSeqDto> getSampleRnaSeqListByPatientId(PatientDto patient);
 	
 	public DataTableResults<RnaSeqDto> getRnaSeqList(DataTableRequest<SampleRnaSeqDto> req);
 	
 	public List<OmicsDto<RnaSeqDto>> getRnaSeqListForClustergrammer(InquiryOmics input);
 	
-//	public List<SampleRnaSeqDto> getSampleRnaSeqListByBiospecimens(InquiryOmics input);
-//	
-//	public List<SampleRnaSeqDto> getActiveSampleRnaSeqList();
 }

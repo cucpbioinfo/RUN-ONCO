@@ -19,4 +19,6 @@ public interface DynamicContentFacade {
 	public void findDuplicateComponentName(DynamicContentDto dynamicContentDto);
 	
 	public void saveDynamicContent(DynamicContentDto dynamicContentDto);
+	
+	public void deleteDynamicContent(DynamicContentDto dynamicContentDto);
 }

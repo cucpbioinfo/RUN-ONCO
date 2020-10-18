@@ -80,8 +80,6 @@ public class RnaSeqFacadeImpl implements RnaSeqFacade {
 			String absolutePath = String.format("%s%s", getString(ConfigurationConstants.DATA_FILE_PATH), attachment.getFilePath());
 			String fileDest = String.format("%s/%s", absolutePath, attachment.getFileName());
 			
-			System.out.println("------> fileDest : " + fileDest);
-			
 			rnaSeqService.deleteRnaSeq(sampleRnaSeq);
 			
 			FileUtil.removeFile(fileDest);
@@ -216,7 +214,6 @@ public class RnaSeqFacadeImpl implements RnaSeqFacade {
 				
 				Long sampleId = sampleRnaSeq.getId();
 				String fileName = sampleRnaSeq.getAttachment().getFileName();
-//				logger.debug(String.format("O:--Get SampleRnaSeq--:sampleRnaSeqId/%s:fileName/%s", sampleId, fileName));
 				
 				OmicsDto<RnaSeqDto> omicsDto = new OmicsDto<>();
 				omicsDto.setFileName(fileName);
@@ -235,8 +232,6 @@ public class RnaSeqFacadeImpl implements RnaSeqFacade {
 						Integer end = (Integer) obj[4];
 						BigDecimal tpm = (BigDecimal) obj[5];
 						
-//						logger.debug(String.format("O:--Get RnaSeq--:geneId/%s:geneName/%s:tpm/%s", geneId, geneName, tpm));
-
 						RnaSeqDto rnaSeqDto = new RnaSeqDto();
 						rnaSeqDto.setGeneId(geneId);
 						rnaSeqDto.setGeneName(geneName);

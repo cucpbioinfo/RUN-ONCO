@@ -35,7 +35,7 @@ public class AttachmentServiceImpl implements AttachmentService {
 			return attachment;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get Attachment--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Attachment--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

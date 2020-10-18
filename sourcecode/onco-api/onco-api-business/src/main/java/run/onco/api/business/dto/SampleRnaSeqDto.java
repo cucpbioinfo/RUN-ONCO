@@ -23,7 +23,7 @@ public class SampleRnaSeqDto implements Serializable {
 	private PatientDto patient;
 	private BiospecimenDto biospecimen;
 	private String status;
-	private Long userId;
+	private Long requestedUserId;
 
 	public AttachmentDto getAttachment() {
 		return attachment;
@@ -65,12 +65,12 @@ public class SampleRnaSeqDto implements Serializable {
 		this.status = status;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public Long getRequestedUserId() {
+		return requestedUserId;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setRequestedUserId(Long requestedUserId) {
+		this.requestedUserId = requestedUserId;
 	}
-	
+
 }

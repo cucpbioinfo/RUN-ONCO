@@ -21,6 +21,7 @@ public class PermissionDto implements Serializable {
 
 	private List<MenuDto> menuGroups;
 	private List<String> dynamicContents;
+	private List<RoleDto> roles;
 
 	public PermissionDto() {
 
@@ -44,6 +45,14 @@ public class PermissionDto implements Serializable {
 
 	public void setDynamicContents(List<String> dynamicContents) {
 		this.dynamicContents = dynamicContents;
+	}
+
+	public List<RoleDto> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<RoleDto> roles) {
+		this.roles = roles;
 	}
 
 }

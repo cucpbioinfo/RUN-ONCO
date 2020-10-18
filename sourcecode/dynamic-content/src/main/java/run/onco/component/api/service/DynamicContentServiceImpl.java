@@ -275,7 +275,7 @@ public class DynamicContentServiceImpl implements DynamicContentService {
 	    		input.setModuleName(dynaModuleClass);
 	    		input.setModulePath(dynaModuleFilePath.replace(".ts", AppConstants.EMPTY_STRING));
 	    		input.setStatus(AppConstants.STATUS_ACTIVE);
-	    		input.setUserId(user.getUserId());
+	    		input.setRequestedUserId(user.getRequestedUserId());
 	    		
 	    		RequestDetails requestDetails = new RequestDetails(serviceUrl, HttpMethod.POST, user.getAccessToken());
 	    		

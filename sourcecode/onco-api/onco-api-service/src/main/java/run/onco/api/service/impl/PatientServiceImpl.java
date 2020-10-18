@@ -51,7 +51,7 @@ public class PatientServiceImpl implements PatientService {
 			return patient;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get Patient by Ref--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Patient by Ref--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -66,7 +66,7 @@ public class PatientServiceImpl implements PatientService {
 			return patient;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get Patient by ID--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Patient by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -84,7 +84,7 @@ public class PatientServiceImpl implements PatientService {
 			return patientList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Search Patient by Ref--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Search Patient by Ref--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -99,7 +99,7 @@ public class PatientServiceImpl implements PatientService {
 			return count;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get ClinicalData PaginatedCount--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get ClinicalData PaginatedCount--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -123,7 +123,7 @@ public class PatientServiceImpl implements PatientService {
 			return patientList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Search Patient--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Search Patient--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -134,7 +134,7 @@ public class PatientServiceImpl implements PatientService {
 	public void savePatient(HashMap<String, Object> map) {
 		
 		try {
-			logger.info("I:--START--:--Save ClinicalData--");
+			logger.info("I:--START--:--Save Patient--");
 			
 			TbMPatient patient = (TbMPatient) map.get("PATIENT");
 			List<TbTSurvivalFollowup> survivalFollowupList = (List<TbTSurvivalFollowup>) map.get("SURVIVAL_FOLLOWUP_LIST");
@@ -155,7 +155,7 @@ public class PatientServiceImpl implements PatientService {
 			
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Save ClinicalData--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save Patient--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -170,7 +170,7 @@ public class PatientServiceImpl implements PatientService {
 			return  survivalFollowup;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SurvivalFollowup by ID--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SurvivalFollowup by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -186,7 +186,7 @@ public class PatientServiceImpl implements PatientService {
 			logger.info("O:--SUCCESS--:--Delete Patient by ID--");
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Delete Patient by ID--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Delete Patient by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -195,13 +195,13 @@ public class PatientServiceImpl implements PatientService {
 	public List<TbTSurvivalFollowup> getSurvivalFollowupListByPatientId(Long patientId, String status) {
 		
 		try {
-			logger.info(String.format("I:--START--:--Get survivalFollowupList by PatientId--:survivalFollowupId/%s:status/%s", patientId, status));
+			logger.info(String.format("I:--START--:--Get survivalFollowupList by PatientID--:patientId/%s:status/%s", patientId, status));
 			List<TbTSurvivalFollowup> survivalFollowupList = survivalFollowupDao.getSurvivalFollowupListByPatientId(patientId, status);
-			logger.info("O:--SUCCESS--:--Get survivalFollowupList by PatientId");
+			logger.info("O:--SUCCESS--:--Get survivalFollowupList by PatientID");
 			return  survivalFollowupList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SurvivalFollowup by ID--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SurvivalFollowup by PatientID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -216,7 +216,7 @@ public class PatientServiceImpl implements PatientService {
 			return isDuplicate;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Find Duplicate HN--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Find Duplicate HN--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

@@ -75,7 +75,7 @@ public class VariantCallServiceImpl implements VariantCallService {
 			
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Delete VariantCall--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Delete VariantCall--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -90,7 +90,7 @@ public class VariantCallServiceImpl implements VariantCallService {
 			return variantCallList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get VariantCall List--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get VariantCall List--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -113,7 +113,7 @@ public class VariantCallServiceImpl implements VariantCallService {
 			return variantAnnotationList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get VariantAnnotation List--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get VariantAnnotation List--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -128,7 +128,7 @@ public class VariantCallServiceImpl implements VariantCallService {
 			return count;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get VariantCall PaginatedCount--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get VariantCall PaginatedCount--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -143,7 +143,7 @@ public class VariantCallServiceImpl implements VariantCallService {
 			return actionableVariantList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get ActionableVariantList--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get ActionableVariantList--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -167,13 +167,13 @@ public class VariantCallServiceImpl implements VariantCallService {
 	public TbTVariantAnnotation getVariantAnnotationById(Long variantId) {
 		
 		try {
-			logger.info(String.format("I:--START--:--Get VariantAnnotation by Id--:variantId/%s", variantId));
+			logger.info(String.format("I:--START--:--Get VariantAnnotation by ID--:variantId/%s", variantId));
 			TbTVariantAnnotation variantAnnotation = dao.get(TbTVariantAnnotation.class, variantId);
-			logger.info("O:--SUCCESS--:--Get VariantAnnotation by Id--");
+			logger.info("O:--SUCCESS--:--Get VariantAnnotation by ID--");
 			return variantAnnotation;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get VariantAnnotation by Id--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get VariantAnnotation by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -197,7 +197,7 @@ public class VariantCallServiceImpl implements VariantCallService {
 			logger.info("O:--SUCCESS--:--Save VariantCall List--");
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Save VariantCall List--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save VariantCall List--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -206,7 +206,7 @@ public class VariantCallServiceImpl implements VariantCallService {
 	public Map<Long, Integer[]> getAnnotateVariantListBySampleId(Long sampleId) {
 
 		try {
-			logger.info(String.format("I:--START--:--Get AnnotateVariantList by SampleId--:sampleId/%s", sampleId));
+			logger.info(String.format("I:--START--:--Get AnnotateVariantList by SampleID--:sampleId/%s", sampleId));
 			List<Object[]> results = variantCallDao.getAnnotateVariantListBySampleId(sampleId);
 			
 			if (results != null) {
@@ -228,13 +228,15 @@ public class VariantCallServiceImpl implements VariantCallService {
 //					}
 				}
 				
+				logger.info("O:--SUCCESS--:--Get AnnotateVariantList by SampleID--");
 				return hashMap;
 			}
 			
+			logger.info("O:--SUCCESS--:--Get AnnotateVariantList by SampleID--");
 			return null;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get AnnotateVariantList by SampleId--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get AnnotateVariantList by SampleID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}	
@@ -266,7 +268,7 @@ public class VariantCallServiceImpl implements VariantCallService {
 		    logger.info("O:--SUCCESS--:--Save AnnotateVariant--");
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Save AnnotateVariant--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save AnnotateVariant--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -287,7 +289,7 @@ public class VariantCallServiceImpl implements VariantCallService {
 			return result;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get Variant Comparison--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Variant Comparison--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -302,7 +304,7 @@ public class VariantCallServiceImpl implements VariantCallService {
 			return count;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get Count VariantComparison--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Count VariantComparison--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -311,13 +313,13 @@ public class VariantCallServiceImpl implements VariantCallService {
 	public List<Object[]> getVariantAnnotationListBySampleId(Long sampleId) {
 		
 		try {
-			logger.info(String.format("I:--START--:--Get VariantAnnotation List by SampleId--:sampleId/%s", sampleId));
+			logger.info(String.format("I:--START--:--Get VariantAnnotation List by SampleID--:sampleId/%s", sampleId));
 			List<Object[]> variants = variantCallDao.getVariantAnnotationListBySampleId(sampleId);
 			logger.info("O:--SUCCESS--:--Get VariantAnnotation List by SampleId--");
 			return variants;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get VariantAnnotation List--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get VariantAnnotation List--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

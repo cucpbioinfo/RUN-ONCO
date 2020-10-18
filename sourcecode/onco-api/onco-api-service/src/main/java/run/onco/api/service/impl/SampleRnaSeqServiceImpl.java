@@ -24,7 +24,7 @@ import run.onco.api.service.SampleRnaSeqService;
 @Transactional(readOnly = true)
 public class SampleRnaSeqServiceImpl implements SampleRnaSeqService {
 
-private final static Logger logger = Logger.getLogger(RnaSeqServiceImpl.class);
+	private final static Logger logger = Logger.getLogger(RnaSeqServiceImpl.class);
 	
 	@Autowired
 	private Dao dao;
@@ -46,7 +46,7 @@ private final static Logger logger = Logger.getLogger(RnaSeqServiceImpl.class);
 			logger.info("O:--SUCCESS--:--Upload SampleRnaSeq--");
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Save SampleRnaSeq--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Upload SampleRnaSeq--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -61,7 +61,7 @@ private final static Logger logger = Logger.getLogger(RnaSeqServiceImpl.class);
 			return sampleRnaSeq;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SampleRnaSeq--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SampleRnaSeq--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -70,13 +70,13 @@ private final static Logger logger = Logger.getLogger(RnaSeqServiceImpl.class);
 	public List<TbTSampleRnaSeq> getSampleRnaSeqListByPatientId(Long patientId) {
 		
 		try {
-			logger.info(String.format("I:--START--:--Get SampleRnaSeq List by PatientId--:patientId/%s", patientId));
+			logger.info(String.format("I:--START--:--Get SampleRnaSeq List by PatientID--:patientId/%s", patientId));
 			List<TbTSampleRnaSeq> rnaSeqList = sampleRnaSeqDao.getRnaSeqListByPatientId(patientId);
-			logger.info("O:--SUCCESS--:--Get SampleRnaSeq List by PatientId");
+			logger.info("O:--SUCCESS--:--Get SampleRnaSeq List by PatientID");
 			return rnaSeqList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SampleRnaSeq List by PatientId--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SampleRnaSeq List by PatientID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -91,7 +91,7 @@ private final static Logger logger = Logger.getLogger(RnaSeqServiceImpl.class);
 			return count;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SampleRnaSeq PaginatedCount--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SampleRnaSeq PaginatedCount--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -106,7 +106,7 @@ private final static Logger logger = Logger.getLogger(RnaSeqServiceImpl.class);
 			return sampleRnaSeqList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SampleRnaSeq List--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SampleRnaSeq List--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -115,13 +115,13 @@ private final static Logger logger = Logger.getLogger(RnaSeqServiceImpl.class);
 	public List<TbTSampleRnaSeq> getSampleRnaSeqListByBiospecimens(Long[] ids) {
 		
 		try {
-			logger.info("I:--START--:--Get SampleRnaSeq List by IndivPatient--");
+			logger.info("I:--START--:--Get SampleRnaSeq List by BiospecimenIDs--");
 			List<TbTSampleRnaSeq> sampleRnaSeqList = sampleRnaSeqDao.getSampleRnaSeqListByBiospecimens(ids);
-			logger.info("O:--SUCCESS--:--Get SampleRnaSeq List by IndivPatient--");
+			logger.info("O:--SUCCESS--:--Get SampleRnaSeq List by BiospecimenIDs--");
 			return sampleRnaSeqList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get RnaSeqList by IndivPatient--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get RnaSeqList by BiospecimenIDs--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -130,13 +130,13 @@ private final static Logger logger = Logger.getLogger(RnaSeqServiceImpl.class);
 	public List<TbTSampleRnaSeq> getSampleRnaSeqListBySampleIds(Long[] ids) {
 		
 		try {
-			logger.info("I:--START--:--Get SampleRnaSeq List for SampleIds--");
+			logger.info("I:--START--:--Get SampleRnaSeq List for SampleIDs--");
 			List<TbTSampleRnaSeq> sampleRnaSeqList = sampleRnaSeqDao.getSampleRnaSeqListBySampleIds(ids);
-			logger.info("O:--SUCCESS--:--Get SampleRnaSeq List for SampleIds--");
+			logger.info("O:--SUCCESS--:--Get SampleRnaSeq List for SampleIDs--");
 			return sampleRnaSeqList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SampleRnaSeq List for SampleIds--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SampleRnaSeq List for SampleIDs--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -151,7 +151,7 @@ private final static Logger logger = Logger.getLogger(RnaSeqServiceImpl.class);
 			return sampleRnaSeqList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get Active SampleRnaSeq List--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Active SampleRnaSeq List--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -160,13 +160,13 @@ private final static Logger logger = Logger.getLogger(RnaSeqServiceImpl.class);
 	public boolean findDuplicateUploadSampleRnaSeq(Long biospecimenId) {
 		
 		try {
-			logger.info("I:--START--:--Find Duplicate Upload RnaSeq--");
+			logger.info("I:--START--:--Find Duplicate Upload SampleRnaSeq--");
 			boolean isDuplicate = sampleRnaSeqDao.findDuplicateUploadSampleRnaSeq(biospecimenId);
-			logger.info("O:--SUCCESS--:--Find Duplicate Upload RnaSeq--");
+			logger.info("O:--SUCCESS--:--Find Duplicate Upload SampleRnaSeq--");
 			return isDuplicate;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Find Duplicate Upload RnaSeq--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Find Duplicate Upload SampleRnaSeq--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

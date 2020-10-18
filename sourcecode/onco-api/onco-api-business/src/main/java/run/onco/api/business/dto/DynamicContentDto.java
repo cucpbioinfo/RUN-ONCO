@@ -22,7 +22,7 @@ public class DynamicContentDto implements Serializable {
 	private String analysisName;
 	private String parentCompName;
 	private String dataTypeAnalysis;
-	private Long userId;
+	private Long requestedUserId;
 	private String status;
 	
 	public Integer getId() {
@@ -89,12 +89,12 @@ public class DynamicContentDto implements Serializable {
 		this.dataTypeAnalysis = dataTypeAnalysis;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public Long getRequestedUserId() {
+		return requestedUserId;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setRequestedUserId(Long requestedUserId) {
+		this.requestedUserId = requestedUserId;
 	}
 
 	public String getStatus() {

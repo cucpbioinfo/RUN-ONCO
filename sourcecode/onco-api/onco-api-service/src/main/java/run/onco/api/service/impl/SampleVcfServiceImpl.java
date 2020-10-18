@@ -39,13 +39,13 @@ public class SampleVcfServiceImpl implements SampleVcfService {
 	public List<TbTSampleVariant> getSampleVcfListByPatientId(Long patientId) {
 
 		try {
-			logger.info(String.format("I:--START--:--Get SampleVcf List by PatientId--:patientId/%s", patientId));
+			logger.info(String.format("I:--START--:--Get SampleVcf List by PatientID--:patientId/%s", patientId));
 			List<TbTSampleVariant> sampleVcfList = sampleVcfDao.getVariantCallListByPatientId(patientId);
-			logger.info("O:--SUCCESS--:--Get SampleVcf List by PatientId");
+			logger.info("O:--SUCCESS--:--Get SampleVcf List by PatientID");
 			return sampleVcfList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SampleVcf List by PatientId--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SampleVcf List by PatientID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -60,7 +60,7 @@ public class SampleVcfServiceImpl implements SampleVcfService {
 			return sampleVariant;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SampleVariant--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SampleVariant--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -79,7 +79,7 @@ public class SampleVcfServiceImpl implements SampleVcfService {
 			logger.info("O:--SUCCESS--:--Upload SampleVcf--");
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Upload SampleVcf--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Upload SampleVcf--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -98,7 +98,7 @@ public class SampleVcfServiceImpl implements SampleVcfService {
 			return sampleVcfList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SampleVcf List--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SampleVcf List--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -113,7 +113,7 @@ public class SampleVcfServiceImpl implements SampleVcfService {
 			return count;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SampleVcf PaginatedCount--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SampleVcf PaginatedCount--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -130,7 +130,7 @@ public class SampleVcfServiceImpl implements SampleVcfService {
 			logger.info("O:--SUCCESS--:--Save SampleVariant--");
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Save SampleVariant--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save SampleVariant--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -139,13 +139,13 @@ public class SampleVcfServiceImpl implements SampleVcfService {
 	public List<TbTSampleVariant> getSampleVcfListByBiospecimenIds(String seqTypeCode, Long[] ids) {
 		
 		try {
-			logger.info(String.format("I:--START--:--Get SampleVcf List by BiospecimenIds--:ids/%s", StringUtil.join(ids)));
+			logger.info(String.format("I:--START--:--Get SampleVcf List by BiospecimenIDs--:ids/%s", StringUtil.join(ids)));
 			List<TbTSampleVariant> sampleVcfList = sampleVcfDao.getSampleVcfListByBiospecimenIds(seqTypeCode, ids);
-			logger.info("O:--SUCCESS--:--Get SampleVcf List by BiospecimenIds--");
+			logger.info("O:--SUCCESS--:--Get SampleVcf List by BiospecimenIDs--");
 			return sampleVcfList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get SampleVcf List by BiospecimenIds--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get SampleVcf List by BiospecimenIDs--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -154,13 +154,13 @@ public class SampleVcfServiceImpl implements SampleVcfService {
 	public boolean findDuplicateUploadSampleVcf(String seqTypeCode, Long biospecimenId) {
 		
 		try {
-			logger.info("I:--START--:--Find Duplicate Upload RnaSeq--");
+			logger.info("I:--START--:--Find Duplicate Upload SampleVcf--");
 			boolean isDuplicate = sampleVcfDao.findDuplicateUploadSampleVcf(seqTypeCode, biospecimenId);
-			logger.info("O:--SUCCESS--:--Find Duplicate Upload RnaSeq--");
+			logger.info("O:--SUCCESS--:--Find Duplicate Upload SampleVcf--");
 			return isDuplicate;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Find Duplicate Upload RnaSeq--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Find Duplicate Upload SampleVcf--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

@@ -1,6 +1,6 @@
-FROM ubuntu:18.10
+FROM ubuntu:18.04
 
-RUN apt-get update -y && \  
+RUN apt-get update -y && \
    apt-get install -y python3-pip python3-dev
 
 # Set the working directory to /app

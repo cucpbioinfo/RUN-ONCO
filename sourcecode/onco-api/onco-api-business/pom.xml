@@ -36,7 +36,7 @@
 			<version>${onco-api-service.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>run.onco.connector.oncokb</groupId>
+			<groupId>run.onco.connector</groupId>
 			<artifactId>oncokb-client</artifactId>
 			<version>${oncokb-client.version}</version>
 		</dependency>

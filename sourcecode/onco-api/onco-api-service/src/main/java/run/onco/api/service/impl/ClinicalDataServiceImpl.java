@@ -108,7 +108,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Save ClinicalData--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save ClinicalData--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -123,7 +123,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			return clinicalData;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get ClinicalData by Ref--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get ClinicalData by Ref--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -137,7 +137,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			return diagnosisList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get DiagnosisList by ClinicalDataId--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get DiagnosisList by ClinicalDataId--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -149,19 +149,13 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			String refNo = AppUtil.getMapValue(criteria, "refNo");
 			String status = AppUtil.getMapValue(criteria, "status");
 			
-//			// Paging
-//			int startIndex =  AppUtil.getMapValue(criteria, "startIndex");
-//			int fetchSize = AppUtil.getMapValue(criteria, "fetchSize");
-//			String sortBy = AppUtil.getMapValue(criteria, "sortBy");
-//			Boolean sortAsc = AppUtil.getMapValue(criteria, "sortAsc");
-			
 			logger.info(String.format("I:--START--:--Search ClinicalData--:refNo/%s:status/%s", refNo, status));
 			List<TbTClinicalData> clinicalDataList = clinicalDataDao.listPaginatedClinicalDataUsingQuery(criteria, paging);
 			logger.info("O:--SUCCESS--:--Search ClinicalData--");
 			return clinicalDataList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Search ClinicalData--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Search ClinicalData--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -176,7 +170,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			return count;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get ClinicalData PaginatedCount--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get ClinicalData PaginatedCount--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -192,7 +186,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			logger.info("O:--SUCCESS--:--Delete ClinicalData--");
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Delete ClinicalData--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Delete ClinicalData--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -207,7 +201,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			return biospecimen;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get ClinicalData by ID--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -222,7 +216,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			return patho;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get Patho by ID--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Patho by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -237,7 +231,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			return cancerStage;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get CancerStage by ID--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get CancerStage by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -252,7 +246,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			return clinicalCourse;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get ClinicalCourse by ID--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get ClinicalCourse by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -267,7 +261,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			return clinicalData;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get ClinicalData by ID--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get ClinicalData by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -282,7 +276,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			return diagnosis;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get ClinicalData by ID--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get ClinicalData by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -291,13 +285,13 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 	public List<TbTClinicalCourse> getClinicalCourseListByDiagnosisId(Long diagnosisId, String status) {
 
 		try {
-			logger.info(String.format("I:--START--:--Get ClinicalCourseList by diagnosisId--:diagnosisId/%s:status/%s", diagnosisId, status));
+			logger.info(String.format("I:--START--:--Get ClinicalCourseList by DiagnosisID--:diagnosisId/%s:status/%s", diagnosisId, status));
 			List<TbTClinicalCourse> clinicalCourseList = clinicalCourseDao.getClinicalCourseListByDiagnosisId(diagnosisId, status);
-			logger.info("O:--SUCCESS--:--Get ClinicalCourseList by diagnosisId--");
+			logger.info("O:--SUCCESS--:--Get ClinicalCourseList by DiagnosisID--");
 			return clinicalCourseList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get ClinicalCourseList by diagnosisId--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get ClinicalCourseList by DiagnosisID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -306,13 +300,13 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 	public List<TbTBiospecimen> getActiveฺBiospecimenListByPatientId(Long patientId) {
 		
 		try {
-			logger.info(String.format("I:--START--:--Get BiospecimenList by PatientId--:patientId/%s", patientId));
+			logger.info(String.format("I:--START--:--Get Active BiospecimenList by PatientID--:patientId/%s", patientId));
 			List<TbTBiospecimen> biospecimenList = biospecimenDao.getActiveฺBiospecimenListByPatientId(patientId);
-			logger.info("O:--SUCCESS--:--Get BiospecimenList by PatientId--");
+			logger.info("O:--SUCCESS--:--Get Active BiospecimenList by PatientId--");
 			return biospecimenList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get ClinicalCourseList by diagnosisId--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Active BiospecimenList by PatientID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

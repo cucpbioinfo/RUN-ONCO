@@ -33,13 +33,13 @@ public class PathoServiceImpl implements PathoService {
 	public List<TbTPathological> getPathoListByDiagnosisId(Long diagnosisId, String status) {
 		
 		try {
-			logger.info(String.format("I:--START--:--Get PathoList by diagnosisId--:diagnosisId/%s:status/%s", diagnosisId, status));
+			logger.info(String.format("I:--START--:--Get PathoList by DiagnosisID--:diagnosisId/%s:status/%s", diagnosisId, status));
 			List<TbTPathological> pathoList = pathologicalDao.getPathoListByDiagnosisId(diagnosisId, status);
-			logger.info("O:--SUCCESS--:--Get PathoList by diagnosisId--");
+			logger.info("O:--SUCCESS--:--Get PathoList by DiagnosisID--");
 			return pathoList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get PathoList by diagnosisId--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get PathoList by DiagnosisID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -53,11 +53,11 @@ public class PathoServiceImpl implements PathoService {
 			
 			logger.info(String.format("I:--START--:--Search PatientPatho by PathoNo--:patientId/%s:pathoNo/%s:status/%s:pageNo/%s:pageSize/%s", patientId, pathoNo, status, pageNo, pageSize));
 			List<TbTPathological> pathoList = pathologicalDao.searchPatientPathoByPathoNo(patientId, pathoNo, status, paging.getStartIndex(), paging.getFetchSize());
-			logger.info(String.format("O:--SUCCESS--:--Search PatientPatho by Ref--:doesObjectExist/%s", AppUtil.isNotEmpty(pathoList)));
+			logger.info(String.format("O:--SUCCESS--:--Search PatientPatho by PathoNo--:doesObjectExist/%s", AppUtil.isNotEmpty(pathoList)));
 			return pathoList;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Search PatientPatho by PathoNo--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Search PatientPatho by PathoNo--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -72,7 +72,7 @@ public class PathoServiceImpl implements PathoService {
 			return isDuplicate;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Find Duplicate PathoNo--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Find Duplicate PathoNo--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

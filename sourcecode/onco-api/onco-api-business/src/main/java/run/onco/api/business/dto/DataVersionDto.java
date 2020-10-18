@@ -27,7 +27,7 @@ public class DataVersionDto implements Serializable {
 	private String updateDate;
 	private String isDefault;
 
-	private Long userId;
+	private Long requestedUserId;
 	private AttachmentDto attachment;
 
 	public Integer getId() {
@@ -94,12 +94,12 @@ public class DataVersionDto implements Serializable {
 		this.isDefault = isDefault;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public Long getRequestedUserId() {
+		return requestedUserId;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setRequestedUserId(Long requestedUserId) {
+		this.requestedUserId = requestedUserId;
 	}
 
 	public AttachmentDto getAttachment() {

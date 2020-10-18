@@ -31,7 +31,7 @@ public class PatientDto implements Serializable {
 	private String status;
 	private Long id;
 	private List<SurvivalFollowupDto> survivalFollowupList;
-	private Long userId;
+	private Long requestedUserId;
 
 	public DataItem getRace() {
 		return race;
@@ -105,12 +105,12 @@ public class PatientDto implements Serializable {
 		this.survivalFollowupList = survivalFollowupList;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public Long getRequestedUserId() {
+		return requestedUserId;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setRequestedUserId(Long requestedUserId) {
+		this.requestedUserId = requestedUserId;
 	}
-	
+
 }

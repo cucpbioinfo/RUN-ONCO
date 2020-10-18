@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -114,6 +115,25 @@ public class DynamicContentServiceImpl implements DynamicContentService {
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
 			logger.info(String.format("O:--FAIL--:--Get DynamicContent--:errorDesc/%s", ex.getMessage()));
+			throw new DbException(MessageCode.ERROR_DATABASE);
+		}
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public void deleteDynamicContent(TbCDynamicContent dynamicContent) {
+		
+		try {
+			logger.info(String.format("I:--START--:--Delete DynamicContent--:id/%s", dynamicContent.getId()));
+			dao.delete(dynamicContent);
+			logger.info("O:--SUCCESS--:--Delete DynamicContent--");
+		} catch (ConstraintViolationException ex) {
+			logger.error("ConstraintViolation Exception :\n", ex);
+			logger.info(String.format("O:--FAIL--:--Delete User--:errorDesc/%s", ex.getMessage()));
+			throw new DbException(MessageCode.ERROR_DELETE_RECORD);
+		} catch (Exception ex) {
+			logger.error("DB Exception :\n", ex);
+			logger.info(String.format("O:--FAIL--:--Delete DynamicContent--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

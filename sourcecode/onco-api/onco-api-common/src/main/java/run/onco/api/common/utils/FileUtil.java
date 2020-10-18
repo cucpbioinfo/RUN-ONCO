@@ -77,13 +77,13 @@ public class FileUtil {
 
 			return out.toString();
 		} catch (IOException ex) {
-			logger.info(String.format("O:--FAIL--:--Get Resource File--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Resource File--:errorDesc/%s", ex.getMessage()));
 		} finally {
 			if (reader != null) {
 				try {
 					reader.close();
 				} catch (IOException ex) {
-					logger.error(String.format("O:--FAIL--:--Get Resource File--:fileName/%s:errMsg:/%s", fileName,
+					logger.error(String.format("O:--FAIL--:--Get Resource File--:fileName/%s:errorDesc:/%s", fileName,
 							ex.getMessage()));
 				}
 			}

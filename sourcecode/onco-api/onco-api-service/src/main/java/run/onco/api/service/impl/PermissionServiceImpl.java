@@ -36,13 +36,13 @@ public class PermissionServiceImpl implements PermissionService {
 	public List<TbCMenu> getMenusByUserId(Long userId) {
 		
 		try {
-			logger.info(String.format("I:--START--:--Get Menus by UserId--:userId/%s", userId));
+			logger.info(String.format("I:--START--:--Get Menus by UserID--:userId/%s", userId));
 			List<TbCMenu> menus = menuDao.getMenusByUserId(userId);
-			logger.info("O:--SUCCESS--:--Get Menus by UserId--");
+			logger.info("O:--SUCCESS--:--Get Menus by UserID--");
 			return menus;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get Menus by UserId--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Menus by UserID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -51,13 +51,13 @@ public class PermissionServiceImpl implements PermissionService {
 	public List<TbCDynamicContent> getDynamicConntentsByUserId(Long userId) {
 		
 		try {
-			logger.info(String.format("I:--START--:--Get DynamicContents by UserId--:userId/%s", userId));
+			logger.info(String.format("I:--START--:--Get DynamicContents by UserID--:userId/%s", userId));
 			List<TbCDynamicContent> dynamicContents = dynamicContentDao.getDynamicContentsByUserId(userId);
-			logger.info("O:--SUCCESS--:--Get Menus by UserId--");
+			logger.info("O:--SUCCESS--:--Get DynamicContents by UserID--");
 			return dynamicContents;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get DynamicContents by UserId--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get DynamicContents by UserID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

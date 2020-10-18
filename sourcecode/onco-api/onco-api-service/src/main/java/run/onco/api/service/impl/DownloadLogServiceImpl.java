@@ -40,7 +40,7 @@ public class DownloadLogServiceImpl implements DownloadLogService {
 			return downloadLog.getId();
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Save DownloadLog--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save DownloadLog--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -55,7 +55,7 @@ public class DownloadLogServiceImpl implements DownloadLogService {
 			return downloadHist;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get DownloadLog--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get DownloadLog by ID--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

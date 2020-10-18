@@ -277,9 +277,9 @@ public class MasterDataFacadeImpl implements MasterDataFacade {
 		try {
 			logger.info("I:--START--:--Upload ICD--");
 			
-			TbMUser user = userService.getActiveUserById(dataVersionDto.getUserId());
-			if (user == null) {
-				throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "User does not exist.");
+			TbMUser requestedUser = userService.getActiveUserById(dataVersionDto.getRequestedUserId());
+			if (requestedUser == null) {
+				throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "Requested user does not exist.");
 			}
 			
 			TbCDataVersion dataVersion = null;
@@ -290,11 +290,11 @@ public class MasterDataFacadeImpl implements MasterDataFacade {
 					throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "DataVersion does not exist.");
 				}
 
-				dataVersion.setUpdateUser(user);
+				dataVersion.setUpdateUser(requestedUser);
 				dataVersion.setUpdateDate(DateUtil.getCurrentDate());
 			} else {
 				dataVersion = new TbCDataVersion();
-				dataVersion.setCreateUser(user);
+				dataVersion.setCreateUser(requestedUser);
 				dataVersion.setCreateDate(DateUtil.getCurrentDate());
 			}
 			
@@ -402,9 +402,9 @@ public class MasterDataFacadeImpl implements MasterDataFacade {
 		try {
 			logger.info("I:--START--:--Upload ICD-O--");
 			
-			TbMUser user = userService.getActiveUserById(dataVersionDto.getUserId());
-			if (user == null) {
-				throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "User does not exist.");
+			TbMUser requestedUser = userService.getActiveUserById(dataVersionDto.getRequestedUserId());
+			if (requestedUser == null) {
+				throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "Requested user does not exist.");
 			}
 			
 			TbCDataVersion dataVersion = null;
@@ -415,11 +415,11 @@ public class MasterDataFacadeImpl implements MasterDataFacade {
 					throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "DataVersion does not exist.");
 				}
 
-				dataVersion.setUpdateUser(user);
+				dataVersion.setUpdateUser(requestedUser);
 				dataVersion.setUpdateDate(DateUtil.getCurrentDate());
 			} else {
 				dataVersion = new TbCDataVersion();
-				dataVersion.setCreateUser(user);
+				dataVersion.setCreateUser(requestedUser);
 				dataVersion.setCreateDate(DateUtil.getCurrentDate());
 			}
 			

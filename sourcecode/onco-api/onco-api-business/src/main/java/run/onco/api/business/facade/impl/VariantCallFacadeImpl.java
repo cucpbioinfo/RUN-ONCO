@@ -80,7 +80,7 @@ public class VariantCallFacadeImpl implements VariantCallFacade {
 	public MasterDataDto<DataItem> getSourceSampleListByPatientId(PatientDto input) {
 
 		try {
-			logger.info(String.format("I:--START--:--Get SourceSample List by PatientId--:patientId/%s", input.getId()));
+			logger.info(String.format("I:--START--:--Get SourceSample List by PatientID--:patientId/%s", input.getId()));
 
 			TbMPatient patient = null;
 			
@@ -95,7 +95,7 @@ public class VariantCallFacadeImpl implements VariantCallFacade {
 			List<TbTBiospecimen> biospecimenList = clinicalDataService.getActiveฺBiospecimenListByPatientId(patient.getId());
 			
 			if (biospecimenList == null || biospecimenList.size() == 0) {
-				logger.info(String.format("O:--FAIL--:--Get Active Biospecimen List--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_DATA_NOT_FOUND.getCode(), MessageCode.ERROR_DATA_NOT_FOUND.getDesc()));
+				logger.info(String.format("O:--FAIL--:--Get SourceSample List by PatientID--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_DATA_NOT_FOUND.getCode(), MessageCode.ERROR_DATA_NOT_FOUND.getDesc()));
 				throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), MessageCode.ERROR_DATA_NOT_FOUND.getDesc());
 			}	
 
@@ -106,19 +106,19 @@ public class VariantCallFacadeImpl implements VariantCallFacade {
 				dataList.add(data);
 			}
 
-			logger.info(String.format("O:--SUCCESS--:--Get SourceSample List by PatientId--:genderList size/%s", dataList.size()));
+			logger.info(String.format("O:--SUCCESS--:--Get SourceSample List by PatientID--:genderList size/%s", dataList.size()));
 
 			MasterDataDto<DataItem> masterDataDto = new MasterDataDto<DataItem>(dataList);
 			return masterDataDto;
 		} catch (ValidationException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get SourceSample List by PatientId--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Get SourceSample List by PatientID--:errorMsg/%s", ex.getMessage()));
 			throw ex;
 		} catch (ServiceException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get SourceSample List by PatientId--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Get SourceSample List by PatientID--:errorMsg/%s", ex.getMessage()));
 			throw ex;
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);
-			logger.debug(String.format("O:--FAIL--:--Get SourceSample List by PatientId--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Get SourceSample List by PatientID--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
 			throw new ServiceException(MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), MessageCode.ERROR_SERVICE_UNAVAIL.getDesc(), "", ex.getMessage());
 		}
 	}

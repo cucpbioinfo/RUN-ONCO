@@ -38,7 +38,7 @@ public class ConfigServiceImpl implements ConfigService {
 			return isAuthorized;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Check ServiceAuth--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Check ServiceAuth--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}
@@ -72,7 +72,7 @@ public class ConfigServiceImpl implements ConfigService {
 			return currentSeq;
 		} catch (Exception ex) {
 			logger.error("DB Exception :\n", ex);
-			logger.info(String.format("O:--FAIL--:--Get Current Sequence--:errMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Current Sequence--:errorDesc/%s", ex.getMessage()));
 			throw new DbException(MessageCode.ERROR_DATABASE);
 		}
 	}

@@ -48,10 +48,10 @@ public class AttachmentFacadeImpl implements AttachmentFacade {
 			attachmentDto.setStatus(attachment.getStatus());
 			return attachmentDto;
 		} catch (ValidationException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get Attachment--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Get Attachment--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (ServiceException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get Attachment--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Get Attachment--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);

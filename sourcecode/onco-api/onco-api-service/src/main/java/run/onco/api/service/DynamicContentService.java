@@ -23,6 +23,7 @@ public interface DynamicContentService {
 	
 	public void saveDynamicContent(TbCDynamicContent dynamicContent);
 	
-	public TbCDynamicContent getDynamicContentById(Integer id);
-
+	public TbCDynamicContent getDynamicContentById(final Integer id);
+	
+	public void deleteDynamicContent(TbCDynamicContent dynamicContent);
 }

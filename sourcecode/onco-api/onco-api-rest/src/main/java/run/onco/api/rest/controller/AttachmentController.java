@@ -71,8 +71,6 @@ public class AttachmentController {
 			String absolutePath = String.format("%s%s", getString(ConfigurationConstants.DATA_FILE_PATH), attachment.getFilePath());
 			String fileDest = String.format("%s/%s", absolutePath, attachment.getFileName());
 			
-			System.out.println("------> fileDest : " + fileDest);
-						
 			InputStream is = new FileInputStream(fileDest);
 		    response.setHeader("Content-Disposition", "attachment; filename=\"" + attachment.getFileName() + "\"");
 

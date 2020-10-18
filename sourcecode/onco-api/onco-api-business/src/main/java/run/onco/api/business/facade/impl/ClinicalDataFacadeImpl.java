@@ -72,6 +72,8 @@ public class ClinicalDataFacadeImpl implements ClinicalDataFacade {
 	public ClinicalDataDto saveClinicalData(ClinicalDataDto clinicalDataDto) {
 
 		try {
+			
+			logger.info("I:--START--:--Save ClinicalData--");
 		
 			TbTClinicalData clinicalData = null;
 
@@ -79,7 +81,7 @@ public class ClinicalDataFacadeImpl implements ClinicalDataFacade {
 				clinicalData = clinicalDataService.getClinicalDataById(clinicalDataDto.getId(), AppConstants.STATUS_ACTIVE);
 
 				if (clinicalData == null) {
-					throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "Clinical data does not exist.");
+					throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "ClinicalData does not exist.");
 				}
 			} else {
 				clinicalData = new TbTClinicalData();
@@ -119,16 +121,17 @@ public class ClinicalDataFacadeImpl implements ClinicalDataFacade {
 			patientDto.setHn(patient.getHn());
 			output.setPatient(patientDto);
 			
+			logger.info("O:--SUCCESS--:--Save ClinicalData--");
 			return output;
 		} catch (ValidationException ex) {
-			logger.debug(String.format("O:--FAIL--:--Save ClinicalData--:errorMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save ClinicalData--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (ServiceException ex) {
-			logger.debug(String.format("O:--FAIL--:--Save ClinicalData--:errorMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save ClinicalData--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);
-			logger.debug(String.format("O:--FAIL--:--Save ClinicalData--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save ClinicalData--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
 			throw new ServiceException(MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), MessageCode.ERROR_SERVICE_UNAVAIL.getDesc(), "", ex.getMessage());
 		}
 	}
@@ -694,16 +697,6 @@ public class ClinicalDataFacadeImpl implements ClinicalDataFacade {
 
 			logger.info(String.format("I:--START--:--Search ClinicalData--:refNo/%s:hn/%s:status/%s", refNo, hn, status));
 			
-//			if (paging != null) {
-//				criteria.put("startIndex", paging.getStartIndex());
-//				criteria.put("fetchSize", paging.getFetchSize());
-//				criteria.put("sortBy", paging.getSortBy());
-//				criteria.put("sortAsc", paging.getSortAsc());
-//			} else {
-//				criteria.put("startIndex", 0);
-//				criteria.put("fetchSize", 15);
-//			}
-			
 			int paginatedCount = clinicalDataService.countClinicalDataUsingQuery(criteria, paging);
 			
 			List<TbTClinicalData> clinicalDataList = clinicalDataService.listPaginatedClinicalDataUsingQuery(criteria, paging);
@@ -736,10 +729,10 @@ public class ClinicalDataFacadeImpl implements ClinicalDataFacade {
 			DataTableResults<ClinicalDataDto> results = new DataTableResults<ClinicalDataDto>(dataList, paginatedCount, 0, 15);
 			return results;
 		} catch (ValidationException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by ID--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by ID--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (ServiceException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by ID--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by ID--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);
@@ -903,16 +896,17 @@ public class ClinicalDataFacadeImpl implements ClinicalDataFacade {
 				output.setDiagnosisList(diagnosisDtoList);
 			}
 			
+			logger.info("O:--SUCCESS--:--Get ClinicalData by ID--");
 			return output;
 		} catch (ValidationException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by ID--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by ID--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (ServiceException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by ID--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by ID--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);
-			logger.debug(String.format("O:--FAIL--:--Save ClinicalData--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by ID--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
 			throw new ServiceException(MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), MessageCode.ERROR_SERVICE_UNAVAIL.getDesc(), "", ex.getMessage());
 		}
 	}
@@ -1078,31 +1072,31 @@ public class ClinicalDataFacadeImpl implements ClinicalDataFacade {
 	}
 	
 	@Override
-	public void deleteClinicalData(ClinicalDataDto input) {
+	public void deleteClinicalData(ClinicalDataDto clinicalDataDto) {
 		
 		try {
-			logger.info(String.format("I:--START--:--Delete ClinicalData by Ref--:ref/%s", input.getRef()));
+			logger.info(String.format("I:--START--:--Delete ClinicalData--:ref/%s", clinicalDataDto.getRef()));
 			
-			TbTClinicalData clinicalData = null;
-			
-			if (!StringUtil.isNullOrWhitespace(input.getRef())) {
-				clinicalData = clinicalDataService.getClinicalDataByRef(input.getRef(), AppConstants.STATUS_ACTIVE);
+			if (!StringUtil.isNullOrWhitespace(clinicalDataDto.getRef())) {
+				TbTClinicalData clinicalData = clinicalDataService.getClinicalDataByRef(clinicalDataDto.getRef(), AppConstants.STATUS_ACTIVE);
 
 				if (clinicalData == null) {
-					throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "Clinical data does not exist.");
+					throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "ClinicalData does not exist.");
 				}
+				
+				clinicalDataService.deleteClinicalData(clinicalData);
 			}
 			
-			clinicalDataService.deleteClinicalData(clinicalData);
+			logger.info("O:--SUCCESS--:--Delete ClinicalData--");
 		} catch (ValidationException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by Ref--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Delete ClinicalData--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (ServiceException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by Ref--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Delete ClinicalData--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);
-			logger.debug(String.format("O:--FAIL--:--Get ClinicalData by Ref--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Delete ClinicalData--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
 			throw new ServiceException(MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), MessageCode.ERROR_SERVICE_UNAVAIL.getDesc(), "", ex.getMessage());
 		}
 		

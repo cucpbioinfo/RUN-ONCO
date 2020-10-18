@@ -14,12 +14,29 @@ public class UserDto implements Serializable {
 	 */
 	private static final long serialVersionUID = -8985021046216962732L;
 
-	private Long userId;
+	private Long id;
+	private Long requestedUserId;
 	private String username;
 	private String password;
 	private String accessToken;
 	private String firstName;
 	private String lastName;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getRequestedUserId() {
+		return requestedUserId;
+	}
+
+	public void setRequestedUserId(Long requestedUserId) {
+		this.requestedUserId = requestedUserId;
+	}
 
 	public String getUsername() {
 		return username;
@@ -61,11 +78,5 @@ public class UserDto implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+	
 }

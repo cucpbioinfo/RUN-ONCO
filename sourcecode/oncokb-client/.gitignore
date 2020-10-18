@@ -1,0 +1,5 @@
+.settings/
+.project
+target/
+docs/
+.DS_Store

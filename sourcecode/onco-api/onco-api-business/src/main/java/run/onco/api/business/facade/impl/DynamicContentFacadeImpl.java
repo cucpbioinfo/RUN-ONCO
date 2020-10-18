@@ -16,7 +16,7 @@ import run.onco.api.business.message.pagination.DataTableRequest;
 import run.onco.api.business.message.pagination.DataTableResults;
 import run.onco.api.common.dto.Paging;
 import run.onco.api.common.exception.ServiceException;
-import run.onco.api.common.utils.AppUtil;
+import run.onco.api.common.exception.ValidationException;
 import run.onco.api.common.utils.DateUtil;
 import run.onco.api.common.utils.MessageCode;
 import run.onco.api.persist.entity.TbCDynamicContent;
@@ -63,11 +63,6 @@ public class DynamicContentFacadeImpl implements DynamicContentFacade {
 				componentDto.setInputField(component.getInputField());
 				componentDto.setAnalysisName(component.getAnalysisName());
 				componentDto.setDataTypeAnalysis(component.getDataTypeAnalysis());
-				
-//				if (component.getScreen() != null) {
-//					componentDto.setParentCompName(component.getScreen().getComponentName());
-//				}
-				
 				componentDtoList.add(componentDto);
 			}
 			
@@ -163,15 +158,16 @@ public class DynamicContentFacadeImpl implements DynamicContentFacade {
 		try {
 			logger.info("I:--START--:--Save DynamicContent--");
 			
-			TbMUser user = userService.getActiveUserById(dynamicContentDto.getUserId());
-			if (user == null) {
-				throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "User does not exist.");
+			TbMUser requestedUser = userService.getActiveUserById(dynamicContentDto.getRequestedUserId());
+			if (requestedUser == null) {
+				throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "Requested user does not exist.");
 			}
-
+			
+			List<TbCRole> roles = requestedUser.getRoles();
+			
 			findDuplicateComponentName(dynamicContentDto);
 			
 			TbCDynamicContent dynamicContent = null;
-
 			if (dynamicContentDto.getId() != null) {
 				dynamicContent = dynamicContentService.getDynamicContentById(dynamicContentDto.getId());
 				
@@ -179,21 +175,20 @@ public class DynamicContentFacadeImpl implements DynamicContentFacade {
 					throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "DynamicContent does not exist.");
 				}
 				
-				dynamicContent.setUpdateUser(user);
+				dynamicContent.setUpdateUser(requestedUser);
 				dynamicContent.setUpdateDate(DateUtil.getCurrentDate());
 			} else {
 				dynamicContent = new TbCDynamicContent();
-				dynamicContent.setCreateUser(user);
+				dynamicContent.setCreateUser(requestedUser);
 				dynamicContent.setCreateDate(DateUtil.getCurrentDate());
 			}
 			
-			if (!AppUtil.isObjectEmpty(user.getRoles())) {
-				for(TbCRole role: user.getRoles()) {
-                    role.getDynamicContents().add(dynamicContent);
+			if (roles != null) {
+				for(TbCRole role: roles) {
 					dynamicContent.getRoles().add(role);
 				}
-			}			
-
+			}
+			
 			dynamicContent.setAnalysisName(dynamicContentDto.getAnalysisName());
 			dynamicContent.setComponentName(dynamicContentDto.getComponentName());
 			dynamicContent.setModuleName(dynamicContentDto.getModuleName());
@@ -209,6 +204,36 @@ public class DynamicContentFacadeImpl implements DynamicContentFacade {
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);
 			logger.debug(String.format("O:--FAIL--:--Save DynamicContent--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
+			throw new ServiceException(MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), MessageCode.ERROR_SERVICE_UNAVAIL.getDesc(), "", ex.getMessage());
+		}
+	}
+
+	@Override
+	public void deleteDynamicContent(DynamicContentDto dynamicContentDto) {
+		
+		try {
+			logger.info(String.format("I:--START--:--Delete DynamicContent--:id/%s", dynamicContentDto.getId()));
+			
+			if (dynamicContentDto.getId() != null) {
+				TbCDynamicContent dynamicContent = dynamicContentService.getDynamicContentById(dynamicContentDto.getId());
+				
+				if (dynamicContent == null) {
+					throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "DynamicContent does not exist.");
+				}
+				
+				dynamicContentService.deleteDynamicContent(dynamicContent);
+			}
+			
+			logger.info("O:--SUCCESS--:--Delete DynamicContent--");
+		} catch (ValidationException ex) {
+			logger.debug(String.format("O:--FAIL--:--Delete DynamicContent--:errorMsg/%s", ex.getMessage()));
+			throw ex;
+		} catch (ServiceException ex) {
+			logger.debug(String.format("O:--FAIL--:--Delete DynamicContent--:errorMsg/%s", ex.getMessage()));
+			throw ex;
+		} catch (Exception ex) {
+			logger.error("Exception occur:\n", ex);
+			logger.debug(String.format("O:--FAIL--:--Delete DynamicContent--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
 			throw new ServiceException(MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), MessageCode.ERROR_SERVICE_UNAVAIL.getDesc(), "", ex.getMessage());
 		}
 	}

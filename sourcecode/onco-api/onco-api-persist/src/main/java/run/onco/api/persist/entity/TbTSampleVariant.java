@@ -43,6 +43,7 @@ public class TbTSampleVariant implements Serializable {
 	private String status;
 	private Date importDataDate;
 	private Date annotatedDate;
+	private String vcfVersion;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -152,6 +153,13 @@ public class TbTSampleVariant implements Serializable {
 	public void setAnnotatedDate(Date annotatedDate) {
 		this.annotatedDate = annotatedDate;
 	}
-	
-	
+
+	@Column(name = "VCF_VERSION", length = 10)
+	public String getVcfVersion() {
+		return vcfVersion;
+	}
+
+	public void setVcfVersion(String vcfVersion) {
+		this.vcfVersion = vcfVersion;
+	}
 }

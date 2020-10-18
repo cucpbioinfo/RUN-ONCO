@@ -106,4 +106,21 @@ public class DynamicContentController {
 			return ServiceUtil.buildResponse(header, ((ServiceException)ex).getErrorCode(), ((ServiceException)ex).getErrorDesc());
 		}
 	}
+	
+	@ControllerLogging(AppConstants.ACT_CODE_DELETE_DYNAMIC_CONTENT)
+	@RequestMapping(value = "/" + AppConstants.SECURITY_CONTEXT + "/" + AppConstants.ACT_CODE_DELETE_DYNAMIC_CONTENT, method = { RequestMethod.POST }, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ServiceResponse<?> deleteDynamicContent(@RequestBody
+			@ValidCondition({
+			}) ServiceRequest<DynamicContentDto> request) {
+		
+		Header header = request.getHeader();
+		
+		try {
+			authFacade.verifyServiceRequest(request, AppConstants.ACT_CODE_DELETE_DYNAMIC_CONTENT);
+			dynamicComponentFacade.deleteDynamicContent(request.getData());
+			return ServiceUtil.buildResponse(header, MessageCode.SUCCESS);
+		} catch (ServiceException | ValidationException ex) {
+			return ServiceUtil.buildResponse(header, ((ServiceException)ex).getErrorCode(), ((ServiceException)ex).getErrorDesc());
+		}
+	}
 }

@@ -129,10 +129,10 @@ public class BiospecimenFacadeImpl implements BiospecimenFacade {
 			DataTableResults<BiospecimenDto> results = new DataTableResults<BiospecimenDto>(dataList, paginatedCount, 0, 15);
 			return results;
 		} catch (ValidationException ex) {
-			logger.debug(String.format("O:--FAIL--:--Search Biospecimen--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Search Biospecimen--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (ServiceException ex) {
-			logger.debug(String.format("O:--FAIL--:--Search Biospecimen--:errorMsg/%s", ex.getMessage()));
+			logger.debug(String.format("O:--FAIL--:--Search Biospecimen--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);
@@ -427,16 +427,17 @@ public class BiospecimenFacadeImpl implements BiospecimenFacade {
 			}
 			
 			output.setStatus(biospecimen.getStatus());
+			logger.info("O:--SUCCESS--:--Get Biospecimen by ID--");
 			return output;
 		} catch (ValidationException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (ServiceException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);
-			logger.debug(String.format("O:--FAIL--:--Save Biospecimen--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save Biospecimen--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
 			throw new ServiceException(MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), MessageCode.ERROR_SERVICE_UNAVAIL.getDesc(), "", ex.getMessage());
 		}
 	}
@@ -456,15 +457,17 @@ public class BiospecimenFacadeImpl implements BiospecimenFacade {
 				
 				biospecimenService.deleteBiospecimen(biospecimen);
 			}
+			
+			logger.info("O:--SUCCESS--:--Delete Biospecimen by ID--");
 		} catch (ValidationException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorMsg/%s", ex.getMessage()));
 			throw ex;
 		} catch (ServiceException ex) {
-			logger.debug(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorMsg/%s", ex.getMessage()));
 			throw ex;
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);
-			logger.debug(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Get Biospecimen by ID--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
 			throw new ServiceException(MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), MessageCode.ERROR_SERVICE_UNAVAIL.getDesc(), "", ex.getMessage());
 		}
 	}
@@ -474,21 +477,23 @@ public class BiospecimenFacadeImpl implements BiospecimenFacade {
 	public BiospecimenDto saveBiospecimen(BiospecimenDto biospecimenDto) {
 		
 		try {
+			logger.info("I:--START--:--Save Biospecimen--");
 			TbTBiospecimen biospecimen = this.prepareBiospecimen(biospecimenDto);
 			biospecimenService.saveBiospecimen(biospecimen);
 
 			BiospecimenDto output = new BiospecimenDto();
 			output.setRef(biospecimen.getRefNo());
+			logger.info("O:--SUCCESS--:--Save Biospecimen--");
 			return output;
 		} catch (ValidationException ex) {
-			logger.debug(String.format("O:--FAIL--:--Save Biospecimen--:errorMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save Biospecimen--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (ServiceException ex) {
-			logger.debug(String.format("O:--FAIL--:--Save Biospecimen--:errorMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save Biospecimen--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);
-			logger.debug(String.format("O:--FAIL--:--Save Biospecimen--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Save Biospecimen--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
 			throw new ServiceException(MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), MessageCode.ERROR_SERVICE_UNAVAIL.getDesc(), "", ex.getMessage());
 		}
 	}
@@ -509,14 +514,14 @@ public class BiospecimenFacadeImpl implements BiospecimenFacade {
 			}
 			
 		} catch (ValidationException ex) {
-			logger.debug(String.format("O:--FAIL--:--Find Duplicate BioRef--:errorMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Find Duplicate BioRef--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (ServiceException ex) {
-			logger.debug(String.format("O:--FAIL--:--Find Duplicate BioRef--:errorMsg/%s", ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Find Duplicate BioRef--:errorDesc/%s", ex.getMessage()));
 			throw ex;
 		} catch (Exception ex) {
 			logger.error("Exception occur:\n", ex);
-			logger.debug(String.format("O:--FAIL--:--Find Duplicate BioRef--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
+			logger.info(String.format("O:--FAIL--:--Find Duplicate BioRef--:errorCode/%s:errorDesc/%s", MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), ex.getMessage()));
 			throw new ServiceException(MessageCode.ERROR_SERVICE_UNAVAIL.getCode(), MessageCode.ERROR_SERVICE_UNAVAIL.getDesc(), "", ex.getMessage());
 		}
 	}

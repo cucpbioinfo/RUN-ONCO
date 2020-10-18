@@ -172,19 +172,19 @@ public class PatientFacadeImpl implements PatientFacade {
 
 		TbMPatient patient = this.findPatientById(patientDto.getId());
 		
-		if (patientDto.getUserId() != null) {
-			TbMUser user = userService.getActiveUserById(patientDto.getUserId());
+		if (patientDto.getRequestedUserId() != null) {
+			TbMUser requestedUser = userService.getActiveUserById(patientDto.getRequestedUserId());
 			
-			if (user == null) {
-				throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "User does not exist.");
+			if (requestedUser == null) {
+				throw new ServiceException(MessageCode.ERROR_DATA_NOT_FOUND.getCode(), "Requested user does not exist.");
 			}
 			
 			if (patientDto.getId() == null) {
-				patient.setCreateUser(user);
+				patient.setCreateUser(requestedUser);
 				patient.setCreateDate(DateUtil.getCurrentDate());
 			}
 			
-			patient.setUpdateUser(user);
+			patient.setUpdateUser(requestedUser);
 			patient.setUpdateDate(DateUtil.getCurrentDate());
 		}
 		

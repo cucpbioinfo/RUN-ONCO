@@ -278,7 +278,7 @@ public class VariantCallDaoImpl implements VariantCallDao {
 		
 		String columns = "";
 		String joinCondition = "";
-		String whereClause = "";
+//		String whereClause = "";
 		
 		for (int i = 1; i <= ids.length; i++) {
 			columns += " $1 v$2.SAMPLE_VAR_ID as SPECIMEN_$2 ".replaceAll("\\$1", i != 1 ? ", " : "").replaceAll("\\$2", String.valueOf(i));
@@ -294,11 +294,11 @@ public class VariantCallDaoImpl implements VariantCallDao {
 							.replaceAll("\\$1", String.valueOf(i))
 							.replaceAll("\\$2", ids[i-1].toString());
 			
-			if( i == 2 ) {
-				whereClause += " v$1.SAMPLE_VAR_ID <=> v$2.SAMPLE_VAR_ID ".replaceAll("\\$1", String.valueOf(i - 1)).replaceAll("\\$2", String.valueOf(i));
-			} else if(i > 2 && i % 2 == 0) {
-				whereClause += " AND v$1.SAMPLE_VAR_ID <=> v$2.SAMPLE_VAR_ID ".replaceAll("\\$1", String.valueOf(i - 1)).replaceAll("\\$2", String.valueOf(i));
-			}
+//			if( i == 2 ) {
+//				whereClause += " v$1.SAMPLE_VAR_ID <=> v$2.SAMPLE_VAR_ID ".replaceAll("\\$1", String.valueOf(i - 1)).replaceAll("\\$2", String.valueOf(i));
+//			} else if(i > 2 && i % 2 == 0) {
+//				whereClause += " AND v$1.SAMPLE_VAR_ID <=> v$2.SAMPLE_VAR_ID ".replaceAll("\\$1", String.valueOf(i - 1)).replaceAll("\\$2", String.valueOf(i));
+//			}
 		}
 
 		String sql = "SELECT 'Y' as ONCOKB_ANNOTATED, CONCAT(var.CHROMOSOME,':',var.POSITION,' ', var.REF_ALLELE, ' / ', var.ALT_ALLELE) as VARIANT, var.* " +
@@ -312,7 +312,7 @@ public class VariantCallDaoImpl implements VariantCallDao {
 					 "			INNER JOIN TB_T_VARIANT_ANNOTATION a ON a.VAR_ID = v.VAR_ID " + 
 					 "			WHERE s.SAMPLE_VAR_ID IN ( " + StringUtil.join(ids) + " ) " +
 					 " 			AND a.ONCOKB_ANNOTATED = 'Y' " + 
-					 "	) var " + joinCondition + String.format(" WHERE NOT ( %s ) ", whereClause) +
+					 "	) var " + joinCondition /*+ String.format(" WHERE NOT ( %s ) ", whereClause)*/ +
 					 ") var ";
 		
 		// Order by
@@ -354,7 +354,7 @@ public class VariantCallDaoImpl implements VariantCallDao {
 		Long[] ids =  AppUtil.getMapValue(criteria, "ids");
 		
 		String joinCondition = "";
-		String whereClause = "";
+//		String whereClause = "";
 		
 		for (int i = 1; i <= ids.length; i++) {
 
@@ -369,11 +369,11 @@ public class VariantCallDaoImpl implements VariantCallDao {
 							.replaceAll("\\$1", String.valueOf(i))
 							.replaceAll("\\$2", ids[i-1].toString());
 			
-			if( i == 2 ) {
-				whereClause += " v$1.SAMPLE_VAR_ID <=> v$2.SAMPLE_VAR_ID ".replaceAll("\\$1", String.valueOf(i - 1)).replaceAll("\\$2", String.valueOf(i));
-			} else if(i > 2 && i % 2 == 0) {
-				whereClause += " AND v$1.SAMPLE_VAR_ID <=> v$2.SAMPLE_VAR_ID ".replaceAll("\\$1", String.valueOf(i - 1)).replaceAll("\\$2", String.valueOf(i));
-			}
+//			if( i == 2 ) {
+//				whereClause += " v$1.SAMPLE_VAR_ID <=> v$2.SAMPLE_VAR_ID ".replaceAll("\\$1", String.valueOf(i - 1)).replaceAll("\\$2", String.valueOf(i));
+//			} else if(i > 2 && i % 2 == 0) {
+//				whereClause += " AND v$1.SAMPLE_VAR_ID <=> v$2.SAMPLE_VAR_ID ".replaceAll("\\$1", String.valueOf(i - 1)).replaceAll("\\$2", String.valueOf(i));
+//			}
 		}
 		
 		String sql = "SELECT COUNT(var.POSITION) " +
@@ -384,7 +384,7 @@ public class VariantCallDaoImpl implements VariantCallDao {
 					 "		INNER JOIN TB_T_VARIANT_ANNOTATION a ON a.VAR_ID = v.VAR_ID " + 
 					 "		WHERE s.SAMPLE_VAR_ID IN ( " + StringUtil.join(ids) + " ) " +
 					 " 		AND a.ONCOKB_ANNOTATED = 'Y' " + 
-					 ") var " + joinCondition + String.format(" WHERE NOT ( %s ) ", whereClause);
+					 ") var " + joinCondition /*+ String.format(" WHERE NOT ( %s ) ", whereClause)*/;
 		
 		logger.debug(String.format("I:--START--:--Get Count VariantComparison--:sql/%s", sql));
 
