@@ -1,4 +1,4 @@
-FROM mysql:5.7.21
+FROM mysql:5.7
 
 ADD oncodb-20190927.sql /docker-entrypoint-initdb.d
 

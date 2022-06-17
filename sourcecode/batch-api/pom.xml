@@ -6,21 +6,20 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>batch-api</name>
 	<description>BATCH API : Batch Module</description>
-	
+
 	<!-- Inherit defaults from Spring Boot -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.6.RELEASE</version>
 	</parent>
-	
+
 	<properties>
 		<!-- Generic properties -->
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<resource.directory>src/main/resources</resource.directory>
-		<!-- <buildNumber>0</buildNumber> -->
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
@@ -159,7 +158,7 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
-		
+
 		<dependency>
 	        <groupId>org.quartz-scheduler</groupId>
 	        <artifactId>quartz</artifactId>
@@ -176,12 +175,6 @@
 			<artifactId>springfox-swagger2</artifactId>
 			<version>${swagger.version}</version>
 			<scope>compile</scope>
-			<!-- <exclusions>
-				<exclusion>
-					<groupId>com.google.guava</groupId>
-					<artifactId>guava</artifactId>
-				</exclusion>
-			</exclusions> -->
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -190,8 +183,6 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter</artifactId> 
-			</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -218,7 +209,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
@@ -229,10 +220,10 @@
 			<artifactId>jjwt</artifactId>
 			<version>${jjwt.version}</version>
 		</dependency>
-		
+
 	</dependencies>
 
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<build>
 
 		<plugins>
@@ -277,7 +268,7 @@
 				<!-- MySQL -->
 				<datasource.type>DIRECT</datasource.type>
 				<datasource.driver>com.mysql.jdbc.Driver</datasource.driver>
-				<datasource.url>jdbc:mysql://localhost:6004/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false</datasource.url>
+				<datasource.url>jdbc:mysql://onco-db:6004/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false&amp;autoReconnect=true</datasource.url>
 				<datasource.username>ONCO</datasource.username>
 				<datasource.password>+UJiVUL29Y3xjsLVnrVw7G6V7KW1Mw/t</datasource.password>
 				<!-- <datasource.password>password</datasource.password> -->
@@ -302,18 +293,18 @@
 				<!-- MySQL -->
 				<datasource.type>DIRECT</datasource.type>
 				<datasource.driver>com.mysql.jdbc.Driver</datasource.driver>
-				<datasource.url>jdbc:mysql://onco-db:3306/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false</datasource.url>
+				<datasource.url>jdbc:mysql://onco-db:3306/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false&amp;autoReconnect=true</datasource.url>
 				<datasource.username>ONCO</datasource.username>
 				<datasource.password>+UJiVUL29Y3xjsLVnrVw7G6V7KW1Mw/t</datasource.password>
 				<!-- <datasource.password>password</datasource.password> -->
 				<!-- MongoDB -->
-				<mongodb.uri>mongodb://onco-mongo:27017</mongodb.uri>
+				<mongodb.uri>mongodb://onco-mongo:6006</mongodb.uri>
 				<mongodb.username>ONCO</mongodb.username>
 				<mongodb.password>+UJiVUL29Y3xjsLVnrVw7G6V7KW1Mw/t</mongodb.password>
 				<!-- Others -->
 				<log.level>DEBUG</log.level>
-				<log.file.path>/opt/jboss/wildfly/standalone/app/logs</log.file.path>
-				<data.file.path>/opt/jboss/wildfly/standalone/app/data/run-onco/uploads</data.file.path>
+				<log.file.path>/app/logs</log.file.path>
+				<data.file.path>/app/data/uploads</data.file.path>
 			</properties>
 		</profile>
 	</profiles>

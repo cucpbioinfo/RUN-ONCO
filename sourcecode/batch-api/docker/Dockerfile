@@ -8,7 +8,7 @@ RUN mkdir -p /app/data/downloads && \
 WORKDIR /deployments
 
 # Set application's JAR file
-ARG JAR_FILE=/onco-api.jar
+ARG JAR_FILE=/batch-api.jar
 
 # Add the application's JAR file to the container
 ADD ${JAR_FILE} /deployments/app.jar

@@ -1,4 +1,4 @@
-FROM mysql:5.7.21
+FROM mysql:5.7
 
 ADD oncodb-20191121-dyna-content.sql /docker-entrypoint-initdb.d
 

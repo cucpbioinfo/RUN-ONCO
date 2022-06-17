@@ -1,10 +1,19 @@
-FROM jboss/wildfly
-ADD batch-api.war /opt/jboss/wildfly/standalone/deployments/
+# Use official base image of Java Runtim
+FROM openjdk:8-jdk-slim-buster
 
-RUN mkdir -p /opt/jboss/wildfly/standalone/app/data/downloads && \
-  mkdir /opt/jboss/wildfly/standalone/app/data/uploads && \
-  mkdir /opt/jboss/wildfly/standalone/app/logs
+RUN mkdir -p /app/data/downloads && \
+  mkdir -p /app/data/uploads && \
+  mkdir -p /app/logs
 
-ENV TZ Asia/Bangkok
+WORKDIR /deployments
 
-EXPOSE 8080
+# Set application's JAR file
+ARG JAR_FILE=/batch-api.jar
+
+# Add the application's JAR file to the container
+ADD ${JAR_FILE} /deployments/app.jar
+
+ENV JAVA_OPTS=""
+
+# Run the JAR file
+ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /deployments/app.jar

@@ -1,4 +1,4 @@
-version: "2.1"
+version: "3"
 
 services:
   db:
@@ -6,6 +6,7 @@ services:
     restart: always
     build: ./onco-db
     image: onco-db
+    container_name: onco-db
     environment:
       MYSQL_ROOT_PASSWORD: P@ssw0rd
       MYSQL_USER: ONCO
@@ -30,6 +31,7 @@ services:
     restart: always
     build: ./data-anlys-api
     image: data-anlys-api
+    container_name: data-anlys-api
     expose:
       - "5000"
     ports:
@@ -42,13 +44,14 @@ services:
     restart: always
     build: ./onco-api
     image: onco-api
+    container_name: onco-api
     volumes:
-      - data_volume:/opt/jboss/wildfly/standalone/app/data
-      - log_volume:/opt/jboss/wildfly/standalone/app/logs
+      - data_volume:/app/data
+      - log_volume:/app/logs
     expose:
-      - "8080"
+      - "8081"
     ports:
-      - "6000:8080"
+      - "6000:8081"
     networks:
       - network
     depends_on:
@@ -58,7 +61,7 @@ services:
       - db:onco-db
     healthcheck:
       test:
-        ["CMD", "curl", "-f", "http://localhost:8080/onco-api/getAppVersion"]
+        ["CMD", "curl", "-f", "http://localhost:6000/onco-api/getAppVersion"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -68,13 +71,14 @@ services:
     restart: always
     build: ./batch
     image: onco-api-batch
+    container_name: onco-api-batch
     volumes:
-      - data_volume:/opt/jboss/wildfly/standalone/app/data
-      - log_volume:/opt/jboss/wildfly/standalone/app/logs
+      - data_volume:/app/data
+      - log_volume:/app/logs
     expose:
-      - "8080"
+      - "8082"
     ports:
-      - "6003:8080"
+      - "6003:8082"
     networks:
       - network
     depends_on:
@@ -87,6 +91,7 @@ services:
     restart: always
     build: ./onco-web
     image: onco-web
+    container_name: onco-web
     expose:
       - "80"
     ports:

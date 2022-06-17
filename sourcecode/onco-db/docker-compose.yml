@@ -1,14 +1,15 @@
-db:
-  image: onco-db
-  container_name: onco-db
-  environment:
-    MYSQL_ROOT_PASSWORD: P@ssw0rd
-    MYSQL_USER: ONCO
-    MYSQL_PASSWORD: password
-    MYSQL_DATABASE: ONCODB
-  volumes:
-    - /var/lib/mysql
-  expose:
-    - "3306"
-  ports:
-    - "6004:3306"
+services:
+  db:
+    image: onco-db
+    container_name: onco-db
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssw0rd
+      MYSQL_USER: ONCO
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: ONCODB
+    volumes:
+      - /var/lib/mysql
+    expose:
+      - "3306"
+    ports:
+      - "6004:3306"
