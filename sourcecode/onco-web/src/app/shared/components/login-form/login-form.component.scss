@@ -1,6 +1,6 @@
 @import "../../../theme/variables.scss";
 
-/deep/ app-login-form {
+::ng-deep app-login-form {
     .form-inline .form-group {
         margin: 0 !important;
         padding-right: 5px !important;

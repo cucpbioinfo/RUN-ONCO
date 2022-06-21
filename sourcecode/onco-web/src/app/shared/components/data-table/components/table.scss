@@ -1,69 +1,69 @@
 /* bootstrap override: */
 
-/deep/ .data-table-row-wrapper {
+::ng-deep .data-table-row-wrapper {
     border-top: 0 none !important;
 }
 
-/deep/ .substitute-rows {
+::ng-deep .substitute-rows {
     border-top: 0 none !important;
 }
 
-/deep/ .data-table-box td {
+::ng-deep .data-table-box td {
     height: 28px !important;
 }
 
-/deep/ .data-table.table td {
+::ng-deep .data-table.table td {
     vertical-align: middle;
 }
 
-/deep/ .data-table > thead > tr > th,
-/deep/ .data-table > tbody > tr > td {
+::ng-deep .data-table > thead > tr > th,
+::ng-deep .data-table > tbody > tr > td {
     overflow: hidden;
 }
 
 /* I can't use the bootstrap striped table, because of the expandable rows */
-/deep/ .row-odd {
+::ng-deep .row-odd {
     // background-color: rgba(0, 0, 0, 0.05);
     background-color: transparent !important;
 }
-/deep/ .row-even {
+::ng-deep .row-even {
     background-color: transparent !important;
 }
 
-/deep/ .data-table {
+::ng-deep .data-table {
     // box-shadow: 0 0 15px rgb(236, 236, 236);
     table-layout: fixed;
 }
 
 /* header cells: */
 
-/deep/ .column-header {
+::ng-deep .column-header {
     position: relative;
     padding: 0;
 }
-/deep/ .expand-column-header {
+::ng-deep .expand-column-header {
     width: 50px;
 }
-/deep/ .select-column-header {
+::ng-deep .select-column-header {
     width: 50px;
     text-align: center;
 }
-/deep/ .index-column-header {
+::ng-deep .index-column-header {
     width: 40px;
 }
-/deep/ .column-header.sortable {
+::ng-deep .column-header.sortable {
     cursor: pointer;
 }
-/deep/ .column-header .column-sort-icon {
+::ng-deep .column-header .column-sort-icon {
     float: right;
 }
-/deep/ .column-header.resizable .column-sort-icon {
+::ng-deep .column-header.resizable .column-sort-icon {
     margin-right: 8px;
 }
-/deep/ .column-header .column-sort-icon .column-sortable-icon {
+::ng-deep .column-header .column-sort-icon .column-sortable-icon {
     color: lightgray;
 }
-/deep/ .column-header .column-resize-handle {
+::ng-deep .column-header .column-resize-handle {
     position: absolute;
     top: 0;
     right: 0;
@@ -76,11 +76,11 @@
 
 /* cover: */
 
-/deep/ .data-table-box {
+::ng-deep .data-table-box {
     position: relative;
 }
 
-/deep/ .loading-cover {
+::ng-deep .loading-cover {
     // position: absolute;
     // width: 100%;
     // height: 100%;

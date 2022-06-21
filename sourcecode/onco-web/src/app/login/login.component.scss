@@ -1,6 +1,6 @@
 @import "../theme/variables.scss";
 
-/deep/ app-login {
+::ng-deep app-login {
     .login-bg {
         background: url($base-url+"/assets/images/run-onco-banner.png")
             white top center no-repeat;

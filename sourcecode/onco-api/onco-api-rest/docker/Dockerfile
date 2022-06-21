@@ -1,5 +1,5 @@
 # Use official base image of Java Runtim
-FROM openjdk:8-jdk-slim-buster
+FROM openjdk:8u212-jdk-alpine3.9
 
 RUN mkdir -p /app/data/downloads && \
   mkdir -p /app/data/uploads && \

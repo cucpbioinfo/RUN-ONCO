@@ -1,7 +1,7 @@
-/deep/ app-patho-list, 
-/deep/ app-clinical-course-list, 
-/deep/ app-diagnosis-list,
-/deep/ app-survival-followup-list {
+::ng-deep app-patho-list, 
+::ng-deep app-clinical-course-list, 
+::ng-deep app-diagnosis-list,
+::ng-deep app-survival-followup-list {
     .table td {
         vertical-align: middle !important;
     }

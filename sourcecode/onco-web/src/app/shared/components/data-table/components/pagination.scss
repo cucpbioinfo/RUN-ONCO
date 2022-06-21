@@ -1,22 +1,22 @@
-    /deep/ .pagination-box {
+    ::ng-deep .pagination-box {
         position: relative;
         margin-top: -10px;
     }
-    /deep/ .pagination-range {
+    ::ng-deep .pagination-range {
         margin-top: 7px;
         margin-left: 3px;
         display: inline-block;
     }
-    /deep/ .pagination-controllers {
+    ::ng-deep .pagination-controllers {
         float: right;
     }
-    /deep/ .pagination-controllers input {
+    ::ng-deep .pagination-controllers input {
         min-width: 60px;
         /*padding: 1px 0px 0px 5px;*/
         text-align: right;
     }
 
-    /deep/ .pagination-limit {
+    ::ng-deep .pagination-limit {
         margin-right: 25px;
         display: inline-table;
         // width: 110px;
@@ -32,10 +32,10 @@
             width: 100px!important;
         }
     }
-    /deep/ .pagination-pages {
+    ::ng-deep .pagination-pages {
         display: inline-block;
     }
-    /deep/ .pagination-page {
+    ::ng-deep .pagination-page {
         display: inline-table;
 
         .input-group-addon {
@@ -50,23 +50,23 @@
             width: 100px;
         }
     }
-    /deep/ .pagination-box button {
+    ::ng-deep .pagination-box button {
         outline: none !important;
     }
-    /deep/ .pagination-prevpage,
-    /deep/ .pagination-nextpage,
-    /deep/ .pagination-firstpage,
-    /deep/ .pagination-lastpage {
+    ::ng-deep .pagination-prevpage,
+    ::ng-deep .pagination-nextpage,
+    ::ng-deep .pagination-firstpage,
+    ::ng-deep .pagination-lastpage {
         // vertical-align: top;
         vertical-align: initial;
         font-size: 20px;
         padding: 0 10px 0 0;
     }
 
-    /deep/ .pagination-nextpage {
+    ::ng-deep .pagination-nextpage {
         padding-left: 10px;
     }
-    /deep/ .pagination-reload {
+    ::ng-deep .pagination-reload {
         color: gray;
         font-size: 12px;
     }

@@ -169,12 +169,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.apache.tomcat.embed</groupId>
-					<artifactId>tomcat-embed-websocket</artifactId>
-				</exclusion>
-			</exclusions>
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.apache.tomcat.embed</groupId>-->
+<!--					<artifactId>tomcat-embed-websocket</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -243,7 +243,7 @@
 				<activatedProperties>dev</activatedProperties>
 				<datasource.type>DIRECT</datasource.type>
 				<datasource.driver>com.mysql.jdbc.Driver</datasource.driver>
-				<datasource.url>jdbc:mysql://onco-db:6004/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;autoReconnect=true</datasource.url>
+				<datasource.url>jdbc:mysql://host.docker.internal:6004/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true</datasource.url>
 				<datasource.username>ONCO</datasource.username>
 				<!-- <datasource.password>password</datasource.password> -->
 				<datasource.password>+UJiVUL29Y3xjsLVnrVw7G6V7KW1Mw/t</datasource.password>
@@ -264,7 +264,7 @@
 				<activatedProperties>prod</activatedProperties>
 				<datasource.type>DIRECT</datasource.type>
 				<datasource.driver>com.mysql.jdbc.Driver</datasource.driver>
-				<datasource.url>jdbc:mysql://onco-db:3306/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;autoReconnect=true</datasource.url>
+				<datasource.url>jdbc:mysql://host.docker.internal:6004/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true</datasource.url>
 				<datasource.username>ONCO</datasource.username>
 				<!-- <datasource.password>password</datasource.password> -->
 				<datasource.password>+UJiVUL29Y3xjsLVnrVw7G6V7KW1Mw/t</datasource.password>
@@ -272,8 +272,8 @@
 				<log.file.path>/app/logs</log.file.path>
 				<data.file.path>/app/data/uploads</data.file.path>
 				<sourcecode.file.path>/app/data/downloads</sourcecode.file.path>
-				<clustergrammer.endpoint.url>http://data-anlys-api:5000/clustergrammer</clustergrammer.endpoint.url>
-				<stringdb.endpoint.url>http://data-anlys-api:5000/get-interactions</stringdb.endpoint.url>
+				<clustergrammer.endpoint.url>http://host.docker.internal:6005/clustergrammer</clustergrammer.endpoint.url>
+				<stringdb.endpoint.url>http://host.docker.internal:6005/get-interactions</stringdb.endpoint.url>
 			</properties>
 		</profile>
 	</profiles>

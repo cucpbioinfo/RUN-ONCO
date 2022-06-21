@@ -1,6 +1,6 @@
 @import "../../../../../theme/oncokb.scss";
 
-/deep/ app-actionable-variant-view-modal {
+::ng-deep app-actionable-variant-view-modal {
     .m-title:first-letter {
         text-transform: uppercase;
     }

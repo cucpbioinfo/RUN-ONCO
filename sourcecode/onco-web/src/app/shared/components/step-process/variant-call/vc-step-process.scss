@@ -1,4 +1,4 @@
-/deep/ app-variant-call-list {
+::ng-deep app-variant-call-list {
     .table td {
         vertical-align: middle !important;
     }
@@ -7,7 +7,7 @@
     }
 }
 
-/deep/ app-view-variant-annotation {
+::ng-deep app-view-variant-annotation {
     .icon-oncokb {
         cursor: pointer!important;
         cursor: hand!important;

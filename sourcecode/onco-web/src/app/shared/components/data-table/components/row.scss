@@ -1,12 +1,12 @@
-    /deep/ .select-column {
+    ::ng-deep .select-column {
         text-align: center;
     }
 
-    /deep/ .row-expand-button {
+    ::ng-deep .row-expand-button {
         cursor: pointer;
         text-align: center;
     }
 
-    /deep/ .clickable {
+    ::ng-deep .clickable {
         cursor: pointer;
     }

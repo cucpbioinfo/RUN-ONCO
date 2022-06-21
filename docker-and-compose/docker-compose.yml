@@ -7,6 +7,8 @@ services:
     build: ./onco-db
     image: onco-db
     container_name: onco-db
+    platform: linux/x86_64
+    tty: true
     environment:
       MYSQL_ROOT_PASSWORD: P@ssw0rd
       MYSQL_USER: ONCO
@@ -18,8 +20,8 @@ services:
       - "3306"
     ports:
       - "6004:3306"
-    networks:
-      - network
+    # networks:
+    #   - network
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 30s
@@ -32,12 +34,13 @@ services:
     build: ./data-anlys-api
     image: data-anlys-api
     container_name: data-anlys-api
+    platform: linux/x86_64
     expose:
       - "5000"
     ports:
-      - "6001:5000"
-    networks:
-      - network
+      - "6005:5000"
+    # networks:
+    #   - network
 
   backend:
     user: $UID
@@ -45,26 +48,27 @@ services:
     build: ./onco-api
     image: onco-api
     container_name: onco-api
+    platform: linux/x86_64
     volumes:
       - data_volume:/app/data
       - log_volume:/app/logs
     expose:
-      - "8081"
+      - "6006"
     ports:
-      - "6000:8081"
-    networks:
-      - network
+      - "6006:11116"
+    # networks:
+    #   - network
     depends_on:
       db:
         condition: service_healthy
     links:
       - db:onco-db
-    healthcheck:
-      test:
-        ["CMD", "curl", "-f", "http://localhost:6000/onco-api/getAppVersion"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
+    # healthcheck:
+    #   test:
+    #     ["CMD", "curl", "-f", "http://localhost:11116/onco-api/getAppVersion"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 5
 
   batch:
     user: $UID
@@ -72,15 +76,16 @@ services:
     build: ./batch
     image: onco-api-batch
     container_name: onco-api-batch
+    platform: linux/x86_64
     volumes:
       - data_volume:/app/data
       - log_volume:/app/logs
     expose:
-      - "8082"
+      - "11117"
     ports:
-      - "6003:8082"
-    networks:
-      - network
+      - "6007:11117"
+    # networks:
+    #   - network
     depends_on:
       db:
         condition: service_healthy
@@ -92,22 +97,23 @@ services:
     build: ./onco-web
     image: onco-web
     container_name: onco-web
+    platform: linux/x86_64
     expose:
       - "80"
     ports:
-      - "6002:80"
-    networks:
-      - network
-    depends_on:
-      backend:
-        condition: service_healthy
+      - "6008:80"
+    # networks:
+    #   - network
+    # depends_on:
+    #   backend:
+    #     condition: service_healthy
     links:
       - backend:onco-api
       - anlys_api:data-anlys-api
 
-networks:
-  network:
-    driver: bridge
+# networks:
+#   network:
+#     driver: bridge
 
 volumes:
   mysql_volume:

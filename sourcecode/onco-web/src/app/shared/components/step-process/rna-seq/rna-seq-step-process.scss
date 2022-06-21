@@ -1,4 +1,4 @@
-/deep/ app-rna-seq-form-modal {
+::ng-deep app-rna-seq-form-modal {
     .custom-file-label {
         margin-top: 21px!important;
     }
@@ -13,7 +13,7 @@
     }
 }
 
-/deep/ app-sample-rna-seq-list {
+::ng-deep app-sample-rna-seq-list {
     .table td {
         vertical-align: middle !important;
     }

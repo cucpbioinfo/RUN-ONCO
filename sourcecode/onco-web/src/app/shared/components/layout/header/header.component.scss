@@ -1,6 +1,6 @@
 @import '../../../../theme/variables.scss';
 
-/deep/ app-header {
+::ng-deep app-header {
     .nav-bg {
         background-color: $topnav-background-color!important;
         // background-color: white;

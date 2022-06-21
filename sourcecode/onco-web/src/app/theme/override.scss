@@ -1,35 +1,35 @@
 @import "./variables.scss";
 
-/deep/ html,
-/deep/ body {
+::ng-deep html,
+::ng-deep body {
     font: 14px "GothamBook", Helvetica, Arial, sans-serif !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
     color: #000 !important;
     font-weight: 600 !important;
 }
-/deep/ .container-fluid {
+::ng-deep .container-fluid {
     position: absolute;
     height: 100%;
     overflow: auto;
 }
-/deep/ h1, h4, h5, h6 {
+::ng-deep h1, h4, h5, h6 {
     font-family: "GothamBold", Helvetica, Arial, sans-serif !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
     font-weight: normal !important;
 }
-/deep/ h2 {
+::ng-deep h2 {
     font-size: 18px !important;
     margin: 0 !important;
     font-weight: 300 !important;
 }
-/deep/ h3 {
+::ng-deep h3 {
     font-size: 16px !important;
     margin: 0 !important;
     font-weight: 300 !important;
 }
-/deep/ .form-control {
+::ng-deep .form-control {
     -webkit-border-radius: 0px !important;
     -moz-border-radius: 0px !important;
     border-radius: 0px !important;
@@ -44,79 +44,79 @@
     -moz-osx-font-smoothing: grayscale !important;
     color: #333 !important;
 }
-/deep/ .form-control::-webkit-input-placeholder {
+::ng-deep .form-control::-webkit-input-placeholder {
     font-size: 14px !important;
 } /* WebKit, Blink, Edge */
-/deep/ .form-control:-moz-placeholder {
+::ng-deep .form-control:-moz-placeholder {
     font-size: 14px !important;
 } /* Mozilla Firefox 4 to 18 */
-/deep/ .form-control::-moz-placeholder {
+::ng-deep .form-control::-moz-placeholder {
     font-size: 14px !important;
 } /* Mozilla Firefox 19+ */
-/deep/ .form-control:-ms-input-placeholder {
+::ng-deep .form-control:-ms-input-placeholder {
     font-size: 14px !important;
 } /* Internet Explorer 10-11 */
-/deep/ .form-control::-ms-input-placeholder {
+::ng-deep .form-control::-ms-input-placeholder {
     font-size: 14px !important;
 } /* Microsoft Edge */
-/deep/ .card {
+::ng-deep .card {
     margin-top: 0.3em !important;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
 }
-/deep/ .card-block {
+::ng-deep .card-block {
     text-align: left;
 }
-/deep/ .page-title {
+::ng-deep .page-title {
     font-family: "GothamBold", Helvetica, Arial, sans-serif !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
     color: $color-blue;
 }
-/deep/ .margin-top-5 {
+::ng-deep .margin-top-5 {
     margin-top: 5px !important;
 }
-/deep/ .margin-top-20 {
+::ng-deep .margin-top-20 {
     margin-top: 20px !important;
 }
-/deep/ .margin-top-30 {
+::ng-deep .margin-top-30 {
     margin-top: 20px !important;
 }
-/deep/ .margin-bottom-5 {
+::ng-deep .margin-bottom-5 {
     margin-bottom: 5px !important;
 }
-/deep/ .margin-bottom-10 {
+::ng-deep .margin-bottom-10 {
     margin-bottom: 10px !important;
 }
-/deep/ .margin-bottom-15 {
+::ng-deep .margin-bottom-15 {
     margin-bottom: 15px !important;
 }
-/deep/ .margin-bottom-20 {
+::ng-deep .margin-bottom-20 {
     margin-bottom: 20px !important;
 }
-/deep/ .margin-left-5 {
+::ng-deep .margin-left-5 {
     margin-left: 5px !important;
 }
-/deep/ .padding-top-10 {
+::ng-deep .padding-top-10 {
     padding-top: 10px !important;
 }
-/deep/ .btn.blue:not(.btn-outline) {
+::ng-deep .btn.blue:not(.btn-outline) {
     color: #fff;
     background-color: #3598dc;
     border-color: #3598dc;
 }
-/deep/ .btn:not(.btn-sm):not(.btn-lg) {
+::ng-deep .btn:not(.btn-sm):not(.btn-lg) {
     line-height: 1.44;
 }
-/deep/ .btn {
+::ng-deep .btn {
     outline: 0 !important;
 }
-/deep/ .btn,
+::ng-deep .btn,
 .form-control {
     box-shadow: none !important;
 }
-/deep/ .btn {
+::ng-deep .btn {
     display: inline-block;
     margin-bottom: 0;
     font-weight: 700 !important;
@@ -137,68 +137,68 @@
     -moz-border-radius: 0px !important;
     border-radius: 2px !important;
 }
-/deep/ .btn.green:not(.btn-outline) {
+::ng-deep .btn.green:not(.btn-outline) {
     color: #fff;
     background-color: #32c5d2;
     border-color: #32c5d2;
 }
-/deep/ .btn.default:not(.btn-outline) {
+::ng-deep .btn.default:not(.btn-outline) {
     color: #666;
     background-color: #e1e5ec;
     border-color: #e1e5ec;
 }
-/deep/ .btn.purple:not(.btn-outline) {
+::ng-deep .btn.purple:not(.btn-outline) {
     color: #fff;
     background-color: #8e44ad;
     border-color: #8e44ad;
 }
-/deep/ .btn.purple-plum:not(.btn-outline) {
+::ng-deep .btn.purple-plum:not(.btn-outline) {
     color: #fff;
     background-color: #8775a7;
     border-color: #8775a7;
 }
-/deep/ .btn.red:not(.btn-outline) {
+::ng-deep .btn.red:not(.btn-outline) {
     color: #fff;
     background-color: #e7505a;
     border-color: #e7505a;
 }
-/deep/ .btn.gray:not(.btn-outline) {
+::ng-deep .btn.gray:not(.btn-outline) {
     color: #333;
     background-color: #fff;
     border-color: #ccc;
 }
-/deep/ .form-actions {
+::ng-deep .form-actions {
     background: 0 0;
     padding-left: 15px;
     padding-right: 15px;
 }
-/deep/ .btn-small {
+::ng-deep .btn-small {
     width: 60px !important;
 }
 
-/deep/ .btn-medium {
+::ng-deep .btn-medium {
     width: 100px !important;
 }
-/deep/ .btn-large {
+::ng-deep .btn-large {
     width: 150px !important;
 }
-/deep/ .datepicker-input button.calendar {
+::ng-deep .datepicker-input button.calendar {
     border: 1px solid #c2cad8 !important;
     border-style: solid solid solid none !important;
 }
-/deep/ .form-control {
+::ng-deep .form-control {
     outline: 0 !important;
 }
-/deep/ .btn,
-/deep/ .form-control {
+::ng-deep .btn,
+::ng-deep .form-control {
     box-shadow: none !important;
 }
-/deep/ .checkbox label:after {
+::ng-deep .checkbox label:after {
     content: "";
     display: table;
     clear: both;
 }
-/deep/ .checkbox .cr {
+::ng-deep .checkbox .cr {
     position: relative;
     border: 1px solid #a9a9a9;
     width: 1.3em;
@@ -206,116 +206,116 @@
     float: left;
     margin-right: 0.5em;
 }
-/deep/ .checkbox .cr .cr-icon {
+::ng-deep .checkbox .cr .cr-icon {
     position: absolute;
     font-size: 0.8em;
     line-height: 0;
     top: 50%;
     left: 20%;
 }
-/deep/ .checkbox label input[type="checkbox"] {
+::ng-deep .checkbox label input[type="checkbox"] {
     display: none;
 }
-/deep/ .checkbox label input[type="checkbox"] + .cr > .cr-icon {
+::ng-deep .checkbox label input[type="checkbox"] + .cr > .cr-icon {
     opacity: 0;
 }
-/deep/ .checkbox label input[type="checkbox"]:checked + .cr > .cr-icon {
+::ng-deep .checkbox label input[type="checkbox"]:checked + .cr > .cr-icon {
     opacity: 1;
 }
-/deep/ .checkbox label input[type="checkbox"]:disabled + .cr {
+::ng-deep .checkbox label input[type="checkbox"]:disabled + .cr {
     opacity: 0.5;
 }
-/deep/ .margin-top-5 {
+::ng-deep .margin-top-5 {
     margin-top: 5px !important;
 }
-/deep/ .margin-top-10 {
+::ng-deep .margin-top-10 {
     margin-top: 10px !important;
 }
-/deep/ .table .btn {
+::ng-deep .table .btn {
     margin-top: 0;
     margin-left: 0;
     margin-right: 5px;
 }
-/deep/ .btn {
+::ng-deep .btn {
     outline: 0 !important;
 }
-/deep/ .btn,
-/deep/ .form-control {
+::ng-deep .btn,
+::ng-deep .form-control {
     box-shadow: none !important;
 }
-/deep/ .btn:not(.btn-sm):not(.btn-lg) {
+::ng-deep .btn:not(.btn-sm):not(.btn-lg) {
     line-height: 1.44 !important;
 }
-/deep/ .table th {
+::ng-deep .table th {
     font-family: "GothamBold", Helvetica, Arial, sans-serif !important;
     padding: 0.6rem !important;
 }
-/deep/ .table td {
+::ng-deep .table td {
     padding: 0.5rem !important;
 }
-/deep/ .btn {
+::ng-deep .btn {
     outline: 0 !important;
 }
-/deep/ .btn,
-/deep/ .form-control {
+::ng-deep .btn,
+::ng-deep .form-control {
     box-shadow: none !important;
 }
-/deep/ .btn.btn-outline.dark {
+::ng-deep .btn.btn-outline.dark {
     border-color: #2f353b !important;
     color: #2f353b !important;
     background: 0 0 !important;
 }
-/deep/ .btn.btn-outline.red {
+::ng-deep .btn.btn-outline.red {
     border-color: red !important;
     color: red !important;
     background: 0 0 !important;
 }
-/deep/ .btn.btn-outline.default {
+::ng-deep .btn.btn-outline.default {
     border-color: #ccc !important;
     color: #ccc !important;
     background: 0 0 !important;
 }
-/deep/ .btn.btn-outline.blue {
+::ng-deep .btn.btn-outline.blue {
     border-color: #337ab7 !important;
     color: #337ab7 !important;
     background: 0 0 !important;
 }
-/deep/ .table .btn {
+::ng-deep .table .btn {
     margin-top: 0 !important;
     margin-left: 0 !important;
     margin-right: 5px !important;
 }
-/deep/ .btn-circle {
+::ng-deep .btn-circle {
     border-radius: 25px !important;
     overflow: hidden !important;
     padding: 4px 7px !important;
 }
-/deep/ .btn-group-xs > .btn,
-/deep/ .btn-xs {
+::ng-deep .btn-group-xs > .btn,
+::ng-deep .btn-xs {
     padding: 1px 5px !important;
     font-size: 12px !important;
     line-height: 1.5 !important;
     border-radius: 3px !important;
 }
-/deep/ .has-error .form-control,
-/deep/ .has-error .btn.calendar,
-/deep/ .has-error .bootstrap-select .btn:not(.btn-sm):not(.btn-lg) {
+::ng-deep .has-error .form-control,
+::ng-deep .has-error .btn.calendar,
+::ng-deep .has-error .bootstrap-select .btn:not(.btn-sm):not(.btn-lg) {
     border-color: #e73d4a !important;
 }
-/deep/ .help-block.with-errors {
+::ng-deep .help-block.with-errors {
     font-size: 80% !important;
     color: #e73d4a !important;
     margin-top: 0.25rem !important;
 }
-/deep/ .combobox .dropdown-menu {
+::ng-deep .combobox .dropdown-menu {
     max-height: 150px !important;
     overflow-y: auto !important;
 }
-/deep/ .custom-select {
+::ng-deep .custom-select {
     max-height: 150px !important;
     overflow-y: auto !important;
 }
-/deep/ .dropdown-menu {
+::ng-deep .dropdown-menu {
     box-shadow: 5px 5px rgba(102, 102, 102, 0.1);
     left: 0;
     min-width: 175px;
@@ -336,7 +336,7 @@
     -o-border-radius: 4px;
     border-radius: 4px;
 }
-/deep/ .dropdown-menu > button {
+::ng-deep .dropdown-menu > button {
     padding: 8px 16px;
     color: #6f6f6f;
     text-decoration: none;
@@ -346,9 +346,9 @@
     line-height: 18px;
     white-space: nowrap;
 }
-/deep/ .btn-group > .dropdown-menu:after,
-/deep/ .dropdown-toggle > .dropdown-menu:after,
-/deep/ .dropdown > .dropdown-menu:after {
+::ng-deep .btn-group > .dropdown-menu:after,
+::ng-deep .dropdown-toggle > .dropdown-menu:after,
+::ng-deep .dropdown > .dropdown-menu:after {
     position: absolute;
     top: -7px;
     left: 10px;
@@ -359,17 +359,17 @@
     border-left: 7px solid transparent;
     content: "";
 }
-/deep/ .text-nowrap {
+::ng-deep .text-nowrap {
     white-space: nowrap;
 }
-/deep/ .text-wrap {
+::ng-deep .text-wrap {
     white-space: pre-wrap; /* css-3 */
     white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
     white-space: -pre-wrap; /* Opera 4-6 */
     white-space: -o-pre-wrap; /* Opera 7 */
     word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
-/deep/ .break-out {
+::ng-deep .break-out {
     /* These are technically the same, but use both */
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -386,7 +386,7 @@
     -webkit-hyphens: auto;
     hyphens: auto;
 }
-/deep/ .loading {
+::ng-deep .loading {
     background: rgba(0, 0, 0, 0.4);
     position: fixed;
     display: block;
@@ -395,7 +395,7 @@
     top: 0;
     bottom: 0;
 }
-/deep/ .loading span {
+::ng-deep .loading span {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -405,7 +405,7 @@
     margin-left: -40px;
     background: rgba(255, 255, 255, 0.8);
 }
-/deep/ #dvLoading {
+::ng-deep #dvLoading {
     display: none;
     width: 100%;
     height: 100%;
@@ -421,22 +421,22 @@
     overflow: auto;
     opacity: 0.4;
 }
-/deep/ input[readonly] {
+::ng-deep input[readonly] {
     background-color: #e9ecef !important;
 }
-/deep/ .table thead th {
+::ng-deep .table thead th {
     background-color: #edeeef !important;
     text-align: center !important;
 }
-/deep/ .table-bordered td,
-/deep/ .table-bordered th {
+::ng-deep .table-bordered td,
+::ng-deep .table-bordered th {
     border: 1px solid #dcdcdc !important;
 }
-/deep/ .table-bordered td {
+::ng-deep .table-bordered td {
     font-weight: 600 !important;
     border-style: dashed !important;
 }
-/deep/ .footer-actions {
+::ng-deep .footer-actions {
     background-color: #f5f5f5;
     position: absolute;
     bottom: 0;
@@ -444,132 +444,132 @@
     right: 15px;
     // margin-bottom: 50px;
 }
-/deep/ .ext-footer-actions {
+::ng-deep .ext-footer-actions {
     position: relative !important;
     width: 100% !important;
     height: 50px !important;
     left: 0 !important;
     right: 0 !important;
 }
-/deep/ .form-horizontal .control-label {
+::ng-deep .form-horizontal .control-label {
     text-align: left !important;
 }
-/deep/ .font-bold {
+::ng-deep .font-bold {
     font-family: "GothamBold", Helvetica, Arial, sans-serif !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
 }
-/deep/ .clearfix {
+::ng-deep .clearfix {
     clear: both !important;
 }
-/deep/ .btn-group-sm > .btn,
-/deep/ .btn-sm {
+::ng-deep .btn-group-sm > .btn,
+::ng-deep .btn-sm {
     padding: 0.2rem 0.4rem !important;
 }
-/deep/ .input-group-addon {
+::ng-deep .input-group-addon {
     .btn:not(.btn-sm):not(.btn-lg) {
         line-height: 1.6 !important;
         border-radius: 0 !important;
     }
 }
-/deep/ .no-padding {
+::ng-deep .no-padding {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
-/deep/ .icon-oncokb {
+::ng-deep .icon-oncokb {
     background: url($base-url+"/assets/images/oncokb-oncogenic-1.png") no-repeat
         center !important;
     display: block;
     height: 20px;
 }
-/deep/ span.text-center,
-/deep/ span.text-right {
+::ng-deep span.text-center,
+::ng-deep span.text-right {
     display: block !important;
 }
-/deep/ .tooltip.primary .tooltip-inner {
+::ng-deep .tooltip.primary .tooltip-inner {
     background-color: #31b0d5;
 }
-/deep/ .tooltip.primary.top > .tooltip-arrow {
+::ng-deep .tooltip.primary.top > .tooltip-arrow {
     border-top-color: #337ab7;
 }
-/deep/ .tooltip.primary.right > .tooltip-arrow {
+::ng-deep .tooltip.primary.right > .tooltip-arrow {
     border-right-color: #337ab7;
 }
-/deep/ .tooltip.primary.bottom > .tooltip-arrow {
+::ng-deep .tooltip.primary.bottom > .tooltip-arrow {
     border-bottom-color: #337ab7;
 }
-/deep/ .tooltip.primary.left > .tooltip-arrow {
+::ng-deep .tooltip.primary.left > .tooltip-arrow {
     border-left-color: #337ab7;
 }
-/deep/ .tooltip.info .tooltip-inner {
+::ng-deep .tooltip.info .tooltip-inner {
     color: #333 !important;
     background-color: #ebdef0;
 }
-/deep/ .tooltip.info.top > .tooltip-arrow {
+::ng-deep .tooltip.info.top > .tooltip-arrow {
     border-top-color: #ebdef0;
 }
-/deep/ .tooltip.info.right > .tooltip-arrow {
+::ng-deep .tooltip.info.right > .tooltip-arrow {
     border-right-color: #ebdef0;
 }
-/deep/ .tooltip.info.bottom > .tooltip-arrow {
+::ng-deep .tooltip.info.bottom > .tooltip-arrow {
     border-bottom-color: #ebdef0;
 }
-/deep/ .tooltip.info.left > .tooltip-arrow {
+::ng-deep .tooltip.info.left > .tooltip-arrow {
     border-left-color: #ebdef0;
 }
-/deep/ .tooltip.success .tooltip-inner {
+::ng-deep .tooltip.success .tooltip-inner {
     background-color: #449d44;
 }
-/deep/ .tooltip.success.top > .tooltip-arrow {
+::ng-deep .tooltip.success.top > .tooltip-arrow {
     border-top-color: #449d44;
 }
-/deep/ .tooltip.success.right > .tooltip-arrow {
+::ng-deep .tooltip.success.right > .tooltip-arrow {
     border-right-color: #449d44;
 }
-/deep/ .tooltip.success.bottom > .tooltip-arrow {
+::ng-deep .tooltip.success.bottom > .tooltip-arrow {
     border-bottom-color: #449d44;
 }
-/deep/ .tooltip.success.left > .tooltip-arrow {
+::ng-deep .tooltip.success.left > .tooltip-arrow {
     border-left-color: #449d44;
 }
-/deep/ .tooltip.warning .tooltip-inner {
+::ng-deep .tooltip.warning .tooltip-inner {
     background-color: #ec971f;
 }
-/deep/ .tooltip.warning.top > .tooltip-arrow {
+::ng-deep .tooltip.warning.top > .tooltip-arrow {
     border-top-color: #ec971f;
 }
-/deep/ .tooltip.warning.right > .tooltip-arrow {
+::ng-deep .tooltip.warning.right > .tooltip-arrow {
     border-right-color: #ec971f;
 }
-/deep/ .tooltip.warning.bottom > .tooltip-arrow {
+::ng-deep .tooltip.warning.bottom > .tooltip-arrow {
     border-bottom-color: #ec971f;
 }
-/deep/ .tooltip.warning.left > .tooltip-arrow {
+::ng-deep .tooltip.warning.left > .tooltip-arrow {
     border-left-color: #ec971f;
 }
-/deep/ .tooltip.danger .tooltip-inner {
+::ng-deep .tooltip.danger .tooltip-inner {
     background-color: #d9534f;
 }
-/deep/ .tooltip.danger.top > .tooltip-arrow {
+::ng-deep .tooltip.danger.top > .tooltip-arrow {
     border-top-color: #d9534f;
 }
-/deep/ .tooltip.danger.right > .tooltip-arrow {
+::ng-deep .tooltip.danger.right > .tooltip-arrow {
     border-right-color: #d9534f;
 }
-/deep/ .tooltip.danger.bottom > .tooltip-arrow {
+::ng-deep .tooltip.danger.bottom > .tooltip-arrow {
     border-bottom-color: #d9534f;
 }
-/deep/ .tooltip.danger.left > .tooltip-arrow {
+::ng-deep .tooltip.danger.left > .tooltip-arrow {
     border-left-color: #d9534f;
 }
-/deep/ .tooltip .tooltip-inner {
+::ng-deep .tooltip .tooltip-inner {
     text-align: left !important;
     font-size: 12px !important;
 }
-/deep/ .custom-file-input {
+::ng-deep .custom-file-input {
     height: 50px !important;
 }
-/deep/ .custom-file-input {
+::ng-deep .custom-file-input {
     position: relative;
     z-index: 2;
     width: 100%;
@@ -577,58 +577,58 @@
     margin: 0;
     opacity: 0;
 }
-/deep/ .custom-file-label,
-/deep/ .custom-file-label::after {
+::ng-deep .custom-file-label,
+::ng-deep .custom-file-label::after {
     height: auto !important;
     padding-top: 6px !important;
     padding-bottom: 6px !important;
 }
-/deep/ .custom-file-label {
+::ng-deep .custom-file-label {
     width: 95% !important;
     border: 1px solid #c2cad8 !important;
 }
-/deep/ .box {
+::ng-deep .box {
     border-radius: 3px;
     border: 1px solid #d6dbdf;
     padding: 5px;
     margin-bottom: 20px;
 }
-/deep/ .color-blue {
+::ng-deep .color-blue {
     color: $color-blue;
 }
-/deep/ .color-grey {
+::ng-deep .color-grey {
     color: $color-grey;
 }
-/deep/ hr.side {
+::ng-deep hr.side {
     border-top: 2px solid $grey;
 }
-/deep/ .bootstrap-select .dropdown-menu li a {
+::ng-deep .bootstrap-select .dropdown-menu li a {
     line-height: 24px !important;
 }
-/deep/ .bootstrap-select {
+::ng-deep .bootstrap-select {
     width: 100% !important;
 }
-/deep/ .bootstrap-select .btn:not(.btn-sm):not(.btn-lg) {
+::ng-deep .bootstrap-select .btn:not(.btn-sm):not(.btn-lg) {
     line-height: 1.6 !important;
     border-radius: 5px !important;
     border: 1px solid #c2cad8 !important;
     background: #fff !important;
 }
-/deep/ .card {
+::ng-deep .card {
     margin-top: 0.3em !important;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
 }
-/deep/ .card-header:first-child {
+::ng-deep .card-header:first-child {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
 }
-/deep/ .card-body {
+::ng-deep .card-body {
     border-top: 1px solid #ddd !important;
 }
-/deep/ .card-header {
+::ng-deep .card-header {
     font-family: "GothamBold", Helvetica, Arial, sans-serif !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
@@ -636,26 +636,26 @@
     padding: 0.5rem 1.25rem;
     border: none;
 }
-/deep/ .card-header a {
+::ng-deep .card-header a {
     color: #333 !important;
 }
-/deep/ .card-block {
+::ng-deep .card-block {
     text-align: left;
 }
-/deep/ .card-header > a {
+::ng-deep .card-header > a {
     display: block;
     position: relative;
 }
-/deep/ .card-header > a:after {
+::ng-deep .card-header > a:after {
     content: "\f078"; /* fa-chevron-down */
     font-family: "FontAwesome";
     position: absolute;
     right: 0;
 }
-/deep/ .card-header > a[aria-expanded="true"]:after {
+::ng-deep .card-header > a[aria-expanded="true"]:after {
     content: "\f077"; /* fa-chevron-up */
 }
-/deep/ .card-search {
+::ng-deep .card-search {
     .card-header {
         font-weight: 700 !important;
         font-size: 14px !important;
@@ -670,25 +670,25 @@
         border: 1px solid #f0f8ff;
     }
 }
-/deep/ svg.box__icon {
+::ng-deep svg.box__icon {
     width: 100%;
     height: 80px;
     fill: #1c8adb;
     display: block;
     margin-bottom: 40px;
 }
-/deep/ .uploadfile-outer {
+::ng-deep .uploadfile-outer {
     width: 100%;
     height: 250px;
     background-color: #d4ecfd !important;
     padding: 10px;
     opacity: 0.8;
 }
-/deep/ .uploadfile-inner {
+::ng-deep .uploadfile-inner {
     border: 2px dashed #1c8adb;
     height: 100%;
 }
-/deep/ .uploadfile-container {
+::ng-deep .uploadfile-container {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='43' viewBox='0 0 50 43'><path fill='rgb(28,138,219)' d='M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z'></path></svg>");
     background-repeat: no-repeat;
     background-size: 70px;
@@ -706,10 +706,10 @@
         font-size: 15px;
     }
 }
-/deep/ .uploadfile-container:hover {
+::ng-deep .uploadfile-container:hover {
     cursor: pointer;
 }
-/deep/ .file-detail {
+::ng-deep .file-detail {
     display: flex;
     justify-content: space-between;
     width: 80%;
@@ -719,38 +719,38 @@
     padding: 10px 0;
     font-weight: 700;
 }
-/deep/ .file-list .file-detail:first-child {
+::ng-deep .file-list .file-detail:first-child {
     border-top: 1px dashed #cccccc;
 }
-/deep/ .file-detail .delete-file {
+::ng-deep .file-detail .delete-file {
     background: transparent;
     border: none;
     cursor: pointer;
 }
-/deep/ .img {
+::ng-deep .img {
     border: 0 !important;
 }
-/deep/ .modal-header {
+::ng-deep .modal-header {
     padding: 0.5rem 1rem !important;
 
     h4 {
         font-size: 18px !important;
     }
 }
-/deep/ .modal-footer {
+::ng-deep .modal-footer {
     padding: 0.5rem 1rem !important;
 }
-/deep/ .margin-top-50 {
+::ng-deep .margin-top-50 {
     margin-top: 50px !important;
 }
-/deep/ .figure {
+::ng-deep .figure {
     position: relative;
     display: inline-block;
     margin-top: 15px;
     cursor: pointer;
     cursor: hand;
 }
-/deep/ .caption {
+::ng-deep .caption {
     display: none;
     position: absolute;
     left: 0;
@@ -759,46 +759,46 @@
     top: 40%;
     background-color: rgba(0, 0, 0, 0.15);
 }
-/deep/ .figure:hover img {
+::ng-deep .figure:hover img {
     opacity: 0.5;
 }
-/deep/ .figure:hover .caption {
+::ng-deep .figure:hover .caption {
     display: block;
     padding-top: 10px;
     padding-bottom: 10px;
 }
-/deep/ .text-sm {
+::ng-deep .text-sm {
     font-size: 12px;
     color: gray;
 }
-/deep/ small {
+::ng-deep small {
     font-weight: 500 !important;
 }
-/deep/ .modal-title {
+::ng-deep .modal-title {
     color: $color-blue !important;
     font: 14px "GothamBold", Helvetica, Arial, sans-serif !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
 }
-/deep/ .sub-text {
+::ng-deep .sub-text {
     padding-top: 5px;
     display: block;
 }
-/deep/ .modal-lg {
+::ng-deep .modal-lg {
     max-width: 900px !important;
 }
-/deep/ .padding-left-10 {
+::ng-deep .padding-left-10 {
     padding-left: 10px !important;
 }
-/deep/ .padding-bottom-10 {
+::ng-deep .padding-bottom-10 {
     padding-bottom: 10px !important;
 }
-/deep/ .checkbox label:after, .radio label:after {
+::ng-deep .checkbox label:after, .radio label:after {
   content: '';
   display: table;
   clear: both;
 }
-/deep/ .checkbox .cr, .radio .cr {
+::ng-deep .checkbox .cr, .radio .cr {
   position: relative;
   display: inline-block;
   border: 1px solid #a9a9a9;
@@ -808,28 +808,28 @@
   float: left;
   margin-right: .5em;
 }
-/deep/ .radio .cr {
+::ng-deep .radio .cr {
   border-radius: 50%;
 }
-/deep/ .checkbox .cr .cr-icon, .radio .cr .cr-icon {
+::ng-deep .checkbox .cr .cr-icon, .radio .cr .cr-icon {
   position: absolute;
   font-size: .8em;
   line-height: 0;
   top: 50%;
   left: 13%;
 }
-/deep/ .radio .cr .cr-icon {
+::ng-deep .radio .cr .cr-icon {
   margin-left: 0.04em;
 }
-/deep/ .checkbox label input[type="checkbox"], .radio label input[type="radio"] {
+::ng-deep .checkbox label input[type="checkbox"], .radio label input[type="radio"] {
   display: none;
 }
-/deep/ .checkbox label input[type="checkbox"]+.cr>.cr-icon, .radio label input[type="radio"]+.cr>.cr-icon {
+::ng-deep .checkbox label input[type="checkbox"]+.cr>.cr-icon, .radio label input[type="radio"]+.cr>.cr-icon {
   opacity: 0;
 }
-/deep/ .checkbox label input[type="checkbox"]:checked+.cr>.cr-icon, .radio label input[type="radio"]:checked+.cr>.cr-icon {
+::ng-deep .checkbox label input[type="checkbox"]:checked+.cr>.cr-icon, .radio label input[type="radio"]:checked+.cr>.cr-icon {
   opacity: 1;
 }
-/deep/ .checkbox label input[type="checkbox"]:disabled+.cr, .radio label input[type="radio"]:disabled+.cr {
+::ng-deep .checkbox label input[type="checkbox"]:disabled+.cr, .radio label input[type="radio"]:disabled+.cr {
   opacity: .5;
 }

@@ -186,12 +186,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.apache.tomcat.embed</groupId>
-					<artifactId>tomcat-embed-websocket</artifactId>
-				</exclusion>
-			</exclusions>
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.apache.tomcat.embed</groupId>-->
+<!--					<artifactId>tomcat-embed-websocket</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -268,13 +268,13 @@
 				<!-- MySQL -->
 				<datasource.type>DIRECT</datasource.type>
 				<datasource.driver>com.mysql.jdbc.Driver</datasource.driver>
-				<datasource.url>jdbc:mysql://onco-db:6004/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false&amp;autoReconnect=true</datasource.url>
+				<datasource.url>jdbc:mysql://host.docker.internal:6004/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true</datasource.url>
 				<datasource.username>ONCO</datasource.username>
 				<datasource.password>+UJiVUL29Y3xjsLVnrVw7G6V7KW1Mw/t</datasource.password>
 				<!-- <datasource.password>password</datasource.password> -->
 				<!-- MongoDB -->
 				<!-- Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname -->
-				<mongodb.uri>mongodb://localhost:6006/ONCDB02D</mongodb.uri>
+				<mongodb.uri>mongodb://host.docker.internal:6009/ONCDB02D</mongodb.uri>
 				<mongodb.username>ONCO</mongodb.username>
 				<mongodb.password>+UJiVUL29Y3xjsLVnrVw7G6V7KW1Mw/t</mongodb.password>
 				<!-- Others -->
@@ -293,12 +293,12 @@
 				<!-- MySQL -->
 				<datasource.type>DIRECT</datasource.type>
 				<datasource.driver>com.mysql.jdbc.Driver</datasource.driver>
-				<datasource.url>jdbc:mysql://onco-db:3306/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false&amp;autoReconnect=true</datasource.url>
+				<datasource.url>jdbc:mysql://host.docker.internal:6004/ONCODB?useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Bangkok&amp;useSSL=false&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true</datasource.url>
 				<datasource.username>ONCO</datasource.username>
 				<datasource.password>+UJiVUL29Y3xjsLVnrVw7G6V7KW1Mw/t</datasource.password>
 				<!-- <datasource.password>password</datasource.password> -->
 				<!-- MongoDB -->
-				<mongodb.uri>mongodb://onco-mongo:6006</mongodb.uri>
+				<mongodb.uri>mongodb://host.docker.internal:6009</mongodb.uri>
 				<mongodb.username>ONCO</mongodb.username>
 				<mongodb.password>+UJiVUL29Y3xjsLVnrVw7G6V7KW1Mw/t</mongodb.password>
 				<!-- Others -->

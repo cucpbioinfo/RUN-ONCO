@@ -153,5 +153,8 @@
       }
     }
   },
-  "defaultProject": "onco-web"
+  "defaultProject": "onco-web",
+  "cli": {
+    "analytics": false
+  }
 }
