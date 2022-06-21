@@ -26,7 +26,7 @@
 		<hibernate.version>5.2.10.Final</hibernate.version>
 		<slfj.version>1.7.5</slfj.version>
 		<springframework.version>4.3.8.RELEASE</springframework.version>
-		<jackson.library>2.8.8</jackson.library>
+		<jackson.library>2.9.10.5</jackson.library>
 		<aspectj.version>1.8.6</aspectj.version>
 		<jjwt.version>0.9.0</jjwt.version>
 		<quartz-scheduler.version>2.2.3</quartz-scheduler.version>
