@@ -54,8 +54,6 @@ export class LoginFormComponent implements OnInit {
             const password = this.loginForm.value.password;
 
             this.authService.login(username, password).subscribe(res => {
-                console.log("---> data : ", res);
-
                 if (res.responseStatus.responseCode === this.msg.SUCCESS.code) {
                     this.appState.userInfo = res.data;
                     this.router.navigate(["/patient-search"]);
@@ -78,8 +76,8 @@ export class LoginFormComponent implements OnInit {
 
     private buildForm(): void {
         this.loginForm = this.fb.group({
-            username: new FormControl("icbbe", [ValidationService.requiredValidator]),
-            password: new FormControl("demo2019", [ValidationService.requiredValidator])
+            username: new FormControl("", [ValidationService.requiredValidator]),
+            password: new FormControl("", [ValidationService.requiredValidator])
         });
     }
 }
