@@ -13,7 +13,7 @@ Installation
 * Open a terminal and `cd` to docker-and-compose folder in which `docker-compose.yml` is saved and run:
 
 	```bash
-	source env.sh && docker-compose up --build -d
+	source env.sh && sudo docker-compose up --build -d
 	```
 	
     _Optional:  Stop the Docker container_
